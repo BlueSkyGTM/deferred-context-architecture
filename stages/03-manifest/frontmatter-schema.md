@@ -1,24 +1,30 @@
-# Frontmatter Schema — Stage 03 (Observed, Not Judged)
+# Frontmatter Schema — Stage 03 (Descriptive, Not Judged)
 
-Every manifested item carries this frontmatter block. Every field must be OBSERVABLE at catalogue
-time without judgment. If a field would require the agent to judge quality or seam-fit rather than
-observe a fact, it does NOT belong here — flag it to logs/failures.md.
+Every manifested item carries this frontmatter block. No field may require the agent to JUDGE quality
+or seam-fit — frontmatter is descriptive (what something IS), never prescriptive. If a field would
+require a quality/seam judgment, it does NOT belong here — flag it to logs/failures.md. Fields fall
+into four CLASSES (the chat draft wrongly called all of them "observed"; assigning an id is not
+observing one):
 
 ```yaml
 ---
-id: <stable unique address>               # observed: assigned at catalogue time
-source: <deposit / cluster it came from>  # observed: known from excavation
-format: <md | csv | code | doc | pdf | ...>  # observed: the file type
-assay: cart                               # observed: it is here because it was carted
-seam_match: <the on-seam edge it matched>  # observed: recorded by the assay (human on pilot)
-stage: manifest                           # observed: current stage
-sealed: false                             # observed: true once it clears its final gate (quotable by siblings)
+id: <stable unique address>               # ASSIGNED:   minted at catalogue time
+source: <deposit / cluster it came from>  # OBSERVED:    a fact carried from excavation
+format: <md | csv | code | doc | pdf | ...>  # OBSERVED:    the file type
+assay: cart                               # INHERITED:   carried from the assay verdict (it was carted)
+seam_match: <the on-seam edge it matched>  # INHERITED:   recorded BY the assay (human on pilot)
+stage: manifest                           # ASSIGNED:    the current stage
+sealed: false                             # LIFECYCLE:   flips true when it clears its final gate downstream
 ---
 ```
 
+Field classes: **OBSERVED** = a fact read off the material. **INHERITED** = carried verbatim from an
+upstream stage's record (not re-judged here). **ASSIGNED** = minted mechanically at this stage.
+**LIFECYCLE** = state that changes as the item moves downstream. None of the four is a judgment.
+
 ## Rules
-- Every field is observed, not judged. `seam_match` is recorded BY the assay (the human on the pilot),
-  not re-judged here.
+- No field is judged. `seam_match` and `assay` are INHERITED from the assay (the human on the pilot),
+  never re-judged here.
 - `sealed` flips to true only when an item clears its final gate downstream. A sealed item is quotable
   by sibling work; an unsealed (in-flight) item is treated as not-yet-existing by siblings.
 - The body of the file stays human-readable directions/prose. Frontmatter is the countable layer.

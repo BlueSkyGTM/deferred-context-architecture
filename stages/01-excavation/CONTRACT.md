@@ -1,23 +1,37 @@
 # CONTRACT — Stage 01: Excavation
 
 ## Purpose
-Pull raw material from located deposits into vault/. No quality judgment (deferred to the assay).
-Coverage, not choice.
+Pull raw material from located deposits into vault/ and give each piece a stable ADDRESS. No quality
+judgment (deferred to the assay). Coverage, not choice.
+
+## Why excavation exists (contamination defense, not asset generation)
+Excavation is not "go fetch the assets." Its job is to convert located material into **addressed
+routes** in vault/ so every downstream stage can pull the exact slice it needs JUST-IN-TIME and
+nothing else. The whole point is that the agent NEVER absorbs the whole corpus into context — it
+follows an address to one piece. Hauling without addressing would defeat this: an unaddressed pile
+forces whole-corpus loading, which is the contamination excavation exists to prevent. Address-on-haul
+is the contamination defense; the assets are a side effect of building the routes.
 
 ## Inputs
-- A located deposit (a source to extract from). On the pilot this is provided by the human.
-- The bounded space to cover (what counts as "the whole deposit").
+- A located deposit (a source to extract from) and the bounded space to cover (what counts as "the
+  whole deposit"). These are domain-specific and supplied by the instantiation, NOT by core — see the
+  pilot's deposit register and extractor-matching rule. On the pilot the human supplies the deposits.
 
 ## Process
-1. Extract the material from the source.
-2. Haul EVERYTHING that meets the extraction criteria. Do not select, filter, or judge worth —
+1. Match the deposit to its extractor (the matching rule is the instantiation's — core does not name
+   tools). If no extractor matches the deposit type, do NOT guess — bench it and log to failures.
+2. Extract the material from the source.
+3. Haul EVERYTHING that meets the extraction criteria. Do not select, filter, or judge worth —
    selection is deferred to the assay (stage 02). Coverage is the goal.
-3. Land each piece in vault/ with an address.
-4. Record each piece in the vault account (address + source + format).
+4. Land each piece in vault/ with a stable address.
+5. Record each piece in the vault account (`vault/account.md`): address + source + format + the
+   bounded-space it came from. The account is the index that makes vault/ routable instead of a pile.
 
 ## Outputs
-- Raw material in vault/, addressed.
-- A vault-level account: every hauled piece has an address. Nothing unaddressed.
+- Raw material in vault/, each piece addressed.
+- `vault/account.md`: the vault-level index. Every hauled piece has one row
+  (`- id: <address> | source: <deposit> | format: <type> | bounded_space: <coverage target>`).
+  Nothing unaddressed, nothing unaccounted.
 
 ## Deferral point (tooling checks only — NO quality judgment)
 - Reach: did the extraction reach the source? (pass/fail)

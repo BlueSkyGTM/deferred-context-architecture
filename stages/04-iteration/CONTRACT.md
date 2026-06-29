@@ -5,11 +5,23 @@ Build the deliverable from the manifest. The destination yard and back half of M
 conformance-gated, stopped by diminishing marginal utility.
 
 ## Inputs
-- The manifest (stage 03 output): catalogued, frontmatter-typed, addressed on-seam material.
-- The deliverable's design schema (the cookie-cutter that holds the quality judgment).
-  NOTE: on the pilot the design schema is cut FROM LOGS of the run; it may not exist in final form on
-  iteration one. Where it is absent, flag to logs/failures.md and proceed MVP-first, recording what
-  the schema should capture.
+- The manifest at `manifest/` (stage 03 output): `index.md` (the cargo list) + `items/<id>.md`.
+  Pull from it just-in-time; do NOT load all of `items/` into context.
+- The deliverable's design schema (the cookie-cutter that holds the quality judgment) — supplied by
+  the instantiation, or cut from logs of proven-good work.
+- The concrete build workflow — supplied by the instantiation (see the iteration-workflow interface
+  below). Core declares the interface; a pilot supplies the chain.
+
+## Design-schema bootstrap (the first-run rule — not a hole)
+The schema is cut from logs of proven-good work, so on a domain's FIRST run it does not exist yet.
+This is handled by an explicit rule, NOT by "flag and proceed":
+- **Iteration 1 runs in SCHEMA-DISCOVERY mode: conformance is explicitly UNGATED.** Its job is to
+  produce the MVP and the logs from which the schema is cut. Record what the schema should capture.
+- **Conformance gating begins at iteration 2**, once a schema exists. From then on the conformance
+  gate applies normally.
+This is a deliberate, bounded exception declared up front — not the agent guessing past a missing
+input. Log the schema-discovery iteration to logs/gate-checks.md (outcome: passed, note: ungated
+schema-discovery).
 
 ## Process
 1. MVP-first: the first iteration gets the deliverable off the ground — viable, unfinished, not

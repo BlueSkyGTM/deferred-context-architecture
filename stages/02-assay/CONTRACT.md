@@ -17,14 +17,21 @@ assay is intrinsically THREE-way; this is not a feature, it is what assaying is.
 4. For bench, write the escalation context (what it is, which edges it was near, why uncertain).
 5. Log the firing to logs/gate-checks.md (outcome: carted | tailed | benched).
 
-## The three-way rule (mechanical)
-- CART  → carts/    : matched a known on-seam edge with NO conflicting near-miss. Clean yes.
-- TAILINGS → tailings/ : clearly off-seam (good material, wrong seam). Tail it WITH a reason.
-- BENCH → bench/    : did NOT cleanly match AND did NOT cleanly fail. ANY ambiguity benches.
+## The three-way rule (mechanical) — each exit needs POSITIVE evidence
+- CART  → carts/    : matched a known ON-SEAM edge with NO conflicting near-miss. Clean yes.
+- TAILINGS → tailings/ : positive evidence of OFF-SEAM — it matches a known off-seam pattern or
+  clearly belongs to an identified OTHER domain. Good material, wrong seam. Tail it WITH a reason.
+- BENCH → bench/    : neither a clean on-seam match NOR positive off-seam evidence. ANY ambiguity
+  benches. ANY conflicting near-miss benches.
 
-Test for cart-vs-bench: "matched a known on-seam edge with no conflicting near-miss, yes/no?" A clean
-yes carts. ANY ambiguity benches. You do NOT resolve ambiguity — you defer it to the bench. The bench
-is the third exit that lets the pipeline run without committing to an uncertain call.
+The two failure tests are SEPARATE, and this is what keeps the bench from swallowing everything:
+- Cart test: "matched a known on-seam edge with no conflicting near-miss, yes/no?"
+- Tailings test: "is there POSITIVE evidence it is off-seam (a known off-seam pattern, or membership
+  in another domain), yes/no?"
+A clean yes on cart carts. A clean yes on tailings tails. Only the absence of BOTH benches. Tailings
+is NOT "failed the cart test" — mere absence of an on-seam match is not evidence of off-seam; that is a
+bench. You do NOT resolve ambiguity — you defer it to the bench. The bench is the third exit that lets
+the pipeline run without committing to an uncertain call.
 
 ## Outputs
 - carts/    : on-seam material, ready for transport.
@@ -35,11 +42,13 @@ is the third exit that lets the pipeline run without committing to an uncertain 
 The assay IS the deferral point. Three exits. No fourth option. No guessing. No deleting (off-seam is
 tailed, not destroyed). Uncertain commitment is deferred to the human via the bench.
 
-## Pilot note (training the seam)
-On the pilot the HUMAN makes the cart/tailings/bench call and the system RECORDS each with its reason.
-The seam layer is the OUTPUT of the pilot, not the tool it starts with. Tag the highest-value cases
-distinctly: looks-transferable-but-off-seam (resembles the seam via a shared principle but sits off
-it). These are the ~50%-of-waste cases.
+## Instantiation note (training the seam)
+On a domain's first run the HUMAN makes the cart/tailings/bench call and the system RECORDS each with
+its reason. The seam layer is the OUTPUT of that run, not the tool it starts with. Tag the highest-
+value cases distinctly: `looks-transferable-but-off-seam` (resembles the seam via a shared principle
+but sits off it) — these are the cases the seam layer exists to catch. The concrete on-seam edges,
+off-seam patterns, and near-miss examples are domain-specific and supplied by the instantiation (the
+pilot's `seam.md`), NOT by core.
 
 ## TODO(tools)
 The seam-matching tool (the seam brain) is wired in a LATER pass. For this pass, the assay routes by

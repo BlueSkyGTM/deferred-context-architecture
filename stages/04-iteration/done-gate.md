@@ -20,7 +20,12 @@ After each iteration, classify its delta versus the previous iteration:
 - Did this pass add content that survived the schema (substance)? → keep iterating.
 - Did this pass only reorder/reword existing content (surface)? → the curve has flattened → ship.
 
-Record the classification each iteration in the iteration log so the curve is visible.
+Record the classification each iteration in `logs/gate-checks.md` (gate: done-gate, outcome: iterate
+or ship, note: `delta=substance` or `delta=surface` + one line on what was added) so the curve is
+visible across passes. The "iteration log" is this stream filtered to `gate: done-gate` — no separate
+file. The substance-vs-surface call is a delta comparison (this pass vs last), not an absolute
+quality judgment; when in doubt whether a delta is substance, it is surface (the conservative call
+ships rather than perfecting).
 
 ## Why this works
 - It compares THIS pass to the LAST pass (a delta), not absolute quality (a judgment). The gate never

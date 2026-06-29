@@ -9,13 +9,15 @@ the itemized, addressed cargo list.
 - On-seam material in carts/.
 
 ## Process (per piece)
-1. Catalogue the piece (give it a manifest entry).
-2. Stamp frontmatter per frontmatter-schema.md. Fields are OBSERVED, not judged.
-3. Address the piece (a stable, unique address).
+1. Address the piece (a stable, unique `id`) and transport it to `manifest/items/<id>.md`.
+2. Stamp frontmatter per frontmatter-schema.md. Descriptive fields are OBSERVED, not judged; the rest
+   are inherited from the assay or assigned mechanically (see the schema's field classes).
+3. Catalogue the piece: append its row to `manifest/index.md` (the cargo list).
 4. Keep the human-readable directions in the body; the countable fields live in frontmatter.
 
 ## Outputs
-- A manifest: the itemized, addressed list of everything carted, each entry typed by frontmatter.
+- The manifest at `manifest/`: `index.md` (the itemized, addressed cargo list, one row per item) and
+  `items/<id>.md` (the transported pieces, each frontmatter-typed). See `manifest/CONTEXT.md`.
 
 ## Deferral point (conformance — invariant)
 NOTHING UNCATALOGUED AND NOTHING UN-TYPED. Every carted piece has a manifest entry AND every required
