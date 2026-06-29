@@ -6,7 +6,10 @@ clean categorical data BORN at this stage, when each piece is individually in ha
 the itemized, addressed cargo list.
 
 ## Inputs
-- On-seam material in carts/.
+- On-seam material in carts/, each piece carrying its **cart record** frontmatter (id, source, assay,
+  seam_match) written by the assay (stage 02). The INHERITED manifest fields come from this record; if
+  a carted piece is missing its cart record (no seam_match), it cannot be typed — bench it or log to
+  logs/failures.md and stop. Do not invent seam_match.
 
 ## Process (per piece)
 1. Address the piece (a stable, unique `id`) and transport it to `manifest/items/<id>.md`.

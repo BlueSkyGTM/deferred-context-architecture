@@ -29,7 +29,7 @@ Entry format:
 - gate: <tooling | assay | conformance | done-gate>
 - stage: <stage>
 - item: <address of the item, or "n/a">
-- outcome: <passed | failed | carted | tailed | benched | ship | iterate>
+- outcome: <passed | failed | carted | tailed | benched | accept | revise | block | ship | iterate>
 - note: <one line>
 ```
 

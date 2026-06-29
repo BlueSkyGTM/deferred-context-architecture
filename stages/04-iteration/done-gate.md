@@ -35,8 +35,11 @@ ships rather than perfecting).
   absent = done.
 
 ## Ship condition
-When the done-gate fires: write the deliverable to library/, set frontmatter sealed: true, log the
-ship to logs/gate-checks.md (outcome: ship). The sealed deliverable is now quotable by sibling work.
+When the done-gate fires: the deliverable is already in library/ (built there, unsealed). Flip its
+frontmatter to sealed: true, flip the `built_from` manifest items to sealed: true (update
+manifest/index.md), and log the ship to logs/gate-checks.md (outcome: ship). The sealed deliverable is
+now quotable by sibling work. See stage 04 CONTRACT (Working location + Outputs) for the deliverable
+frontmatter and seal semantics.
 
 ## TODO(tools)
 Any tool that helps classify substance-vs-surface is wired in a LATER pass. For this pass, the RULE is

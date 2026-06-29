@@ -23,8 +23,11 @@ is the contamination defense; the assets are a side effect of building the route
 2. Extract the material from the source.
 3. Haul EVERYTHING that meets the extraction criteria. Do not select, filter, or judge worth —
    selection is deferred to the assay (stage 02). Coverage is the goal.
-4. Land each piece in vault/ with a stable address.
-5. Record each piece in the vault account (`vault/account.md`): address + source + format + the
+4. Land each piece in vault/ with a stable address. **Address convention:** the `id` is a kebab-case
+   slug of the piece's title/source, unique within the run (suffix `-2`, `-3` on collision). The
+   vault filename is `vault/<id>.md`. This convention is fixed so addresses are stable and inferable,
+   not guessed per-run; every downstream stage reuses the same `id`.
+5. Record each piece in the vault account (`vault/account.md`): id + source + format + the
    bounded-space it came from. The account is the index that makes vault/ routable instead of a pile.
 
 ## Outputs

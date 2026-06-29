@@ -17,8 +17,12 @@ The schema is cut from logs of proven-good work, so on a domain's FIRST run it d
 This is handled by an explicit rule, NOT by "flag and proceed":
 - **Iteration 1 runs in SCHEMA-DISCOVERY mode: conformance is explicitly UNGATED.** Its job is to
   produce the MVP and the logs from which the schema is cut. Record what the schema should capture.
-- **Conformance gating begins at iteration 2**, once a schema exists. From then on the conformance
-  gate applies normally.
+- **Where the schema lives:** the instantiation declares the schema's path (recommended:
+  `pilots/<name>/design-schema.md`). Schema-discovery WRITES the cut schema there; iterations 2+ READ
+  it. Core names the slot; the pilot owns the file. If the path is undeclared, that is a stop-and-ask,
+  not a guess.
+- **Conformance gating begins at iteration 2**, once the schema file exists. From then on the
+  conformance gate applies normally.
 This is a deliberate, bounded exception declared up front — not the agent guessing past a missing
 input. Log the schema-discovery iteration to logs/gate-checks.md (outcome: passed, note: ungated
 schema-discovery).
@@ -47,8 +51,24 @@ A teardown is permitted ONLY while its marginal utility exceeds its cost. Once a
 less than it costs, the gate REFUSES the teardown and ships what stands. Perfectionism (endless
 rebuild for marginal gain) is forbidden by the same economics that govern the done-gate.
 
+## Working location and the deliverable's frontmatter
+- The in-progress deliverable is built IN `library/` from iteration 1, carrying `sealed: false` while
+  it iterates. `library/` therefore holds both in-flight (unsealed) and shipped (sealed) deliverables;
+  the `sealed` flag is the difference. There is no separate draft folder.
+- Every deliverable carries minimal frontmatter:
+  ```yaml
+  ---
+  id: <stable address>
+  kind: <deliverable kind, e.g. course | report | dataset>   # named by the instantiation
+  built_from: [<manifest item ids it consumed>]
+  sealed: false   # flips true at the done-gate (ship)
+  ---
+  ```
+
 ## Outputs
 - A shipped deliverable in library/, sealed (frontmatter sealed: true), quotable by siblings.
+- On ship, the manifest items listed in `built_from` flip their own `sealed: true` (they have cleared
+  their final gate — consumed into a shipped deliverable). Update `manifest/index.md` rows to match.
 
 ## Do not
 - Do not perfect one piece before the whole stands (MVP-first, not piece-perfect).

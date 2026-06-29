@@ -31,3 +31,19 @@
     - LOW: glossary "Seam" + ARCHITECTURE §2.2 have broken sentences (chat edit corruption).
 - action: flagged; resolving in the engine/pilot separation refactor (this session). Core->never references pilot; pilot->references core (one-way, per ICM).
 
+## 2026-06-29T19:40:59Z
+- stage: full-run simulation (sim/full-run branch + Codex cold-agent narration)
+- what: Simulated a complete run (4 pieces: 2 cart, 1 tailings, 1 bench -> 2 manifested -> 1 sealed deliverable). The chain COMPLETED, but only by inventing inter-stage contracts the specs do not define. Codex (cold) and the live trace agreed on the gaps.
+- expected: a cold agent runs the chain WITHOUT guessing (guessing is forbidden); every stage handoff is fully specified.
+- found (confirmed inter-stage chain-breaks):
+    - BLOCKER: assay produced no structured cart record carrying seam_match, but stage 03 frontmatter requires it (had to invent a cart-record format).
+    - BLOCKER: design schema is "cut from logs" but no path/format for where it lives (invented pilots/<name>/design-schema.md).
+    - BLOCKER: gate-check outcome enum (LOGS.md) lacked accept|revise|block that the evaluator requires (contradiction).
+    - HIGH: bench escalation content named but no file format/location.
+    - HIGH: shipped deliverable had no frontmatter schema / seal semantics (and no rule for sealing the consumed manifest items); no defined working location for the in-flight deliverable.
+    - MEDIUM: deposit `type:` enum did not match the extractor-table labels (pilot deposits.md).
+    - MEDIUM: stable-id convention undefined (vault/manifest ids).
+    - BY DESIGN (not a bug): on a first run the agent cannot autonomously make seam calls (human must) and tools are unwired, so a fully autonomous cold run correctly STOPS at the assay. The seam is trained, not assumed.
+- readily-inferred (safe to leave implicit): tailings/bench/cart routing given a seam; only-carts-proceed; slug id; source/bounded_space defaults for operator-supplied items.
+- action: all confirmed chain-breaks FIXED this session (stage 02 cart-record + bench-note format; stage 03 inherits cart record; LOGS enum; stage 04 schema path + deliverable frontmatter + seal semantics + working location; excavation id convention; pilot deposit-label alignment). Sim artifacts preserved on branch sim/full-run (not merged).
+

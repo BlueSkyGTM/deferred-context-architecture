@@ -13,9 +13,23 @@ assay is intrinsically THREE-way; this is not a feature, it is what assaying is.
 ## Process (per piece)
 1. Test seam-fit against known on-seam edges.
 2. Route by the THREE-WAY rule below.
-3. For tailings, write the curated reason to logs/rejections.md (item + reason, not verdict-only).
-4. For bench, write the escalation context (what it is, which edges it was near, why uncertain).
-5. Log the firing to logs/gate-checks.md (outcome: carted | tailed | benched).
+3. For CART, stamp the **cart record** (the assay's structured output) as frontmatter on the carted
+   copy in carts/ — this is what stage 03 inherits, so it is mandatory, not optional:
+   ```yaml
+   ---
+   id: <stable address>            # carried from the vault account
+   source: <deposit it came from>  # carried from the vault account
+   assay: cart
+   seam_match: <the on-seam edge it matched>   # the edge the human/seam named — the load-bearing field
+   ---
+   ```
+   Without this record stage 03 has no `seam_match` to inherit and must bench the item. The body of
+   the piece is preserved below the frontmatter.
+4. For TAILINGS, write the curated reason to logs/rejections.md (item + reason, not verdict-only).
+5. For BENCH, write a bench note at `bench/<id>.md` with these fields (so the escalation is readable
+   and the human can clear it): `what:`, `near-edges:` (which edges it was between), `why-uncertain:`,
+   `escalate-to:`.
+6. Log the firing to logs/gate-checks.md (outcome: carted | tailed | benched).
 
 ## The three-way rule (mechanical) — each exit needs POSITIVE evidence
 - CART  → carts/    : matched a known ON-SEAM edge with NO conflicting near-miss. Clean yes.
@@ -34,9 +48,11 @@ bench. You do NOT resolve ambiguity — you defer it to the bench. The bench is 
 the pipeline run without committing to an uncertain call.
 
 ## Outputs
-- carts/    : on-seam material, ready for transport.
-- tailings/ : off-seam material, each item tailed with a reason (reviewable, never deleted).
-- bench/    : uncertain material, escalated to the human.
+- carts/    : on-seam material, each item carrying its cart-record frontmatter (id, source, assay,
+  seam_match) so stage 03 can inherit it.
+- tailings/ : off-seam material, each item tailed with a reason in logs/rejections.md (reviewable,
+  never deleted).
+- bench/    : uncertain material, each with a `bench/<id>.md` escalation note.
 
 ## Deferral point
 The assay IS the deferral point. Three exits. No fourth option. No guessing. No deleting (off-seam is

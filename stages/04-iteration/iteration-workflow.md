@@ -15,8 +15,9 @@ supplies the concrete chain. This keeps stage 04 domain-agnostic.
 - **Stop:** the done-gate (`done-gate.md`) ends the loop at diminishing marginal utility.
 
 ## What a pilot supplies
-- The concrete build chain (the steps, the tools, the deliverable's shape).
-- The design schema (or the rule for cutting it from logs — see CONTRACT.md bootstrap rule).
+- The concrete build chain (the steps, the tools, the deliverable's shape) and the deliverable `kind`.
+- The design schema AND its declared path (recommended `pilots/<name>/design-schema.md`); the
+  schema-discovery iteration writes it there (see CONTRACT.md bootstrap rule).
 - The concrete source-fidelity check the evaluator enforces.
 
 A concrete instantiation supplies the chain — for example, compile the manifest into a linked

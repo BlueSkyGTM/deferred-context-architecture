@@ -5,7 +5,7 @@
 # - gate: <tooling | assay | conformance | done-gate>
 # - stage: <stage>
 # - item: <address or "n/a">
-# - outcome: <passed | failed | carted | tailed | benched | ship | iterate>
+# - outcome: <passed | failed | carted | tailed | benched | accept | revise | block | ship | iterate>
 # - note: <one line>
 
 ## 2026-06-29T08:16:38Z
