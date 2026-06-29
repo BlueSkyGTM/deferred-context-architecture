@@ -48,13 +48,14 @@ Entry format — CAPTURE THE FULL ITEM POINTER PLUS THE CURATED REASON, not just
 ```
 
 The `looks-transferable-but-off-seam` category is the highest-value training data in the system. It
-captures material that resembles the seam because it shares a principle (e.g. a DevOps or
-platform-engineering pattern) but sits off it. This is the ~50% of wasted effort the seam layer
-exists to prevent. Tag it distinctly; never let it file as an ordinary cut.
+captures material that resembles the seam because it shares a principle but sits off it. It is a large
+share of the wasted effort the seam layer exists to prevent. Tag it distinctly; never let it file as
+an ordinary cut. (The concrete near-miss patterns for a domain — what "shares a principle but sits
+off it" looks like — are an instantiation detail: `pilots/<name>/seam.md`.)
 
 ## Why item-plus-reason, not verdict-only
 A verdict-only log teaches a brittle blacklist (memorizes specific items). An item-plus-reason log
 teaches the principle that generalizes (recognizes new off-seam items it has never seen). The reason
-is the actual curriculum the seam layer learns from. On the pilot, the human writes every reason.
+is the actual teaching signal the seam layer learns from. On a first run, the human writes every reason.
 This is non-negotiable and cannot be automated for convenience — automating the reason collapses the
 seam layer back into a blacklist.

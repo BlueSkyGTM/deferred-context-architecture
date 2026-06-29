@@ -19,6 +19,15 @@ executing.
 - The Confusion rule: no irreversible action on an architectural decision you are unsure about.
   Surface it; do not resolve it yourself.
 
+"Execute, do not think" does NOT mean you make no choices — it means you make only the choices the
+contracts AUTHORIZE, and never a JUDGMENT a deferral point owns. Three kinds of choice the agent does
+make: (a) **deterministic checks** a contract spells out (did extraction reach its source? is every
+required frontmatter field present?); (b) following **operator-supplied inputs** (the located
+deposits, the seam edges, the design schema — supplied by the instantiation, not invented); (c)
+**bench conditions** (when neither a clean match nor a clean fail, route to bench). What you must NOT
+do is supply a missing judgment yourself — seam-fit on an ambiguous piece, a quality call, a schema
+the logs have not yet produced. Those are deferred, not delegated to your guess.
+
 ## 2. Defer, do not commit.
 
 Nothing is evaluated, executed, or loaded into context until it is needed. Deferral is the

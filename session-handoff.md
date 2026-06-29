@@ -13,17 +13,28 @@ losing the thread across long runs.
 ```
 
 ## Current state
-## (skeleton built + review changes applied; awaiting curriculum-maze loop)
-- verified: M2W skeleton stands (stages, gates, logs, holding folders). Tool set validated and now
-  declared in platform/TOOLING.md with the gstack fence and ponytail scoping.
-- changed: DRY-RUN.md recast Pass 1 as a LOOP (1a human-calls/train, 1b seam-proposes/correct, 1c
-  seam-acts-blind/grade) with required audits between sub-runs, blind-discovery scheduled in 1c, and
-  a reversibility asterisk (deliverable reversible, learning sticky-but-inspectable). Added
-  platform/TOOLING.md (gstack fence incl. /autoplan; ponytail coding-only/off-during-curriculum).
-  Buried the variance/Tyrogue thread in frontmatter-schema.md. Added /ponytail-off note to
-  capstone-build.md. Pointed PRINCIPLES.md #5 at the fence. Updated glossary + platform/CONTEXT.md.
-- broken: nothing broken; many items BLOCKED-ON-RUN (see DRY-RUN.md) — they are the questions the
-  loop exists to answer, not unfinished work.
-- next: wire maze-pass tools only (skeleton + logs + ONE extractor + evaluator + the two skills),
-  then run Run 1a of the curriculum-maze loop. Fold gtm-starter-kit into the corpus BEFORE 1a only if
-  it is answer-key material to grade 1c against; otherwise keep it deferred.
+## 2026-06-29 — engine/pilot separation refactor (domain-agnostic core)
+- verified: core skeleton stands and is now domain-agnostic. Cross-model audit (Opus 4.8 + Codex)
+  recorded in logs/failures.md; findings resolved this pass.
+- changed: separated the generic ENGINE from the GTM-curriculum PILOT.
+    - Added pilots/gtm-systems-curriculum/ (pilot.md, seam.md, deposits.md, tooling.md,
+      iteration-workflow.md, dry-run.md, answer-key/, learned-seam/) under a one-way-reference law
+      (pilot→core only; core never references pilot; deletion test must leave core runnable).
+    - Stripped GTM/curriculum specifics from core: ARCHITECTURE §2.2/§6, glossary, TOOLING, SKILLS,
+      LOGS, DRY-RUN (now a generic validation-ladder interface), SETUP, README, CLAUDE.md.
+    - Added manifest/ (index.md + items/) — the system's namesake now has a physical home; wired into
+      stage 03 outputs + stage 04 inputs.
+    - Reframed excavation as contamination-defense routing; defined vault/account.md.
+    - Fixed contradictions: single-agent (M2W §Parallelism subordinated to PRINCIPLES #5; evaluator =
+      fresh-context sequential pass, not a second agent); design-schema bootstrap (explicit ungated
+      iteration-1 rule); frontmatter field classes (observed/inherited/assigned/lifecycle); assay
+      off-seam positive-evidence rule; done-gate iteration-log path; vault lifecycle (admitted, not
+      earned); circular read-order (canonical order now in CLAUDE.md); ICM framing (modification of
+      methodology, not a repo fork); ECP demoted to retired lineage.
+    - Replaced core capstone-build.md with a generic iteration-workflow interface (chain → pilot).
+- broken: nothing in the CORE is broken. Open items are BLOCKED-ON-RUN and now live in the pilot
+  (deposit register, gtm-starter-kit role, answer-key population, GBrain ingest) — questions a run
+  answers, not unfinished core work. NOTE: this file is run-state, not a claim of architectural
+  completeness.
+- next: human review of the separation. Then wire pilot-pass tools only (ONE extractor + evaluator +
+  the two skills), populate pilots/.../deposits.md + answer-key/, and run Run 1a.

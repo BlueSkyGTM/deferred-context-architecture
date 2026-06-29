@@ -20,13 +20,18 @@ that reading comes first and improvisation is forbidden.
 
 You MAY place raw material into the pipeline before setup. There is exactly ONE correct door:
 
-- **vault/ — SAFE.** vault/ is the excavation target. Raw, unsorted material is SUPPOSED to land
-  here. Pre-loading it just means excavation has material waiting. No harm. This is the only door.
+- **vault/ — the only door.** vault/ is the excavation target. Raw, unsorted material is SUPPOSED to
+  land here. Pre-loading it just means excavation has material waiting. ONE caveat: pre-loaded
+  material is not "done" until it is ADDRESSED and ACCOUNTED — every piece needs a stable address and
+  a row in `vault/account.md` (address + source + format + bounded-space) before the assay reads it.
+  A raw dump with no addresses forces whole-pile loading, which defeats the contamination defense
+  excavation exists to provide. Pre-load freely, but address what you pre-load (or let excavation do
+  it). This is still the only door.
 
 Everything else is a TRAP. Do NOT pre-place material into:
 
 - **carts/ , tailings/ , bench/ — NEVER.** These are DOWNSTREAM of the assay. Material is only
-  supposed to arrive there by passing THROUGH a logged seam call. On the curriculum loop the assay
+  supposed to arrive there by passing THROUGH a logged seam call. On a first/training run the assay
   is the thing being TRAINED and TESTED. Hand-placing material in carts/ asserts "this is on-seam"
   without the assay running — which contaminates the seam's training data (Run 1a) and corrupts the
   blind-discovery grade (Run 1c), where the seam would appear to have sorted material it never saw.
@@ -34,8 +39,8 @@ Everything else is a TRAP. Do NOT pre-place material into:
   you will not know it happened. The empty-downstream-folders property exists precisely so that
   everything in a downstream folder EARNED its way there through a logged call.
 
-- **the manifest — NEVER.** Same reason: manifest entries are born at stage 03 from carted,
-  assayed material. Pre-placing them fakes the catalogue.
+- **manifest/ — NEVER.** Same reason: manifest entries are born at stage 03 from carted, assayed
+  material. Pre-placing them in manifest/ fakes the catalogue.
 
 - **platform/ — NEVER.** The law layer. Hand-editing it mid-design is how drift starts.
 

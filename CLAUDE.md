@@ -18,6 +18,26 @@ is the system: routing files and contracts encode where work goes and what each 
 so the pipeline runs without a human steering it — escalating to the human only what it genuinely
 cannot decide. Nothing is judged or run to prove itself; everything is deferred until needed.
 
+## Canonical read order (this is the one; other files defer to it)
+
+A cold agent reads in THIS order. Any other file that states a "read first" defers to this list:
+1. `CLAUDE.md` (this file) — the law / orientation. The entry point.
+2. `platform/CONTEXT.md` and every law file it lists (PRINCIPLES, MWP, GATES, LOGS, TOOLING, SKILLS, glossary).
+3. `M2W.md` — the governing discipline, explained.
+4. `ARCHITECTURE.md` — the full spec (understanding; contracts are authoritative for building).
+5. `stages/` in order: 01-excavation → 02-assay → 03-manifest → 04-iteration.
+6. For a BUILD pass only: `BUILD-INSTRUCTIONS.md` — what to build this pass + the hard DO-NOT list.
+7. For a RUN: the instantiation under `pilots/<name>/` (the operator's supplied domain).
+
+## Core vs instantiation (the operator supplies the domain)
+
+This file and everything under `platform/`, `stages/`, the holding folders, `manifest/`, and `logs/`
+is the **domain-agnostic core**. It never names a domain. A **pilot** under `pilots/` is one supplied
+domain (the current instantiations live there; core does not name them). The law of the boundary:
+**a pilot may reference core; core must never reference a specific pilot.** If a core file names a specific domain, tool, or
+deliverable shape, that is a leak — flag it to `logs/failures.md`. Deletion test: remove `pilots/` and
+the core must still stand. (This is ICM's one-way-reference and canonical-source discipline.)
+
 ## The overarching law: M2W
 
 See `M2W.md` and `platform/PRINCIPLES.md`. The short form: defer every evaluation, execution, and
@@ -42,11 +62,12 @@ EXCAVATION  →  ASSAY/INTAKE  →  TRANSPORT/MANIFEST  →  ITERATION  →  (SH
   only when it arrives: **cart** (on-seam → `carts/`), **tailings** (off-seam → `tailings/`,
   reviewable), **bench** (uncertain → `bench/`, escalate). Front half of MWP. See its `CONTRACT.md`.
 - **Transport / Manifest** (`stages/03-manifest/`) — load carted material, catalogue it, stamp it
-  with frontmatter (clean categorical data, born here), address it. The manifest is the cargo list.
-  See its `CONTRACT.md` and `frontmatter-schema.md`.
+  with frontmatter (clean categorical data, born here), address it. The manifest lives in `manifest/`
+  (`index.md` cargo list + `items/`). See its `CONTRACT.md` and `frontmatter-schema.md`.
 - **Iteration** (`stages/04-iteration/`) — build the deliverable from the manifest, MVP-first,
-  stopping when marginal utility of another pass drops below its cost. Back half of MWP. See its
-  `CONTRACT.md` and `done-gate.md`.
+  stopping when marginal utility of another pass drops below its cost. The concrete build chain is
+  supplied by the instantiation, not core. Back half of MWP. See its `CONTRACT.md`,
+  `iteration-workflow.md`, `evaluator-rubric.md`, and `done-gate.md`.
 
 ## The non-negotiables (full text in platform/PRINCIPLES.md)
 

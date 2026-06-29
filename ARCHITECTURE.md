@@ -14,8 +14,6 @@ the contracts win for execution and this document is updated to match.
   enough that committing will not contaminate the result. M2W is not a performance model where work
   proves itself at each gate; it is a contamination-defense model where judgment and execution are
   deferred until genuinely needed.
-- **ECP — Earned Contract Plumbing + Pipelines** is the component layer beneath M2W: the plumbing
-  that moves material and the pipelines that process it.
 - **MWP — Model Workspace Protocol** is the engine-principle layer M2W borrows for routing and
   stage execution. M2W splits MWP in two: its **intake** half becomes the assay; its
   **stage-building** half becomes iteration. MWP is the bridge between data and execution, not the
@@ -90,17 +88,16 @@ express uncertainty" problem: the uncertain pile exists by definition, and the t
 the uncertain call to the bench is the contamination defense at the seam: an uncertain piece never
 enters the manifest to corrupt it.
 
-**The seam.** The seam is the boundary defining what belongs to the domain in play (the operator supplies the domain; the system is agnostic
-engineering, which is **civil-engineering-shaped** — assembling proven components into load-bearing
-infrastructure others run on — **not** AI-systems/software-engineering-shaped, even though the
-vocabulary overlaps). The seam layer is **necessarily incomplete** at the start; boundaries are
-discovered by hitting them, not authored up front. It **accretes**: the human teaches edges during
-the pilot (every assay call captured with its reason), and the seam layer grows more complete every
-run. It is never "done"; it is "load-bearing" once escalations to the human are rare enough that the
-human is not the bottleneck. The highest-value training data is the
-**looks-transferable-but-off-seam** case — material that resembles the in-domain set because it shares a
-DevOps/platform principle but sits off the seam. Tag these distinctly; they are the ~50% of wasted
-effort the seam layer exists to prevent.
+**The seam.** The seam is the boundary defining what belongs to the domain in play. The operator
+supplies the domain; the system is agnostic to which one. The seam layer is **necessarily incomplete**
+at the start; boundaries are discovered by hitting them, not authored up front. It **accretes**: on a
+domain's first run the human teaches edges (every assay call captured with its reason), and the seam
+layer grows more complete every run. It is never "done"; it is "load-bearing" once escalations to the
+human are rare enough that the human is not the bottleneck. The highest-value training data is the
+**looks-transferable-but-off-seam** case — material that resembles the in-domain set because it shares
+a principle but sits off the seam. Tag these distinctly; they are a large share of the wasted effort
+the seam layer exists to prevent. (The concrete domain, its on-seam shape, and its near-miss patterns
+are supplied by the instantiation — see `pilots/<name>/seam.md` — never authored into core.)
 
 ### 2.3 Transport / Manifest — catalogue and address
 Carted material is loaded, catalogued, and stamped with **frontmatter** — clean categorical data
@@ -112,7 +109,9 @@ un-typed** — every item carries its categorical fields or it is not on the man
 This is where clean data is born in the purest sense — born structured at the moment of observation,
 not parsed out of prose later. Human-readable directions stay in the body; the countable fields live
 in frontmatter. No external database, no warehouse — frontmatter on `md` files is the structured
-layer, globbed and counted when needed.
+layer, globbed and counted when needed. The manifest physically lives in `manifest/`: `index.md` (the
+cargo list, one row per item) and `items/<id>.md` (the transported, frontmatter-stamped pieces). See
+`manifest/CONTEXT.md`.
 
 ### 2.4 Iteration — build the deliverable
 Back half of MWP and the destination yard. Build the deliverable from the manifest, governed by:
@@ -184,17 +183,20 @@ teaches a brittle blacklist; item-plus-reason teaches the principle that general
 
 ---
 
-## 6. The pilot (context for why the skeleton is shaped this way)
+## 6. Instantiation and the first run (why the skeleton is shaped this way)
 
-The first real run is the **GTM systems curriculum**, chosen because it is reversible (no live
-leads, nothing that cannot be taken back). The model is kept **blind** to the fact that some source
-material (e.g. an AI-engineering curriculum fed in as if it were GTM) does not fit — forcing it to
-discover the negative space by reasoning rather than confirming a told answer. The pilot is the seam
-layer's **training run**, not its first deployment: the human makes the seam calls, the system
-records them, and the seam layer is the **output** of the pilot, not the tool it starts with.
+The core is domain-agnostic; an **instantiation** (a pilot under `pilots/`) supplies the domain. A
+domain's FIRST run is its seam layer's **training run**, not a deployment: the human makes the seam
+calls, the system records them with reasons, and the seam layer is the **output** of that run, not the
+tool it starts with. The skeleton is shaped to make that first run safe and gradeable — the three-way
+assay, the readable logs, the bench escalation all exist so the human can train and inspect the seam
+on reversible ground before any irreversible work.
 
-Tools (extraction, the seam brain, etc.) are wired in a **later pass**, after the human reviews this
-skeleton. This pass builds only the frame and the logs.
+Tools (extraction, the seam brain, etc.) are wired in a **later pass**, after the human reviews the
+skeleton, and only the subset a given run needs (wiring everything at once makes a failure
+undiagnosable). The concrete first run — its domain, its reversibility, its blind-discovery grading —
+is an instantiation detail under `pilots/<name>/` (`pilot.md`, `dry-run.md`). Nothing in this core
+document names a specific domain; the instantiations do.
 
 ---
 

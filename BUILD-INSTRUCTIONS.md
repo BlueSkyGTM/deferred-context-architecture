@@ -1,9 +1,10 @@
-# BUILD-INSTRUCTIONS.md — READ THIS FIRST, IN FULL, BEFORE TOUCHING ANYTHING
+# BUILD-INSTRUCTIONS.md — READ IN FULL BEFORE TOUCHING ANYTHING (build pass)
 
-> If you have not read SETUP.md, read it first. It carries the kickoff prompt and the ONE rule about
-> pre-loading material: vault/ is the only door; never place material directly into carts/, tailings/,
-> bench/, the manifest, or platform/ — doing so silently invalidates the run. Route ALL material
-> through vault/ → excavation → assay.
+> Read order: the canonical order is in `CLAUDE.md` (law first: CLAUDE.md → platform/ → M2W.md →
+> ARCHITECTURE.md → stages/). This file is step 6 of that order — the DO-NOT list for a BUILD pass —
+> not the entry point. SETUP.md carries the kickoff prompt and the ONE pre-load rule: vault/ is the
+> only door; never place material directly into carts/, tailings/, bench/, manifest/, or platform/ —
+> doing so silently invalidates the run. Route ALL material through vault/ → excavation → assay.
 
 You are Claude Code. You are building the **M2W** pipeline skeleton. M2W — Manifest to Workspace — is
 the name of the whole system: the transform it performs, manifest in, workspace out. Its governing
@@ -45,9 +46,13 @@ correctly before any material enters it or any tool is wired to it.
   any of its principles. MWP is described in `platform/MWP.md` as principles you implement
   natively. There is no repo to fork. If you find yourself running `git clone`, you have misread
   this document. Stop.
-- **DO NOT** introduce ICM (Interpreted Context Methodology) in any form. It is deliberately
-  excluded so it cannot hijack the infrastructure. If any file appears to reference ICM as
-  something to build from, treat it as an error and flag it.
+- **DO NOT** fork, clone, or vendor the ICM (Interpreted Context Methodology) *repo*, and do not let
+  ICM-the-engine dictate the infrastructure. M2W is a MODIFICATION of ICM's *methodology* — it
+  implements ICM's principles natively (five-layer routing, stage contracts, one-way references,
+  glass-box) and adds the mining front-end ICM lacks. That native implementation is correct and
+  expected. What is forbidden is pulling in the ICM repo/engine wholesale. If a file says to `git
+  clone` ICM or build FROM the ICM repo, treat that as an error and flag it; references to ICM as the
+  lineage are fine.
 - **DO NOT** wire, install, configure, or invoke any tool (no gstack, no gbrain, no browser, no
   MCP servers, no skills). Tool slots are marked `TODO(tools)`. Leave them literal. Tools are
   wired in a later pass, after human review.

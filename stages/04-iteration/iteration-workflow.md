@@ -19,6 +19,7 @@ supplies the concrete chain. This keeps stage 04 domain-agnostic.
 - The design schema (or the rule for cutting it from logs — see CONTRACT.md bootstrap rule).
 - The concrete source-fidelity check the evaluator enforces.
 
-Example instantiation: the GTM-curriculum pilot's chain is sources → wiki → graph → course, source-
-pinned to the manifest. See `pilots/gtm-systems-curriculum/iteration-workflow.md`. That file is a
-pilot detail; nothing in core may reference it.
+A concrete instantiation supplies the chain — for example, compile the manifest into a linked
+intermediate artifact and then a final deliverable, source-pinned to the manifest. The concrete chain
+for any instantiation lives in `pilots/<name>/iteration-workflow.md` — a pilot detail; nothing in core
+may reference a specific one.

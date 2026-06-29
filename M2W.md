@@ -40,16 +40,22 @@ manifest-to-workspace:
 - **A bad input dies cheap and clean** because the expensive downstream work was deferred until a
   request the bad input never produces.
 
-## Parallelism is a runtime setting, not an architectural commitment
+## Single-agent is the law; parallelism is a latent property, NOT an enabled setting
 
-The file architecture already encodes the parallel decomposition: every folder with its CONTEXT.md is
+The standing law is single-agent (platform/PRINCIPLES.md #5): one agent, one path, depth-first. That
+is not negotiable in this build. What follows is an observation about the architecture, explicitly
+SUBORDINATE to that law — it does not authorize parallel execution now.
+
+The file architecture happens to encode a parallel decomposition: every folder with its CONTEXT.md is
 an agent boundary — it hands whatever model enters both its knowledge (the contract) and its scope
-(the folder). Single-agent and divide-and-conquer are the same architecture at two concurrency
-settings; the contracts do not change. Build and prove single-agent first (one inspectable path,
-spec proven against it), because parallel execution against an unproven spec only reaches the wrong
-result faster — that is the scar, learned the hard way. Once the spec holds, the same contracts run
-parallel by pointing workers at the folders that already define them. Concurrency is flipped on; it
-is not rebuilt. (See platform/PRINCIPLES.md #5 and platform/TOOLING.md.)
+(the folder). So single-agent and divide-and-conquer are the same architecture at two concurrency
+settings; the contracts would not change. But the law says build and PROVE single-agent first (one
+inspectable path, spec proven against it), because parallel execution against an unproven spec only
+reaches the wrong result faster — that is the scar, learned the hard way. Parallelism is therefore a
+LATENT property the architecture could later support, not a knob this system currently exposes.
+Flipping it on is a FUTURE decision that requires (a) the spec proven single-agent and (b) an explicit
+change to the law — until both happen, #5 governs and parallel/multi-agent execution is forbidden.
+(See platform/PRINCIPLES.md #5 and platform/TOOLING.md.)
 
 ## What this means for the builder
 

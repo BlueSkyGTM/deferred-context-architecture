@@ -5,7 +5,8 @@ a term you need, BENCH the question and stop — do not guess a definition.
 
 - **M2W** — Manifest to Workspace. The SYSTEM: the transform from manifest (catalogued material) to workspace (built deliverable). Governed by deferral. Defer every
   evaluation, execution, and judgment until needed; deferral is the context-contamination defense.
-- **ECP** — Earned Contract Plumbing + Pipelines. The component layer beneath M2W (plumbing + pipelines).
+- **ECP** — Earned Contract Plumbing + Pipelines. RETIRED lineage name (see the lineage note at the
+  bottom); never operationalized as a component layer. Do not build from it.
 - **MWP** — Model Workspace Protocol. Engine principles for routing and stage execution, implemented
   natively. Bridge between data and execution. Split into Assay (intake) and Iteration (stage-building).
 - **ICM** — Interpreted Context Methodology. MWP's lineage. EXCLUDED from this build. Do not use.
@@ -14,8 +15,9 @@ a term you need, BENCH the question and stop — do not guess a definition.
 - **Material / ore** — raw excavated content before it has been assayed.
 - **Excavation** — stage 01. Mining raw material from located deposits into vault/. No judgment.
 - **Assay / Intake** — stage 02. The three-way seam sort: cart / tailings / bench.
-- **Seam** — the boundary defining what belongs to the domain in play (operator-supplied; the system is domain-agnostic). The civil-
-  engineering-shaped, not software-shaped). Necessarily incomplete; accretes over runs.
+- **Seam** — the boundary defining what belongs to the domain in play. Operator-supplied; the system
+  is domain-agnostic. Necessarily incomplete; accretes over runs via logged human calls. The concrete
+  domain shape and near-miss edges are an instantiation detail (`pilots/<name>/seam.md`), never core.
 - **Cart** — on-seam material that earned transport. Lands in carts/.
 - **Tailings** — off-seam material. Good but wrong seam. Tailed WITH a reason. Reviewable, never
   deleted. Lands in tailings/.
@@ -48,28 +50,24 @@ a term you need, BENCH the question and stop — do not guess a definition.
 - **Evaluator / Accept-Revise-Block** — the independent checker (worker != checker). Three verdicts:
   accept (conforms, advances), revise (fixable, re-run), block (wrong, escalate). Conformance + source-
   fidelity, never quality.
-- **Capstone build** — the iteration back-half workflow: manifest → wiki compile → graph → course,
-  source-pinned ("no facts not in the material").
+- **Pilot vocabulary** — domain-specific terms (e.g. *capstone build* = a concrete iteration chain;
+  *curriculum-maze*, *Run 1a/1b/1c*, *curriculum loop* = an instantiation's validation sub-runs) are
+  defined by the instantiation, NOT core. See `pilots/<name>/`. Core declares only the generic
+  interfaces: the iteration-workflow interface (`stages/04-iteration/iteration-workflow.md`) and the
+  validation ladder (`DRY-RUN.md`).
 - **context-compressor / memory-manager** — standing skills (State/Memory harness). Write durable
-  decisions to READABLE files (canonical), then index into GBrain (projection). Never blackbox-only.
+  decisions to READABLE files (canonical), then optionally index into a retrieval store (projection).
+  Never blackbox-only.
 - **session-handoff.md** — the clock-out note for cross-session continuity.
-- **Curriculum-maze** — Pass 1 of the dry run: the rat maze and curriculum pilot collapsed into one
-  reversible run on real material. Tests the walls, trains the seam, produces the first deliverable.
-- **Blocked-on-run** — an item that cannot be decided until the dry run produces the information.
-  Not unfinished; waiting on evidence the run will generate.
+- **Blocked-on-run** — an item that cannot be decided until a run produces the information. Not
+  unfinished; waiting on evidence the run will generate.
 
-# --- Added: curriculum-loop + tooling terms ---
-- **Run 1a / 1b / 1c** — the three sub-runs of the curriculum-maze loop. 1a: human makes seam calls,
-  system logs (train). 1b: seam proposes, human corrects. 1c: seam acts autonomously and BLIND,
-  graded against the quarantined corpus. Apprenticeship happens ACROSS the loop, not in one run.
-- **Curriculum loop** — Pass 1 re-run repeatedly on the same reversible domain so the seam takes over
-  progressively. The loop IS the apprenticeship; it provides the reversible ground for the seam's
-  first autonomous act (1c) before live work (Pass 2).
+# --- Added: tooling-policy terms ---
 - **gstack fence** — the split of gstack's surface into adopted (single-agent-compatible: Confusion
-  Protocol, /freeze, /guard, sprint stages, /spec, /autoplan, GBrain+trust-triad) vs rejected
-  (Conductor, sub-agents, /pair-agent — parallel, violates single-agent law). See TOOLING.md.
-- **ponytail scope** — ponytail is a CODING minimalism rule, not a global one. ON for coding/tooling,
-  OFF (/ponytail off) during curriculum iteration, where its ladder under-builds pedagogy.
+  Protocol, /freeze, /guard, sprint stages, /spec, /autoplan, a retrieval-store trust-triad) vs
+  rejected (Conductor, sub-agents, /pair-agent — parallel, violates single-agent law). See TOOLING.md.
+- **ponytail scope** — a CODING minimalism rule, not a global one. ON for coding/tooling, OFF during
+  content/deliverable iteration, where a minimalism ladder under-builds the deliverable. See TOOLING.md.
 - **Variance thread (retired)** — the dropped idea of frontmatter as a variance stat driving an
   evolution-trigger fork. Moot once M2W went single-method; frontmatter is descriptive + sealed-flag,
   drives no routing.
