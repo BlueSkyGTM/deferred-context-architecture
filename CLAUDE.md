@@ -115,7 +115,10 @@ EXCAVATION  →  ASSAY/INTAKE  →  TRANSPORT/MANIFEST  →  ITERATION  →  (SH
 3. **Earned, not given.** The repo starts empty except this law. Every piece of content earned its
    place by clearing a deferral point. Nothing is entitled to exist.
 4. **Glass-box.** State is the filesystem. No hidden state. If you must remember, write it down.
-5. **Single-agent.** No subagents, no parallel orchestration. One agent, one path, depth-first.
+5. **Single-agent (not single-model).** No subagents, no parallel orchestration. One agent, one path,
+   depth-first — but that one agent SWITCHES ITS OWN MODEL TIER to fit the work (light/Haiku for
+   mechanical stages, top/Opus where judgment lives, mid/Sonnet between), self-directed, never the
+   operator's to drive. Switching tier is not multi-agent. See `platform/TOOLING.md` model-tier policy.
 
 ## The deferral points (gates) — full text in platform/GATES.md
 

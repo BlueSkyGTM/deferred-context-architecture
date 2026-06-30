@@ -332,3 +332,24 @@ intent), how it was tested, and what breaks if it is reverted.
   examples (like naming OpenAI for embeddings). Deletion test unaffected; not a chain change.
 - revert-risk: low — guidance. Keep the invariants on any woken play (single-agent, conformance-not-
   quality, nothing-at-assay, no-subagents, session-continuity loop boundary).
+
+## 2026-06-30 — Single-agent is NOT single-model: self-directed model-tier policy
+- what: clarified non-negotiable #5 (PRINCIPLES.md + CLAUDE.md) that single-agent does not mean
+  single-model — one agent on one depth-first path may switch its OWN model tier to fit the work. Added
+  a "Model-tier policy" section to platform/TOOLING.md: a per-stage default tier the agent self-switches
+  on (LIGHT/Haiku for excavation + manifest = mechanical fetch/catalogue; MID/Sonnet for the assay's
+  near-mechanical routing; TOP/Opus for iteration = the judgment-heavy build; LIGHT–MID at the loop
+  boundary). Tiers are by ROLE (version-agnostic). A pilot may override a stage's tier via
+  pilots/<name>/tooling.md.
+- why: operator directive — switching models should not be the operator's to drive; the agent should
+  recognize when the work shifts cognitive demand and switch itself (less token cost on fetching, top
+  tier reserved for judgment). It maps onto the gate taxonomy, which already sorts work by demand.
+  Dropping subagents removed PARALLELISM (two agents, two contexts); it never required one tier for the
+  whole run — same agent, same path, different tier is not multi-agent.
+- tested: domain-agnostic; consistent with the deferral/glass-box/single-agent laws. The HARD LIMIT is
+  explicit and load-bearing: a heavier tier never earns the right to RESOLVE what a gate defers — at the
+  assay, ambiguity benches regardless of tier; the agent never escalates the model to think past a
+  bench/stop the law owns. Not yet cross-model-validated (touches non-negotiable #5 — offer stands).
+- revert-risk: medium (conceptual). Do NOT let model-switching become (a) operator-driven (it is
+  self-directed) or (b) a license to resolve a deferred call by "thinking harder" on a bigger model —
+  that reintroduces the early judgment the gates defer around. Keep tiers by ROLE, not pinned versions.

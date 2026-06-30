@@ -50,6 +50,32 @@ NOTE TO A LATER READER: do NOT enable Conductor or sub-agents because a tool's R
 They are fenced OUT here by law. Using such a tool means using the adopted surface, not its parallel
 core.
 
+## Model-tier policy (single agent, multiple tiers — self-directed)
+Single-agent (PRINCIPLES #5) means one agent on one depth-first path — NOT one model tier for the whole
+run. The agent switches its OWN tier to match each stage's cognitive demand: a cheaper/faster tier
+where the work is mechanical, the top tier where judgment lives. This cuts token cost and keeps the
+agent focused (a light tier on fetch/catalogue; the heavy tier reserved for the build). The switch is
+self-directed (the agent recognizes the stage and switches — not the operator's to drive) and mechanical
+(read the tier here and execute; do not deliberate the choice). Tiers are by ROLE — substitute the
+current light / mid / top models (e.g. Haiku / Sonnet / Opus); the engine stays version-agnostic.
+
+| Stage / work | tier | why |
+|---|---|---|
+| Excavation (fetch, extract, address) | LIGHT | mechanical reach/coverage/addressing; no judgment (deferred) — focus on fetching |
+| Assay (three-way seam routing) | MID | the cart/tailings/bench test is near-mechanical and ANY ambiguity benches — the agent never RESOLVES an uncertain call, so it never needs the top tier to "think harder" |
+| Manifest (catalogue + frontmatter) | LIGHT | mechanical cataloguing + descriptive frontmatter |
+| Iteration (build, design-schema, conformance, done-gate) | TOP | the judgment-heavy core — craftsmanship, schema shape, conformance, substance-vs-surface |
+| Loop boundary / session continuity (persist, recall, handoff) | LIGHT–MID | mechanical persist/recall |
+
+Self-switch at each stage boundary to the stage's tier. The agent MAY step UP within a stage if the
+work genuinely needs more capability — but NEVER to override a deferral: a heavier tier does not earn
+the right to resolve what a gate defers. At the assay, ambiguity benches regardless of tier; the agent
+never escalates the model to think past a bench/stop the law owns. Stepping up is for capability, never
+permission to judge where the contract says stop. (Harness note: the agent self-switches wherever the
+runtime supports mid-run model switching; where it does not, these are the recommended per-stage tiers.
+A pilot may override a stage's tier when its domain makes the work heavier/lighter — declared in
+`pilots/<name>/tooling.md`, same as any domain choice.)
+
 ## Concrete tool choices live in the pilot
 The adopted set for a given run — which extractor matches which deposit, which retrieval store, which
 build-chain tools — is domain-specific. It does NOT belong here. See `pilots/<name>/tooling.md`. Core
