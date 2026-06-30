@@ -58,6 +58,23 @@ marked `tested:` without surfacing it to the human** — name the entry, what it
 how it was validated, then let the human decide. A tested change that looks odd is usually the fix;
 the oddness is load-bearing. See `changelog/CONTEXT.md`.
 
+## Session memory (gbrain) — optional, only if configured
+
+A single M2W run spans many sessions between a manifest and a finished workspace. If gbrain is
+configured on this machine (`~/.gbrain/config.json` present), use it to bridge them so a cold
+session resumes instead of re-deriving:
+
+- **At session start** — query it to pick up where the last session stopped: `gbrain query
+  "<what I'm resuming>"` (or the `mcp__gbrain__recall` / `search` tools). Recovers prior
+  decisions, gotchas, and open threads.
+- **At session end, and on any durable decision** — push what a cold future agent would need:
+  `gbrain put <slug>`. The next session inherits it.
+
+gbrain is a **retrieval projection, not the source of truth** — the filesystem stays canonical
+(glass-box, non-negotiable #4). A gbrain miss must never block work: fall back to the files. If
+gbrain is not configured, skip this section entirely; it is never required. Detail in
+`platform/TOOLING.md`.
+
 ## The overarching law: M2W
 
 See `M2W.md` and `platform/PRINCIPLES.md`. The short form: defer every evaluation, execution, and

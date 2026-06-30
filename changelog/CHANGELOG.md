@@ -162,3 +162,17 @@ intent), how it was tested, and what breaks if it is reverted.
 - tested: not yet installed (optional, MISSING). Manifest detect/install verified against the repo
   (github.com/microsoft/LLMLingua).
 - revert-risk: low — optional tool; removing it just drops a context-compression option.
+
+## 2026-06-30 — CLAUDE.md gbrain session-memory directive (query at start, push at end)
+- what: added a "Session memory (gbrain) — optional, only if configured" section to CLAUDE.md: a cold
+  session queries gbrain at start to resume prior work and pushes durable decisions at end. Framed as
+  optional ("only if `~/.gbrain/config.json` present"), gbrain as a retrieval projection over the
+  canonical filesystem (glass-box #4), with a hard "a gbrain miss never blocks work" fallback.
+- why: an M2W run spans many sessions between manifest and finished workspace; "pick up from last time"
+  is the highest-value gbrain use for this engine. Keeping it optional + files-canonical preserves the
+  universal/agnostic and glass-box laws (gbrain is not a hard dependency).
+- tested: not yet exercised end-to-end (brain migration to Supabase in progress). Section is pure
+  guidance; no engine chain change. Wording reviewed against the non-negotiables (universal, glass-box).
+- revert-risk: low — removing it loses the cross-session resume habit, but no stage breaks (gbrain was
+  always optional). Do not, however, strip the "files stay canonical / miss never blocks" framing if
+  the section is kept — that is what keeps gbrain from becoming a hidden-state dependency.
