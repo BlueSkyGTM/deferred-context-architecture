@@ -4,6 +4,6 @@ The itemized, addressed account of everything carted and transported. Stage 03 a
 catalogued item; stage 04 reads it to pull just-in-time. Starts EMPTY (no material has been carted
 yet — earned, not given). The file exists as ready infrastructure, like the logs.
 
-# Row format (one per manifested item; the item body lives in items/<id>.md):
-# - id: <stable address> | source: <deposit/cluster> | format: <md|csv|code|doc|pdf|...> | seam_match: <edge> | sealed: <true|false>
+# Row fields are the catalogued item's frontmatter, owned by stages/03-manifest/frontmatter-schema.md
+# (this file does not restate the schema). The item body lives in items/<id>.md.
 

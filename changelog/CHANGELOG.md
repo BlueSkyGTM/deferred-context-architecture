@@ -418,3 +418,24 @@ intent), how it was tested, and what breaks if it is reverted.
   second spec or re-inline the formats/read-order into summaries — that re-opens the drift. Codex's
   do-not-touch list held (CLAUDE.md orientation, stage/holding CONTEXT files, SETUP's vault-door rule,
   BUILD-INSTRUCTIONS DO-NOT law, glossary).
+
+## 2026-06-30 — Final pre-ship gate (codex: SHIP-WITH-FIXES → fixed → SHIP)
+- what: ran the final holistic autoplan/codex review before ship. Verdict SHIP-WITH-FIXES — the core
+  design COHERES (codex confirmed no contradiction across Route B, model tiers, the assay guard, the
+  loop boundary, and the gstack fence; all agree). Applied the 2 blocking fixes: (1) bin/scan-tools.sh
+  brought into sync with platform/TOOLING.md — added the required `context-compressor / memory-manager`
+  standing-skills row, and added the ACTIVE-PILOT domain-manifest scan (parses pilots/<name>/tooling.md,
+  runs its detects, writes pilots/<name>/tool-status.md) that CLAUDE.md/TOOLING.md say the scan performs
+  but the script did not. (2) manifest/index.md row-format restatement (under-specified — it omitted
+  `assay`/`stage`) replaced with a pointer to stages/03-manifest/frontmatter-schema.md (canonical home).
+  Also fixed the SETUP.md onboarding trap: clarified BUILD-pass (kickoff → BUILD-INSTRUCTIONS) vs RUN
+  (CLAUDE.md read order + tool scan + active pilot).
+- why: the scan script under-delivered vs the behavior the law claims it implements (the worst dead
+  pointer — the law promises a behavior the code doesn't do); the manifest index restated an incomplete
+  schema; SETUP routed a cold runner to a build-pass file.
+- tested: codex gpt-5.5 holistic pre-ship review (read-only, exit 0); scan-tools.sh re-run exit 0 with
+  the new standing-skills row PRESENT and the pilot loop correctly inert (no active pilot).
+- revert-risk: low. Known cosmetic-only residual (left by choice): the holding-folder CONTEXT stubs say
+  "do not populate it in the skeleton pass" — dated build-pass wording, not a contradiction.
+- STATUS: **SHIPPED.** Run-ready: full multi-loop continuation, self-directed model tiers, the gstack
+  team mapped to gates (open), de-bloated and cross-model-validated end to end.

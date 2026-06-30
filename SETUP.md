@@ -7,6 +7,11 @@ This file exists so the invocation and the pre-load rules live IN the repo, not 
 
 ## The kickoff prompt (paste this into Claude Code, pointed at this repo)
 
+> Two entry modes. A **BUILD pass** builds/verifies the skeleton — use the kickoff prompt below (it
+> routes to BUILD-INSTRUCTIONS.md, the build-pass DO-NOT list). A **RUN** assumes the skeleton already
+> stands — do NOT use BUILD-INSTRUCTIONS; instead follow CLAUDE.md's canonical read order, run the Tool
+> scan, and work the active pilot under `pilots/<name>/`. The prompt below is the BUILD-pass one.
+
 ```
 Read CLAUDE.md first. Then read platform/CONTEXT.md and every file it lists. Then read
 BUILD-INSTRUCTIONS.md. Follow the build instructions EXACTLY. Do not improvise, do not add

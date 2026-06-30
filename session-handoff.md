@@ -13,6 +13,19 @@ losing the thread across long runs.
 ```
 
 ## Current state
+## 2026-06-30 — SHIPPED: final autoplan gate passed (SHIP-WITH-FIXES → fixed → SHIP)
+- verified: final holistic codex review = SHIP-WITH-FIXES; both blocking fixes applied and verified
+  (bin/scan-tools.sh synced to TOOLING.md + active-pilot scan, re-run exit 0; manifest/index.md
+  row-format → pointer to frontmatter-schema). Core design coheres across Route B / model tiers / assay
+  guard / loop boundary / gstack fence (codex: no contradiction). Engine de-bloated to ~2230 .md lines.
+- changed: this session — continuation (Route B), self-directed model tiers + assay guard, the
+  gstack-at-gates map (open), de-bloat/slim-ARCHITECTURE, and the final pre-ship fixes. See
+  changelog/CHANGELOG.md (all 2026-06-30 entries) for the full record + revert risks.
+- broken: nothing. Known cosmetic-only: holding-folder CONTEXT stubs still say "skeleton pass" (dated
+  wording, non-blocking).
+- next: the engine is RUN-READY and shipped for this round. To run a domain, copy pilots/_TEMPLATE/
+  into its own project and fill the extension points. Everything is on main, cross-model-validated.
+
 ## 2026-06-30 — CONTINUATION locked in (Route B): the loop boundary is a deferral point
 - verified: codex full-run sim #2 ran (CAPACITY: PARTIAL, CONTINUATION: FAIL — in logs/failures.md).
   The 3 capacity gaps were fixed (Decision 1); the continuation gap is now closed by Route B.
