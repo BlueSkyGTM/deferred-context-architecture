@@ -8,9 +8,9 @@ Lifecycle note (vault is the exception to "earned, not given"): material here is
 accounted**, NOT seam-earned. "Earned by clearing a deferral point" governs the DOWNSTREAM folders
 (carts/, tailings/, bench/, manifest/, library/) — a piece reaches those only by passing a gate.
 Vault is upstream of the first gate, so nothing here has earned anything yet; it has only been hauled
-and addressed. What vault requires is not a verdict but an ADDRESS: every piece is in `vault/account.md`
-(address + source + format + bounded-space + `consumed: false`). Unaddressed material in vault is the
-only error state.
+and addressed. What vault requires is not a verdict but an ADDRESS: every piece has a row in
+`vault/account.md` (row format owned by `stages/01-excavation/CONTRACT.md`). Unaddressed material in
+vault is the only error state.
 
 Nothing is loaded into context from here speculatively (M2W) — downstream stages follow an address to
 one piece, never absorb the pile.

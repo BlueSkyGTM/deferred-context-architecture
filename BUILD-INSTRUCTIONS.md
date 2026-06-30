@@ -1,7 +1,6 @@
 # BUILD-INSTRUCTIONS.md — READ IN FULL BEFORE TOUCHING ANYTHING (build pass)
 
-> Read order: the canonical order is in `CLAUDE.md` (law first: CLAUDE.md → platform/ → M2W.md →
-> ARCHITECTURE.md → stages/). This file is step 6 of that order — the DO-NOT list for a BUILD pass —
+> Read order: the canonical order is in `CLAUDE.md`; follow it. This file is step 6 of that order — the DO-NOT list for a BUILD pass —
 > not the entry point. SETUP.md carries the kickoff prompt and the ONE pre-load rule: vault/ is the
 > only door; never place material directly into carts/, tailings/, bench/, manifest/, or platform/ —
 > doing so silently invalidates the run. Route ALL material through vault/ → excavation → assay.
@@ -74,9 +73,9 @@ is a success. A plausible guess is a failure, even if it happens to be right.
 ## Order of operations for this pass
 
 1. Read `CLAUDE.md` (the operating manual / the law).
-2. Read `platform/PRINCIPLES.md`, `platform/MWP.md`, `platform/GATES.md`, `platform/LOGS.md`,
-   `platform/glossary.md`. These are the law. Do not deviate.
-3. Read `ARCHITECTURE.md` (full spec, for understanding — contracts are authoritative for building).
+2. Read `platform/CONTEXT.md` and every law file it lists (PRINCIPLES, MWP, GATES, LOGS, TOOLING,
+   SKILLS, glossary). These are the law. Do not deviate.
+3. Read `ARCHITECTURE.md` (the architecture overview — contracts/platform are authoritative).
 4. Walk every folder. Verify each has its `CONTEXT.md` and, where specified, its `CONTRACT.md`.
 5. Verify the three log files exist in `logs/` and are writable.
 6. Append one line to `logs/gate-checks.md` recording that skeleton verification passed, with a

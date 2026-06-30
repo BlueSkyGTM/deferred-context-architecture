@@ -8,7 +8,7 @@ assay is intrinsically THREE-way; this is not a feature, it is what assaying is.
 ## Inputs
 - Raw addressed material in vault/.
 - The seam definition (what belongs to this domain). On the pilot the seam is held by the human; the
-  seam layer accretes from the human's calls. See ARCHITECTURE.md §2.2.
+  seam layer accretes from the human's calls. See platform/glossary.md ("Seam").
 
 ## Process (per piece)
 0. Process only vault pieces whose `vault/account.md` row is `consumed: false`. A later loop's assay

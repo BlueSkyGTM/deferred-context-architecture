@@ -70,19 +70,10 @@ references a pilot.** Delete `pilots/` and the engine still stands.
 
 ## Read order
 
-The canonical read order lives in `CLAUDE.md`; start there. In short:
-1. **`CLAUDE.md`** — the law / operating manual + the canonical read order. **Entry point.**
-2. `platform/` — non-negotiables (PRINCIPLES), engine principles (MWP), the deferral points (GATES),
-   logs, tool policy + the gstack-at-gates map (TOOLING, SKILLS), glossary.
-3. `M2W.md` — the governing discipline, explained.
-4. `ARCHITECTURE.md` — the full spec.
-5. `stages/` — the four stages, in order (each with its authoritative `CONTRACT.md`).
-6. `BUILD-INSTRUCTIONS.md` — what to build this pass + the hard DO-NOT list (for a build pass).
-7. `pilots/<name>/` — the instantiation, for a run.
-
-Before any run, `bash bin/scan-tools.sh` reports what tools are present/missing on this machine. State
-that is per-machine or in-flight is glass-box on disk; changes to the engine are recorded in
-`changelog/CHANGELOG.md` under a revert guard.
+The canonical read order lives in `CLAUDE.md` — start there and follow it (law first, then the stages,
+then a pilot for a run). Before any run, `bash bin/scan-tools.sh` reports what tools are present or
+missing on this machine. State that is per-machine or in-flight is glass-box on disk; changes to the
+engine are recorded in `changelog/CHANGELOG.md` under a revert guard.
 
 ## The laws (one line each)
 

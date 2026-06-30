@@ -15,12 +15,12 @@ manifest/
 - `index.md` is the cargo list. Stage 03 appends one row per catalogued item. It is the queryable
   account: glob `items/` and read frontmatter to count/sort; `index.md` is the human-readable roll-up.
 - `items/<id>.md` is one manifested piece: frontmatter (countable fields) + body (human-readable
-  directions). The `id` is the item's stable address, assigned at catalogue time.
+  directions). The `id` is the item's stable address, inherited from excavation (reused verbatim, not
+  re-minted).
 
 ## index.md row format
-```
-- id: <stable address>  | source: <deposit/cluster> | format: <md|csv|code|doc|pdf|...> | seam_match: <edge> | sealed: <true|false>
-```
+The row fields are the catalogued item's frontmatter — owned by `stages/03-manifest/frontmatter-schema.md`
+(stage 03 appends one row per item per that schema). This file does not restate the schema.
 
 ## Invariant (from stage 03)
 **Nothing uncatalogued, nothing un-typed.** Every item in `items/` has a row in `index.md` AND every

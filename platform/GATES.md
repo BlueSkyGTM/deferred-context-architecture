@@ -28,7 +28,7 @@ yes/no?" A clean yes carts. ANY ambiguity benches. The agent does NOT resolve am
 it (defers it to the human). This third exit is how the pipeline runs without committing to an
 uncertain call.
 
-The seam is necessarily incomplete and accretes over runs (ARCHITECTURE.md §2.2). On the pilot the
+The seam is necessarily incomplete and accretes over runs (see platform/glossary.md "Seam"). On the pilot the
 human makes the cart/tailings/bench call and the system records each as training.
 
 ### 3. Conformance + Done-gate (Iteration, stage 04)

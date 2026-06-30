@@ -391,3 +391,30 @@ intent), how it was tested, and what breaks if it is reverted.
   deposits are the source list, not vault rows.)
 - tested: grep confirms every vault-account-row description now carries `consumed: false`; bin/scan-tools.sh exit 0.
 - revert-risk: low — doc consistency fix; no chain change.
+
+## 2026-06-30 — De-bloat / de-drift pass (codex-audited): slim ARCHITECTURE + collapse duplicate sources
+- what: a canonical-source cleanup (MWP #6) on a codex bloat/drift audit. (1) SLIMMED ARCHITECTURE.md
+  206 → 92 lines — it was a parallel "full spec" that restated the contracts AND had gone stale (0
+  mention of continuation/`consumed`, model tiers, the loop boundary, the gstack map). Now an OVERVIEW
+  (shape + why) that POINTS to the contracts/platform as authoritative, with a canonical-homes table; it
+  owns no mutable detail, so it cannot drift. (2) Collapsed the vault-account ROW FORMAT from 4 homes to
+  1 (stages/01-excavation/CONTRACT.md); SETUP.md, vault/CONTEXT.md, vault/account.md now point. (3) Read
+  order: removed the duplicate sequence from README.md, root CONTEXT.md, BUILD-INSTRUCTIONS.md → pointer
+  to CLAUDE.md (the canonical owner). (4) manifest/CONTEXT.md: removed the restated index-row format →
+  points to frontmatter-schema; fixed a leftover Decision-1 drift (the `id` is INHERITED from excavation,
+  was mislabeled "assigned at catalogue"). (5) Redirected the now-dangling `ARCHITECTURE.md §2.2` seam
+  pointers (GATES.md, assay CONTRACT) → glossary "Seam". (6) Relabeled "full spec" → "architecture
+  overview" (CLAUDE.md, BUILD-INSTRUCTIONS). Deleted transient GBRAIN-BACKFILL-HANDOFF.md (gitignored,
+  job done). KEPT the README gstack table (operator's explicit showcase) — it points to SKILLS.md as
+  canonical, overriding codex's dedup recommendation per operator instruction.
+- why: operator asked to eliminate bloat + drift. ARCHITECTURE was the one real offender (biggest file,
+  stale, structurally drift-prone). The recurring drift engine was mutable detail (formats, the read
+  order) restated in summaries — exactly what produced the consumed-field ripple. Fix per the engine's
+  own canonical-source law: one home, everything else points.
+- tested: codex gpt-5.5 bloat/drift audit (read-only, exit 0) recommended SLIM (not update/drop) + the
+  punch-list; applied. Verify: no LIVE dangling §2.2 refs (only historical log/handoff mentions remain,
+  correctly); engine .md 2411 → 2233 lines; the vault row format now has exactly one canonical home.
+- revert-risk: low — de-duplications (pointers replacing copies). Do NOT re-expand ARCHITECTURE into a
+  second spec or re-inline the formats/read-order into summaries — that re-opens the drift. Codex's
+  do-not-touch list held (CLAUDE.md orientation, stage/holding CONTEXT files, SETUP's vault-door rule,
+  BUILD-INSTRUCTIONS DO-NOT law, glossary).

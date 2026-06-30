@@ -24,7 +24,7 @@ A cold agent reads in THIS order. Any other file that states a "read first" defe
 1. `CLAUDE.md` (this file) — the law / orientation. The entry point.
 2. `platform/CONTEXT.md` and every law file it lists (PRINCIPLES, MWP, GATES, LOGS, TOOLING, SKILLS, glossary).
 3. `M2W.md` — the governing discipline, explained.
-4. `ARCHITECTURE.md` — the full spec (understanding; contracts are authoritative for building).
+4. `ARCHITECTURE.md` — the architecture OVERVIEW (the shape + why; the contracts and platform/ files are authoritative and own all detail).
 5. `stages/` in order: 01-excavation → 02-assay → 03-manifest → 04-iteration.
 6. For a BUILD pass only: `BUILD-INSTRUCTIONS.md` — what to build this pass + the hard DO-NOT list.
 7. For a RUN: the instantiation under `pilots/<name>/` (the operator's supplied domain).

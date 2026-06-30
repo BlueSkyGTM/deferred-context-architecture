@@ -1,8 +1,7 @@
 # CONTEXT.md — Root Routing
 
 You are at the root of the M2W pipeline. The canonical read order lives in `CLAUDE.md` — start there
-and follow it. In short: CLAUDE.md → platform/ → M2W.md → ARCHITECTURE.md → stages/ →
-(build pass) BUILD-INSTRUCTIONS.md → (run) pilots/<name>/.
+and follow it.
 
 Core (domain-agnostic): CLAUDE.md and the root docs, platform/, stages/, manifest/, the holding
 folders, logs/.
