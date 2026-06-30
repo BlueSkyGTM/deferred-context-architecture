@@ -9,7 +9,7 @@ pilot is active, lands in that pilot's `tool-status.md`.)
 |---|---|---|
 | gstack skills | PRESENT | ~/.claude/skills/gstack present (skills, not a PATH binary) |
 | context-compressor / memory-manager | PRESENT | part of gstack |
-| token-reduction tool (ponytail) | MISSING-ASK | wanted (token reduction for low-context model); confirm source/install |
+| ponytail (Claude Code plugin) | PARTIAL | marketplace ADDED (~/.claude/plugins/marketplaces/ponytail); plugin NOT yet enabled — run `/plugin install ponytail@ponytail` interactively. Scope: coding work ON, content builds OFF. |
 | codex | PRESENT | /c/Users/raymo/AppData/Roaming/npm/codex |
 | gbrain (binary + global cfg) | PRESENT | binary + ~/.gbrain/config.json present |
 | gbrain repo-pin | MISSING-ASK | this repo not pinned; optional (readable files are canonical) |

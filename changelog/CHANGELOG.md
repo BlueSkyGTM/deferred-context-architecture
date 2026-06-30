@@ -112,3 +112,16 @@ intent), how it was tested, and what breaks if it is reverted.
 - revert-risk: re-dumping the intake extractors breaks the engine's ability to ingest non-markdown on
   any domain; collapsing extraction and visual-rendering back together re-introduces the token waste
   (rendering material that gets discarded or never used).
+
+## 2026-06-29 — Identify ponytail (real detect/install + correct scope)
+- what: ponytail is a Claude Code PLUGIN (github.com/DietrichGebert/ponytail), a code-minimization
+  decision ladder (~22% token cut), not a pip/npm package. Manifest row now has the real detect
+  (`[ -d ~/.claude/plugins/marketplaces/ponytail ]`) and install (`/plugin marketplace add
+  DietrichGebert/ponytail` then `/plugin install ponytail@ponytail`). Added the scope note: it
+  minimizes CODE, so ON for coding/engine-maintenance, OFF during a content deliverable build.
+- why: it is the token-reduction tool the user wants, but it is scoped to CODING work — using it during
+  a pilot's content build would under-build the deliverable (the design schema governs completeness
+  there, not minimalism).
+- tested: detected on this machine — marketplace ADDED, plugin not yet enabled (run /plugin install).
+- revert-risk: losing the scope note risks a future session running ponytail during a content build
+  and under-producing the deliverable.

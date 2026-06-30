@@ -74,11 +74,16 @@ Harness + state/memory:
 |---|---|---|---|---|
 | gstack skills | harness (Confusion/freeze/guard/spec/autoplan) | yes | `[ -d ~/.claude/skills/gstack ]` | MISSING-ASK (ships with the Claude Code env) |
 | context-compressor / memory-manager | session-boundary compression + durable memory | yes | `[ -d ~/.claude/skills/gstack ]` | (part of gstack) |
-| token-reduction tool (e.g. ponytail) | CONTINUOUS token/context reduction (complements a low-context model) | optional | MISSING-ASK | MISSING-ASK (separate plugin — confirm source/install) |
+| ponytail (Claude Code plugin) | CODE/token minimization for CODING work (decision ladder, ~22% token cut); see scope note below | optional | `[ -d ~/.claude/plugins/marketplaces/ponytail ]` (marketplace added) | `/plugin marketplace add DietrichGebert/ponytail` then `/plugin install ponytail@ponytail` (Claude Code slash cmds, run interactively) |
 | codex | cross-model review/audit | optional | `command -v codex` | `npm i -g @openai/codex` |
 | gbrain (binary + global cfg) | retrieval projection (optional; readable files stay canonical) | optional | `command -v gbrain && [ -f ~/.gbrain/config.json ]` | `npm i -g gbrain` |
 | gbrain repo-pin | this repo indexed for gbrain | optional | `[ -f .gbrain-source ]` | MISSING-ASK (`/sync-gbrain --full`; needs human) |
 | evaluator | iteration Accept/Revise/Block | yes | n/a (rubric + fresh-context pass; no external tool) | n/a |
+
+**ponytail scope (important):** ponytail minimizes CODE. Use it ON coding / tooling / engine-
+maintenance work (where over-engineering wastes tokens). Keep it OFF during a pilot's CONTENT
+deliverable build (iteration), where a minimalism ladder UNDER-builds the deliverable — completeness
+there is governed by the design schema, not by minimalism. (Repo: github.com/DietrichGebert/ponytail.)
 
 Intake extractors (universal; which are REQUIRED depends on the deposit types a run actually has):
 | tool | role / deposit type | required | detect (shell test) | install (shell cmd) |
