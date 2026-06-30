@@ -77,7 +77,8 @@ Harness + state/memory:
 | ponytail (Claude Code plugin) | CODE/token minimization for CODING work (decision ladder, ~22% token cut); see scope note below | optional | `[ -d ~/.claude/plugins/marketplaces/ponytail ]` (marketplace added) | `/plugin marketplace add DietrichGebert/ponytail` then `/plugin install ponytail@ponytail` (Claude Code slash cmds, run interactively) |
 | LLMLingua / LLMLingua-2 | CONTENT-side token reduction: compress the CONTEXT/prompt fed to the model (~up to 20x, lossy but meaning-preserving); see scope note below | optional | `python -c "import llmlingua"` | `pip install llmlingua` (pulls torch + a small model; CPU-ok) |
 | codex | cross-model review/audit | optional | `command -v codex` | `npm i -g @openai/codex` |
-| gbrain (binary + global cfg) | retrieval projection (optional; readable files stay canonical) | optional | `command -v gbrain && [ -f ~/.gbrain/config.json ]` | `npm i -g gbrain` |
+| bun | JS runtime the gbrain CLI runs on (required IF using gbrain) | if gbrain | `command -v bun` | `irm bun.sh/install.ps1 \| iex` (Win) / `curl -fsSL https://bun.sh/install \| bash` (unix); then reopen the shell |
+| gbrain (CLI + global cfg) | retrieval projection (optional; readable files stay canonical) | optional | `command -v gbrain && [ -f ~/.gbrain/config.json ]` | clone+link — see note (do NOT `npm i -g gbrain`: the registry `gbrain` is a DIFFERENT package) |
 | gbrain repo-pin | this repo indexed for gbrain | optional | `[ -f .gbrain-source ]` | MISSING-ASK (`/sync-gbrain --full`; needs human) |
 | evaluator | iteration Accept/Revise/Block | yes | n/a (rubric + fresh-context pass; no external tool) | n/a |
 
@@ -99,6 +100,20 @@ run while the MCP server holds the brain open — use the gbrain MCP tools, or s
 And: `gbrain serve` exposes the API but does NOT process the job queue — submitted jobs (embed, sync)
 sit `waiting` until a worker runs. Run `gbrain autopilot --install` (a per-machine background daemon)
 to actually process embeds/syncs. Until the daemon runs, embeddings stay at 0 even with the key set.
+
+**gbrain install (clone, NOT the registry) + onboarding a second machine:** gbrain's CLI is a Bun
+program published from `github.com/garrytan/gbrain` — it is NOT the unrelated `gbrain` on the public
+npm registry (that is a different package; `npm i -g gbrain` installs the wrong thing). Install:
+ensure `bun` is present, then `git clone https://github.com/garrytan/gbrain && cd gbrain && bun
+install`, then put it on PATH with `npm link` (or `bun link`). If the CLI errors right after linking,
+run `bun run build` in the clone. To point a SECOND machine at an EXISTING brain (e.g. a shared
+hosted-Postgres brain), do NOT `migrate` or `--force` anything — install as above, then `gbrain init
+--url '<the brain's connection string>'`, which CONNECTS to the existing brain without copying or
+wiping. Then register the MCP at user scope (`claude mcp add --scope user gbrain -- <abs-path>/gbrain
+serve`) and restart the host so `mcp__gbrain__*` tools load. NEVER commit the connection string — it
+carries the DB password; fetch it per-machine from the provider (e.g. Supabase → Connect → Session
+pooler) and keep it out of git. (PGLite is single-machine/local; a hosted-Postgres brain is what
+enables multi-machine sharing — many connections, no single-connection lock.)
 
 **ponytail scope (important):** ponytail minimizes CODE. Use it ON coding / tooling / engine-
 maintenance work (where over-engineering wastes tokens). Keep it OFF during a pilot's CONTENT

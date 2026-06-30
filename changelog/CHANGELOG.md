@@ -176,3 +176,21 @@ intent), how it was tested, and what breaks if it is reverted.
 - revert-risk: low — removing it loses the cross-session resume habit, but no stage breaks (gbrain was
   always optional). Do not, however, strip the "files stay canonical / miss never blocks" framing if
   the section is kept — that is what keeps gbrain from becoming a hidden-state dependency.
+
+## 2026-06-30 — Fix gbrain install in TOOLING.md (bun dep + clone-not-registry + 2nd-machine onboarding)
+- what: corrected the gbrain row in the universal manifest. (1) Added a `bun` row — the gbrain CLI is a
+  Bun program and won't run without it. (2) Replaced the install `npm i -g gbrain` with clone+link from
+  `github.com/garrytan/gbrain`: the public-registry `gbrain` is a DIFFERENT, unrelated package (v1.3.1)
+  — `npm i -g gbrain` installs the wrong thing. (3) Added a note covering install (bun → git clone →
+  bun install → npm/bun link) and onboarding a SECOND machine onto an existing brain via `gbrain init
+  --url` (connect, never `migrate`/`--force`), MCP at user scope, restart, and "never commit the
+  connection string."
+- why: verified on this machine — `npm view gbrain version` returns 1.3.1 (wrong package); the real
+  gbrain (0.42.51.0) runs from a source clone. A cold clone following the old row would install the
+  wrong tool AND hit the missing-bun wall (which cost a full session to diagnose). This is universal:
+  it names only the gbrain tool (already in the universal manifest) + bun, no domain/pilot.
+- tested: install method confirmed live — `npm ls -g gbrain` shows a link to `C:\Users\raymo\gbrain`;
+  clone remote is `github.com/garrytan/gbrain.git`; bin is `src/cli.ts` (bun). The second-machine
+  `init --url` path was exercised end-to-end migrating this machine's brain to a hosted Postgres brain.
+- revert-risk: medium — reverting reintroduces the `npm i -g gbrain` defect (wrong package) and drops
+  the bun dependency, so a fresh clone's gbrain setup breaks exactly the way it did this session.
