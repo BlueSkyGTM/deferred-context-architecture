@@ -91,3 +91,24 @@ intent), how it was tested, and what breaks if it is reverted.
   unaffected — they are engine, not GTM. Sim artifacts remain on the `sim/full-run` branch.
 - revert-risk: re-adding GTM (or any domain) content re-contaminates the agnostic engine. A concrete
   pilot belongs in its own project, copied from `pilots/_TEMPLATE/`.
+
+## 2026-06-29 — Correct the tool dump; pin the raw→manifest conversion model
+- what: (1) re-added the universal INTAKE extractors (markitdown, youtube-transcript, article-extractor)
+  to the universal manifest — they are engine-level (raw→markdown is universal), not domain tools; the
+  prior commit over-dumped them. (2) added a universal token-reduction tool slot (e.g. ponytail) —
+  a dedicated token reducer complements a low-context model and is domain-independent (install
+  MISSING-ASK pending source). (3) removed the leftover ponytail minimalism-policy section (the policy
+  was tool-baggage; iteration's MVP-first/done-gate/design-schema already govern build completeness).
+  (4) excavation now states markdown conversion IS the catalogable/assayable form (you cannot manifest
+  an unopened PDF), runs on all hauled, and extracts chart DATA as text — NOT rendered visuals.
+  (5) iteration now owns deliberate visual rendering (mermaid/excalidraw/table) just-in-time on pulled
+  material only, with a `visuals/` subfolder for standalone assets.
+- why: resolve the raw→manifest question. markdown conversion can't be deferred (cataloging requires
+  it), so it's mechanical extraction at excavation on everything; only the EXPENSIVE visual rendering
+  is deferred (a judgment) to iteration, on only what the build uses. This minimizes tokens both ways:
+  nothing renders discarded/unused material, and no back-and-forth because extraction made the vault
+  assayable in one pass. Intake is a universal engine function; build-chain stays domain.
+- tested: not yet (design clarification + manifest correction). Engine chain unchanged structurally.
+- revert-risk: re-dumping the intake extractors breaks the engine's ability to ingest non-markdown on
+  any domain; collapsing extraction and visual-rendering back together re-introduces the token waste
+  (rendering material that gets discarded or never used).

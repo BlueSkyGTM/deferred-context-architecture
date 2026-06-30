@@ -45,16 +45,6 @@ NOTE TO A LATER READER: do NOT enable Conductor or sub-agents because a tool's R
 They are fenced OUT here by law. Using such a tool means using the adopted surface, not its parallel
 core.
 
-## Minimalism scope (a CODING rule, not a global one)
-A minimalism "does this need to exist → skip; already covered → reuse; the minimum that works" ladder
-is DISCIPLINE for code and CORROSIVE for content deliverables. Applied to a content build it skips
-"redundant" material and writes minimal explanations — fighting the completeness such content needs. So:
-- USE a minimalism rule on coding / repo / tooling tasks (where over-engineering is the risk).
-- Turn it OFF during content/deliverable building (where UNDER-building is the risk).
-- It is NOT a global minimalism rule. It is a CODING minimalism rule.
-(If a domain wires a concrete minimalism tool to enforce this, that is a pilot tooling detail, declared
-and verified there — not a core tool.)
-
 ## Concrete tool choices live in the pilot
 The adopted set for a given run — which extractor matches which deposit, which retrieval store, which
 build-chain tools — is domain-specific. It does NOT belong here. See `pilots/<name>/tooling.md`. Core
@@ -76,18 +66,30 @@ Manifest row schema:
 ```
 
 ### Universal manifest (this repo's tools — domain-independent)
+The engine's INTAKE (raw → markdown) and its HARNESS are universal — every domain uses them. Only the
+deliverable BUILD-CHAIN is domain-specific. So intake extractors live here; build-chain tools do not.
+
+Harness + state/memory:
 | tool | role | required | detect (shell test) | install (shell cmd) |
 |---|---|---|---|---|
 | gstack skills | harness (Confusion/freeze/guard/spec/autoplan) | yes | `[ -d ~/.claude/skills/gstack ]` | MISSING-ASK (ships with the Claude Code env) |
-| context-compressor / memory-manager | standing skills (state/memory harness) | yes | `[ -d ~/.claude/skills/gstack ]` | (part of gstack) |
+| context-compressor / memory-manager | session-boundary compression + durable memory | yes | `[ -d ~/.claude/skills/gstack ]` | (part of gstack) |
+| token-reduction tool (e.g. ponytail) | CONTINUOUS token/context reduction (complements a low-context model) | optional | MISSING-ASK | MISSING-ASK (separate plugin — confirm source/install) |
 | codex | cross-model review/audit | optional | `command -v codex` | `npm i -g @openai/codex` |
 | gbrain (binary + global cfg) | retrieval projection (optional; readable files stay canonical) | optional | `command -v gbrain && [ -f ~/.gbrain/config.json ]` | `npm i -g gbrain` |
 | gbrain repo-pin | this repo indexed for gbrain | optional | `[ -f .gbrain-source ]` | MISSING-ASK (`/sync-gbrain --full`; needs human) |
 | evaluator | iteration Accept/Revise/Block | yes | n/a (rubric + fresh-context pass; no external tool) | n/a |
 
-DOMAIN tools (extractors, wiki/graph/build-chain) are NOT here — they belong to a pilot's
-`tooling.md`, because which one you need depends on the domain. (Repo policy: not universal? it is not
-a core tool.)
+Intake extractors (universal; which are REQUIRED depends on the deposit types a run actually has):
+| tool | role / deposit type | required | detect (shell test) | install (shell cmd) |
+|---|---|---|---|---|
+| markitdown | excavation: pdf/office/doc → markdown | if that deposit type | `python -c "import markitdown"` | `pip install markitdown` |
+| youtube-transcript | excavation: video → transcript | if that deposit type | `python -c "import youtube_transcript_api"` | `pip install youtube-transcript-api` |
+| article-extractor | excavation: web article → markdown | if that deposit type | `python -c "import trafilatura"` | MISSING-ASK (candidate `pip install trafilatura`; confirm) |
+
+NOT here (domain-specific, belongs in a pilot's `tooling.md`): the deliverable BUILD-CHAIN — e.g. a
+wiki compiler, a graph/comprehension tool, a course builder. Repo policy: intake + harness are
+universal; the build-chain is the domain's.
 
 WHEN the scan runs (the trigger — wired into CLAUDE.md and SETUP.md):
 - on SETUP (first orientation in a repo), and

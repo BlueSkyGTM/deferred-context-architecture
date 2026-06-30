@@ -18,11 +18,20 @@ is the contamination defense; the assets are a side effect of building the route
   pilot's deposit register and extractor-matching rule. On the pilot the human supplies the deposits.
 
 ## Process
-1. Match the deposit to its extractor (the matching rule is the instantiation's — core does not name
-   tools). If no extractor matches the deposit type, do NOT guess — bench it and log to failures.
-2. Extract the material from the source.
+1. Match the deposit to its extractor (the universal intake extractors are in `platform/TOOLING.md`;
+   which one is keyed to the deposit type). If no extractor matches the deposit type, do NOT guess —
+   bench it and log to failures.
+2. Extract the material to **markdown** (e.g. markitdown for pdf/office). The markdown conversion is
+   not cosmetic — it is what makes a piece **catalogable and assayable at all** (you cannot sort or
+   manifest an unopened PDF). This is mechanical, not a judgment: get the substance into markdown.
+   For a chart/diagram, extract its UNDERLYING DATA as text (a markdown table or a described relation),
+   NOT a screenshot or a blind copy-paste. Do NOT render visuals here — choosing the best visual form
+   (mermaid / excalidraw / table) is a judgment, deferred to iteration (stage 04) on the material the
+   build actually pulls.
 3. Haul EVERYTHING that meets the extraction criteria. Do not select, filter, or judge worth —
-   selection is deferred to the assay (stage 02). Coverage is the goal.
+   selection is deferred to the assay (stage 02). Coverage is the goal. (The markdown conversion runs
+   on all hauled material because all of it must be assayable; the EXPENSIVE visual rendering does
+   not — that waits for iteration.)
 4. Land each piece in vault/ with a stable address. **Address convention:** the `id` is a kebab-case
    slug of the piece's title/source, unique within the run (suffix `-2`, `-3` on collision). The
    vault filename is `vault/<id>.md`. This convention is fixed so addresses are stable and inferable,

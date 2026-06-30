@@ -51,6 +51,17 @@ A teardown is permitted ONLY while its marginal utility exceeds its cost. Once a
 less than it costs, the gate REFUSES the teardown and ships what stands. Perfectionism (endless
 rebuild for marginal gain) is forbidden by the same economics that govern the done-gate.
 
+## Visual rendering (deferred here from excavation)
+Excavation extracted chart/diagram DATA as text (markdown tables). Rendering that data into the BEST
+visual form is a judgment, so it happens HERE, just-in-time, only on material the build actually pulls
+(never on discarded or unused material — that is the token saving):
+- For each visual the deliverable needs, choose the representation that fits — a markdown table, a
+  **mermaid** diagram, or an **excalidraw** file — rather than blind-pasting the source chart.
+- Inline-renderable visuals (tables, mermaid) live in the deliverable body. Standalone visual assets
+  (e.g. `.excalidraw`) go in a `visuals/` subfolder beside the deliverable in `library/`, referenced
+  from the body. Keep it light: render what the deliverable uses, nothing speculative.
+- Source-pinning still applies: a rendered visual may only show data that traces to the manifest.
+
 ## Working location and the deliverable's frontmatter
 - The in-progress deliverable is built IN `library/` from iteration 1, carrying `sealed: false` while
   it iterates. `library/` therefore holds both in-flight (unsealed) and shipped (sealed) deliverables;
