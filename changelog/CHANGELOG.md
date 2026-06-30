@@ -275,3 +275,23 @@ intent), how it was tested, and what breaks if it is reverted.
 - tested: codex gpt-5.5 two-loop trace, read-only, exit 0; the only flagged gap is now closed.
 - revert-risk: low — reverting re-opens the "sealed drives no routing" contradiction that stalls a cold
   agent at iteration filtering.
+
+## 2026-06-30 — gstack-at-gates locked (deferred to autoplan / codex voice): gate→play map + team reframe
+- what: encoded the gstack gate→play map into platform/SKILLS.md (which play fires at which deferral
+  point, with the law-keeping constraint per play) and reframed platform/TOOLING.md's gstack section —
+  "gstack is the operating TEAM, not a tool; ponytail/LLMLingua/gbrain/memory are the instruments it
+  wields." The decision was deferred to /autoplan's cross-model voice ("who knows when gstack should
+  fire better than gstack").
+- why: the codex autoplan-voice CONFIRMED every gate with constraints and one CHANGE — the loop-
+  boundary row is SESSION continuity (persist/recall via files), NOT loop auto-continuation (consistent
+  with the Route B loop-boundary lock). Both sub-calls AGREED: (a) assay gets NO review skill (it is
+  the seam brain, not a review point); (b) /autoplan pre-build is CONDITIONAL not always (M2W's
+  MVP-first + done-gate already govern completeness; wire late, the subset needed).
+- tested: codex gpt-5.5 autoplan-voice review, read-only, exit 0 — per-gate CONFIRM/constraint, no law
+  violations once the constraints hold (mechanical extraction only at excavation; no review skill at
+  assay; sequential fresh-context evaluator, NO subagents, at conformance; ship only after the
+  done-gate; loop boundary = session continuity, not auto-loop).
+- revert-risk: low — the map is additive guidance; reverting loses the where/when of gstack but breaks
+  no chain. Do NOT, however: add a review skill at the assay, make /autoplan always-on, let excavation
+  /scrape//browse filter for relevance, let the conformance evaluator spawn subagents, or reframe the
+  loop-boundary row as auto-continuation — each re-opens a law violation the voice flagged.

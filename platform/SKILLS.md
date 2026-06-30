@@ -29,3 +29,29 @@ A domain's first run IS the seam layer's training run. Every seam call the human
 data. If memory-manager compresses those calls into a blackbox, the human cannot check whether the
 seam layer learned the right boundary. Readable files preserve the answer-key check. This is not a
 style preference; it is what makes a run gradeable.
+
+## gstack at the gates — where the team's plays fire (the gate→play map)
+gstack is the **operating TEAM** that runs this engine, not an item in the toolbox; the actual *tools*
+(ponytail, LLMLingua, gbrain, the memory skills) are instruments the team wields. This map says WHICH
+of the team's plays fire at WHICH deferral point. A play fires ONLY in its adopted single-agent
+surface (the fence in `platform/TOOLING.md`); none may spawn subagents (PRINCIPLES #5) or judge
+quality where a gate owns conformance. The map names only the engine's own deferral points and the
+team's plays — never a pilot or domain.
+
+| Deferral point | gstack play | constraint (so it stays inside the law) |
+|---|---|---|
+| SETUP (cold boot) | tool scan; `/guard` | `/guard` is an edit-lock harness, never a decision gate |
+| Excavation (web/video deposits) | `/scrape`, `/browse`; Confusion → bench | MECHANICAL extraction only — haul the bounded space to addressable markdown, NO relevance filtering (selection is the assay's, deferred); ambiguous route → bench / logs/failures.md |
+| Assay (seam sort) | Confusion Protocol → bench ONLY | NO `/spec`, `/review`, or `/autoplan` — the seam is the engine's own brain; a review/plan skill here contaminates the routing call. Any ambiguity benches |
+| Iteration — pre-build | `/spec` ALWAYS; `/autoplan` CONDITIONAL | `/spec` is the craftsmanship floor, NOT the seam gate; `/autoplan` fires ONLY when the deliverable has real eng/design/DX surface — never on a trivial / pure-content build (M2W's MVP-first + done-gate already govern completeness; wire late, the subset needed) |
+| Iteration — conformance | `/review` + `/codex` (cross-model); `/design-review` if visual | a SEQUENTIAL fresh-context evaluator pass (worker ≠ checker) checking schema CONFORMANCE + source-fidelity, never "is it good"; NO subagents / concurrent workers |
+| Done-gate → ship | `/ship` or `/land-and-deploy` | only AFTER the done-gate fires (substance→surface = ship); never before |
+| Loop boundary (after ship) | save-memory combo + gbrain push/query; `/context-save` + `/context-restore` | SESSION continuity ONLY — persist/recall via readable files at session end/start. This is NOT loop auto-continuation: the loop restarts solely on operator-supplied deposits (the loop-boundary deferral point, GATES.md §4) |
+
+**Tools the team wields freely (NOT gated):** **ponytail** (code minimization — engine-maintenance
+only, OFF during a content build), **LLMLingua** (context compression), **gbrain** (the optional
+recall projection), the **memory skills**. These are instruments, not gates; the team reaches for them
+whenever useful within any deferral point.
+
+(This map was settled by deferring to gstack's own reviewed-plan voice — "who knows when gstack should
+fire better than gstack" — and validated cross-model. See changelog 2026-06-30.)

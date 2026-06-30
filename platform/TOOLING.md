@@ -22,6 +22,11 @@ not pull it in because "that's how the tool works."
    slots stay literal `TODO(tools)`.
 
 ## gstack — the fence (the canonical worked example of rule 2)
+**Framing: gstack is the operating TEAM, not a tool in the box.** It is the set of colleagues (plays)
+that run this engine; the actual *tools* the team wields are ponytail, LLMLingua, gbrain, and the
+memory skills. This section is the FENCE — which of the team's plays are adopted (single-agent surface)
+vs rejected (parallel). WHEN each adopted play fires is the gate→play map in `platform/SKILLS.md`.
+
 gstack's headline value is PARALLEL multi-agent orchestration (Conductor running concurrent sprints,
 maker/checker sub-agents, /pair-agent). M2W's law is SINGLE-AGENT, depth-first. Parallel silos under
 loose contracts were the original source of drift. So the gstack surface is split:
