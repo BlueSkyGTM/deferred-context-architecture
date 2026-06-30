@@ -59,7 +59,9 @@ Excavation extracted chart/diagram DATA as text (markdown tables). Rendering tha
 visual form is a judgment, so it happens HERE, just-in-time, only on material the build actually pulls
 (never on discarded or unused material — that is the token saving):
 - For each visual the deliverable needs, choose the representation that fits — a markdown table, a
-  **mermaid** diagram, or an **excalidraw** file — rather than blind-pasting the source chart.
+  **mermaid** diagram, or an **excalidraw** file — rather than blind-pasting the source chart. (Tools +
+  install: `platform/TOOLING.md` visual-rendering manifest. Inline mermaid and a hand-written
+  `.excalidraw` need NO install; gstack `/diagram` is the producer.)
 - Inline-renderable visuals (tables, mermaid) live in the deliverable body. Standalone visual assets
   (e.g. `.excalidraw`) go in a `visuals/` subfolder beside the deliverable in `library/`, referenced
   from the body. Keep it light: render what the deliverable uses, nothing speculative.

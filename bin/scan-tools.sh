@@ -35,6 +35,9 @@ if have 'python -c "import youtube_transcript_api"'; then add "youtube-transcrip
   else add "youtube-transcript" "if-video" MISSING "pip install youtube-transcript-api"; fi
 if have 'python -c "import trafilatura"'; then add "article-extractor" "if-web" PRESENT "intake (trafilatura)";
   else add "article-extractor" "if-web" MISSING-ASK "pip install trafilatura (confirm)"; fi
+if have 'command -v mmdc'; then add "mermaid (mmdc)" "if-visual" PRESENT "rasterize mermaid to svg/png; inline mermaid in markdown needs no tool";
+  else add "mermaid (mmdc)" "if-visual" MISSING "npm i -g @mermaid-js/mermaid-cli (only to rasterize; inline mermaid needs nothing)"; fi
+add "excalidraw (format)" "if-visual" PRESENT "agent writes .excalidraw JSON; no install to produce (view at excalidraw.com or VS Code ext)"
 add "evaluator" yes PRESENT "method (rubric + fresh-context pass); no external tool"
 
 {

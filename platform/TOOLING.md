@@ -176,6 +176,20 @@ Intake extractors (universal; which are REQUIRED depends on the deposit types a 
 | youtube-transcript | excavation: video → transcript | if that deposit type | `python -c "import youtube_transcript_api"` | `pip install youtube-transcript-api` |
 | article-extractor | excavation: web article → markdown | if that deposit type | `python -c "import trafilatura"` | MISSING-ASK (candidate `pip install trafilatura`; confirm) |
 
+Visual rendering (universal — iteration, stage 04 names these as the deliverable's diagram formats):
+| tool | role | required | detect (shell test) | install (shell cmd) |
+|---|---|---|---|---|
+| mermaid (mmdc) | iteration: render diagram DATA to a diagram. Inline ```` ```mermaid ```` in a markdown deliverable needs NO tool (GitHub and most viewers render it); `mmdc` is only for rasterizing to a standalone SVG/PNG asset | optional (only to rasterize) | `command -v mmdc` | `npm i -g @mermaid-js/mermaid-cli` |
+| excalidraw (format) | iteration: standalone editable diagrams. The agent WRITES `.excalidraw` JSON directly — no install to produce; view/edit at excalidraw.com or the VS Code "Excalidraw" extension | optional (no install to produce the file) | n/a (a file format, not a CLI) | MISSING-ASK (optional viewer: excalidraw.com or the VS Code Excalidraw extension) |
+
+**Visual-rendering note:** gstack `/diagram` (a universal harness skill, mapped to iteration build in
+`platform/SKILLS.md`) is the PRODUCER — it turns an English description into mermaid source + an
+editable `.excalidraw` + an optional rendered SVG. The rows above declare the underlying formats and
+renderer the iteration stage (`stages/04-iteration/CONTRACT.md`) names. Inline mermaid and a
+hand-written `.excalidraw` need NO install at all; the tools only matter when you want a rasterized
+standalone asset. So "include mermaid + excalidraw" is satisfied by default — the formats ship with the
+engine; only the optional rasterizer is a download.
+
 NOT here (domain-specific, belongs in a pilot's `tooling.md`): the deliverable BUILD-CHAIN — e.g. a
 wiki compiler, a graph/comprehension tool, a course builder. Repo policy: intake + harness are
 universal; the build-chain is the domain's.

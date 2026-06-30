@@ -439,3 +439,18 @@ intent), how it was tested, and what breaks if it is reverted.
   "do not populate it in the skeleton pass" — dated build-pass wording, not a contradiction.
 - STATUS: **SHIPPED.** Run-ready: full multi-loop continuation, self-directed model tiers, the gstack
   team mapped to gates (open), de-bloated and cross-model-validated end to end.
+
+## 2026-06-30 — Declare visual-rendering tools in the manifest (mermaid + excalidraw "included")
+- what: stage 04 names mermaid/excalidraw as the deliverable's diagram formats, but the universal tool
+  manifest never declared them and bin/scan-tools.sh never checked them — a stage-vs-manifest gap. Added
+  a "Visual rendering (universal)" group to platform/TOOLING.md (mermaid via mmdc to RASTERIZE — inline
+  mermaid in markdown needs NO tool; excalidraw is a JSON format the agent writes, no install to
+  produce), with a note that gstack /diagram is the producer. Added the two detects to scan-tools.sh and
+  a pointer from stages/04-iteration/CONTRACT.md to the manifest.
+- why: operator flagged mermaid/excalidraw "should come included with M2W." They effectively do — the
+  FORMATS ship with the engine (inline mermaid + hand-written .excalidraw need no install); only the
+  optional rasterizer (mermaid-cli) is a download. Declaring them closes the drift so a cold clone is
+  tipped off. (Separately: the README's mermaid diagrams need nothing — GitHub renders them server-side.)
+- tested: scan-tools.sh re-run exit 0; mermaid(mmdc) MISSING (if-visual, non-blocking) with the
+  inline-needs-nothing note, excalidraw(format) PRESENT.
+- revert-risk: low — additive manifest rows + detects.
