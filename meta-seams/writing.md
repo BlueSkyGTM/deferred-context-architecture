@@ -1,55 +1,65 @@
-# Writing — a meta-seam (clear, effective, persuasive prose)
+# Writing — auto-applied meta-seam (clarity + persuasion)
 
-## What this is
+## This is binding, not opt-in
 
-A **meta-seam**: a cross-domain influence on *how* a deliverable is written — not *what* material
-belongs to it. A pilot's seam sorts domain material; this shapes the prose quality of whatever gets
-built, in any domain. Apply it as the writing bar every deliverable is held to.
+A **standing meta-seam**: it applies to **all prose the engine produces, in every pilot,
+automatically** — the moment a deliverable involves **writing or persuasion**, its output meets these
+rules. You don't wait to be told. If you're writing, you're applying this.
 
-Principles are **distilled and paraphrased in our own words** from two sources; the verbatim texts
-are **not** reproduced here (copyrighted) — they live in the private corpus `BlueSkyGTM/writing-corpus`:
-- **Clarity** — William Zinsser, *On Writing Well*.
-- **Persuasion** — Colin Theriot, *Cult of Copy — Simple Persuasive Copy Tip Almanac*.
+Rules are **paraphrased** (no quotes) from William Zinsser's *On Writing Well* (clarity) and Colin
+Theriot's *Cult of Copy — Simple Persuasive Copy Tip Almanac* (persuasion), distilled for
+course-building and any deliverable's prose.
 
-## How to apply
+---
 
-- **Explanatory / teaching prose** (docs, guides, manifests, lessons): hold it to **Clarity** below.
-- **Copy meant to move a reader to act** (outreach, landing pages, a pitch): layer **Persuasion** on
-  top of Clarity — never persuasion without clarity.
-- Don't blur them: clear ≠ persuasive. **Clarity is the floor; persuasion is an optional second layer.**
+## Part 1 — Clarity (the floor: every sentence, always)
 
-## Clarity (the floor — always)
+1. **Cut what does no work.** Fewest words that carry the meaning; most first drafts can lose a third.
+2. **One idea per sentence.** If it turns twice, split it.
+3. **Short, plain words** over long showy ones. Jargon only when it's the exact term.
+4. **Active voice, strong verbs.** The subject does the thing. Don't bury verbs in nouns
+   ("make a decision" → "decide").
+5. **Delete qualifiers and hedges** — *very, quite, rather, somewhat, kind of, I think, it seems.*
+6. **No throat-clearing.** Kill "It's important to note that," "In order to," "The fact that." Start
+   at the point.
+7. **Concrete over abstract.** Name the thing; show, don't label.
+8. **Unity.** One tense, one person, one mood across a piece — shifts confuse.
+9. **The lead earns the read.** The first sentence's only job is to make them read the second. No
+   warm-up.
+10. **Logical order.** Each sentence sets up the next; the reader never has to backtrack.
+11. **A human voice.** One person to one person; contractions are fine; personality isn't the enemy
+    of clarity.
+12. **Trust the reader.** State it once. Don't over-explain, don't repeat.
+13. **Rewriting is the writing.** The draft is ore; the cut-tighten-reorder pass is where it gets good.
 
-1. **Simplicity.** Cut every word that does no work. Earn each sentence.
-2. **One thought per sentence.** If it turns twice, split it.
-3. **Plain words.** The short common word over the long showy one; jargon only when it's the precise term.
-4. **Active voice, strong verbs.** The subject does the thing. Don't bury verbs in nouns ("make a decision" → "decide").
-5. **Kill qualifiers.** *very, quite, rather, somewhat, really* weaken more than they add. Delete.
-6. **Cut clutter.** Redundant pairs, throat-clearing ("It should be noted that…"), restating the obvious.
-7. **Unity.** One tense, one person, one mood across a piece. Shifts confuse.
-8. **The lead earns the read.** The first sentence's only job is to make them read the second. No warm-up.
-9. **A human voice.** Write like one person to one person. Personality isn't the enemy of clarity.
-10. **Trust the reader.** Don't over-explain or hedge — state it and move on.
-11. **Rewriting is the writing.** First draft is raw ore; the work is the second and third pass — cut, tighten, reorder.
+## Part 2 — Persuasion (the second layer: only when the writing must move someone to act)
 
-## Persuasion (the optional second layer — for copy that must move someone)
+1. **Open in their head.** Lead with the reader's problem or desire, not your solution.
+2. **Pre-empt the objection.** Name the doubt before they do, then dissolve it — surfacing disarms it.
+3. **Reason-why.** Always give a *because*; a stated reason earns more than a bare ask.
+4. **Anchor by relativity.** Position against the alternatives — rivals, DIY, doing nothing — so the
+   value is legible.
+5. **Why now.** Give a real, specific reason to act now; timing is what converts interest to action.
+6. **Make the new feel familiar.** Bridge the unknown to something the reader already trusts.
+7. **Specific beats hype.** One concrete number, example, or detail out-persuades any adjective.
+8. **Write to one person.** "You," singular — never "everyone."
+9. **Sell the next line.** Every sentence exists to get the next one read.
+10. **One idea, one ask.** A single clear action; a confused reader does nothing.
+11. **Proof over claim.** Show the evidence; don't assert it.
 
-1. **Lead with their problem, not your solution.** Enter the conversation already in the reader's head.
-2. **Pre-empt the objection.** Name the doubt before they do, then answer it — surfacing it disarms it.
-3. **Give a reason-why.** A stated *because* earns more compliance than a bare ask.
-4. **Relativity / anchoring.** Position against the alternatives — competitors, DIY, doing nothing — so the value is legible.
-5. **Why now.** Supply a real, specific reason to act now; timing turns interest into action.
-6. **Make the new feel familiar.** Tie the unfamiliar to something the reader already trusts.
-7. **Specific beats hype.** A concrete number, example, or detail persuades where an adjective doesn't.
-8. **One reader.** Write to a single person — "you," singular — not an audience.
-9. **Earn each line.** Every sentence exists to get the next one read (matters most when money's on the line).
+## Part 3 — Apply it (self-check before any prose ships)
+
+1. **Clarity pass (always).** Read it as a busy stranger. Can it lose a third? Every qualifier gone?
+   Every sentence one idea? Does the lead earn the read?
+2. **Persuasion pass (only if it must move someone).** Problem-first? Objection pre-empted? Reason-why
+   and why-now present? One clear ask? Specific, not hyped?
+3. **Rewrite.** The first draft is never what ships.
 
 ## The bar
 
-A deliverable passes this meta-seam when a busy reader gets it on the **first pass** (clarity), and —
-if it's meant to move them — they **feel the reason to act without being shouted at** (persuasion).
-Clever but unclear → fails. Clear but limp where it needed to move someone → half-fails.
+A busy reader gets it on the **first pass** (clarity); if it's meant to move them, they **feel the
+reason to act without being shouted at** (persuasion). Clever-but-unclear fails. Clear-but-limp where
+it needed to move someone half-fails. Everything the engine writes clears this.
 
 ---
-*Principles distilled/paraphrased for reuse — not the authors' text. Verbatim sources (private):
-`BlueSkyGTM/writing-corpus`.*
+*Paraphrased for reuse — On Writing Well (Zinsser) + Cult of Copy almanac (Theriot).*

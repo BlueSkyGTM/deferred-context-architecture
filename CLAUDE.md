@@ -145,6 +145,15 @@ Quality lives in the shape of the design schema, not in a gate's opinion. Three 
 - `logs/rejections.md` — every tailings decision with its reason (the reviewable recycle bin index).
   Off-seam is never deleted; it is tailed with a reason so it can be reclaimed if scope shifts.
 
+## Meta-seams (auto-applied output standards)
+
+`meta-seams/` holds cross-domain standards for *how* a deliverable is made — applied in **every
+pilot, not opt-in**, triggered by the content itself rather than by a pilot naming them.
+**`meta-seams/writing.md` is binding on all prose: the moment a deliverable involves writing or
+persuasion, its output must meet that bar** — apply it as part of iteration conformance,
+automatically, in every project. A meta-seam is domain-agnostic and additive (remove `meta-seams/`
+and the engine still runs, just without the standard). See `meta-seams/CONTEXT.md`.
+
 ## Your standing orders
 
 Execute the spec literally. Verify, do not improve. Log everything. Defer, do not commit early.
