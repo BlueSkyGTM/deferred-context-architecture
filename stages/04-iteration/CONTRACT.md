@@ -40,6 +40,9 @@ schema-discovery).
 ## Conformance gate (shape, not quality)
 - Did this iteration apply its design schema, and does the output conform to the schema's shape?
 - Pass/fail on SHAPE. Never judge "is this good." Quality lives in the schema's shape.
+- **Prose carries a standing shape: the writing meta-seam (`meta-seams/writing.md`).** If the
+  deliverable contains prose, that meta-seam is part of the shape it conforms to — auto-applied, not
+  pilot-supplied. Prose that violates it fails conformance, same as any other schema miss.
 - Log to logs/gate-checks.md.
 
 ## Done-gate (diminishing marginal utility) — see done-gate.md
