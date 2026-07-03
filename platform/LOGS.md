@@ -51,8 +51,8 @@ Entry format — CAPTURE THE FULL ITEM POINTER PLUS THE CURATED REASON, not just
 The `looks-transferable-but-off-seam` category is the highest-value training data in the system. It
 captures material that resembles the seam because it shares a principle but sits off it. It is a large
 share of the wasted effort the seam layer exists to prevent. Tag it distinctly; never let it file as
-an ordinary cut. (The concrete near-miss patterns for a domain — what "shares a principle but sits
-off it" looks like — are an instantiation detail: `pilots/<name>/seam.md`.)
+an ordinary cut. (The concrete near-miss patterns for a system — what "shares a principle but sits
+off it" looks like — are a pilot detail: `pilots/<name>/seam.md`.)
 
 ## Why item-plus-reason, not verdict-only
 A verdict-only log teaches a brittle blacklist (memorizes specific items). An item-plus-reason log

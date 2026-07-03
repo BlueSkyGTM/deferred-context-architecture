@@ -1,16 +1,18 @@
 # M2W — Manifest to Workspace
 
-**A deferral-governed pipeline that turns raw, located material into finished deliverables — and compiles its orchestration into structure rather than improvising it in prompts.**
+**A deferral-governed pipeline that turns raw, located material into working Claude Code powered systems — and compiles its orchestration into structure rather than improvising it in prompts.**
 
-M2W is a domain-agnostic engine for autonomous, multi-stage work. It takes a *manifest* (catalogued,
-typed material) and produces a *workspace* (a built deliverable), running stage to stage without a
+M2W is an engine for building **Claude Code powered systems** — skills, agents, hooks, MCP wiring,
+CLAUDE.md-governed repos — from raw material. It takes a *manifest* (catalogued,
+typed material) and produces a *workspace* (a built, living system), running stage to stage without a
 human steering it and escalating only the decisions it genuinely cannot make. The question it sets out
 to answer is not "how do we make an agent do more," but "how do we make an autonomous pipeline that
 never contaminates its own context, can always be trusted to stop and resume, and can explain every
 decision it made."
 
-This repository *is* the engine. A **pilot** (under `pilots/`) supplies a concrete domain; the core
-never names one. Delete the pilots and the engine still stands.
+This repository *is* the engine. A **pilot** (under `pilots/`) supplies one concrete system to build;
+the core never names a specific one. Delete the pilots and the engine still stands — a standing
+factory for Claude Code systems, waiting for its next commission.
 
 ---
 
@@ -38,6 +40,17 @@ This is not a delay tactic. It is the contamination defense: a context that admi
 cannot be polluted by work that was never needed. It is why the pipeline can stop cleanly at any point,
 why a bad input dies cheap before triggering expensive downstream work, and why the cost of a mistake
 is pushed to the front of the line, where it is cheapest to absorb.
+
+## What M2W is not
+
+M2W builds systems that live and breathe — Claude Code systems that keep triggering, running, and
+iterating after they ship. It is **not a content mill**. Deterministic one-shot deliverables — an
+essay, a report, a landing page, any artifact with no operational afterlife — are off-seam by
+definition, and the engine's checks actively fight them: schema-discovery expects a first run that
+teaches, the fresh-context evaluator expects behavior to re-verify, the done-gate's
+substance-vs-surface signal expects live behavior to move between iterations, and source-pinning
+expects a manifest the system keeps answering to. Point one-shot work at a simpler tool; point M2W at
+a system.
 
 ---
 
@@ -91,7 +104,7 @@ model tier. The map is wiring, not documentation:
 | Done-gate → ship | ship / package / document / post-deploy watch | top |
 | Loop boundary | session memory + recall — continuity through files, never an auto-loop | light–mid |
 
-The map is the universal default; a domain instantiation wakes whatever additional tooling it warrants.
+The map is the universal default; a pilot wakes whatever additional tooling its system warrants.
 Anything parallel or multi-agent by nature is rejected by law.
 
 **2 — Progress is marked by production, not by numbering.**
@@ -151,15 +164,16 @@ The engineering discipline is as much the artifact as the pipeline:
 
 ## Scope and status
 
-M2W is a **standing engine** — run-ready and domain-agnostic. The core carries the law (`CLAUDE.md`,
-`platform/`), the four stage contracts (`stages/`), the holding folders, and the logs. A domain is
-supplied as a pilot under `pilots/` by copying the template and filling its extension points: the seam
-(what belongs to the domain), the deposits (where raw material comes from), the design schema, and the
-build workflow. The core never references a pilot; a pilot may reference the core.
+M2W is a **standing factory for Claude Code systems** — run-ready; a pilot supplies which system. The
+core carries the law (`CLAUDE.md`, `platform/`), the four stage contracts (`stages/`), the holding
+folders, and the logs. A system is commissioned as a pilot under `pilots/` by copying the template
+(pre-filled with Claude Code defaults) and filling its extension points: the seam (what belongs to the
+one system under build), the deposits (where raw material comes from), the design schema, and the
+build workflow. The core never references a specific pilot; a pilot may reference the core.
 
 It is deliberately *not* a finished product or a one-click tool. It is the frame — the structure that
-makes autonomous, auditable, resumable work possible — with the material and the domain tooling supplied
-per instantiation. Start at `CLAUDE.md` for the canonical read order.
+makes autonomous, auditable, resumable work possible — with the material and the system-specific
+tooling supplied per pilot. Start at `CLAUDE.md` for the canonical read order.
 
 ```mermaid
 flowchart TB
@@ -189,4 +203,8 @@ routing, stage contracts, one-way references, canonical sources, glass-box obser
 mining front-end (excavation → assay → manifest) that ICM assumes you already have. It borrows the
 principles, never the engine. An earlier name for the system was *ECA — Earned Contract Architecture*;
 the rename reflects a shift in emphasis, from "work proving itself at every gate" to "deferred
-commitment that avoids contamination" — the same mechanics, a corrected centre of gravity.
+commitment that avoids contamination" — the same mechanics, a corrected centre of gravity. In July
+2026 the engine specialized: the domain, formerly a per-pilot variable, was fixed to Claude Code
+powered systems — the pipeline's checks were always shaped for living systems that iterate, and the
+specialization let the core carry the Claude Code toolchain and seam defaults every pilot had been
+re-deriving.

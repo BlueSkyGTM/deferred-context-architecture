@@ -3,11 +3,13 @@
 This file is the core POLICY for HOW tools are admitted: which surface area of a multi-feature tool
 M2W adopts vs fences out, and why. Two categories, and the line between them matters:
 - **Operating-environment / harness tools** (the agent's own runtime — e.g. gstack, a minimalism
-  ladder) are CONSTANT across domains, so their fence is core policy and named here.
-- **Domain / deliverable tool CHOICES** (extractors, build-chain tools, a retrieval store) vary by
-  domain and are picked by the instantiation, NOT here — see `pilots/<name>/tooling.md`.
+  ladder) are CONSTANT across pilots, so their fence is core policy and named here. The domain being
+  fixed, the **Claude Code toolchain itself is UNIVERSAL** and lives in the manifest below.
+- **System-specific tool CHOICES** (the governed repo's own toolchain, system MCP servers, extra
+  extractors) vary by pilot (the system under build) and are picked by the pilot, NOT here — see
+  `pilots/<name>/tooling.md`.
 
-So core names no DOMAIN tool. A tool's reputation is not a license to import all of it. Where a tool's
+So core names no PILOT tool. A tool's reputation is not a license to import all of it. Where a tool's
 core conflicts with an M2W law, the conflicting part is fenced out EXPLICITLY, so a later reader does
 not pull it in because "that's how the tool works."
 
@@ -96,27 +98,28 @@ the assay guard.)
 
 ## Concrete tool choices live in the pilot
 The adopted set for a given run — which extractor matches which deposit, which retrieval store, which
-build-chain tools — is domain-specific. It does NOT belong here. See `pilots/<name>/tooling.md`. Core
-declares the policy; the pilot makes the picks.
+system-specific build tools — is pilot-specific. It does NOT belong here. See `pilots/<name>/tooling.md`.
+Core declares the policy; the pilot makes the picks.
 
 ## Tool scan protocol (self-bootstrapping — so a cold session knows what to install)
 A cold session must not discover missing tools by failing mid-run. There are TWO manifests:
-- the **universal manifest** below (domain-independent tools — the harness, cross-model review,
-  retrieval, the evaluator method, the standing skills). It lives in core because these apply to every
-  domain.
-- a **domain manifest** (per pilot, in `pilots/<name>/tooling.md`) — extractors and build-chain tools
-  specific to one domain. Present only when a pilot is active.
+- the **universal manifest** below (pilot-independent tools — the harness, the Claude Code toolchain,
+  cross-model review, retrieval, the evaluator method, the standing skills). It lives in core because
+  these apply to every pilot.
+- a **pilot manifest** (per pilot, in `pilots/<name>/tooling.md`) — the governed repo's toolchain,
+  system MCP servers, and extra extractors specific to one system. Present only when a pilot is active.
 
-The scan reads BOTH (the domain one only if a pilot is present) and acts on each.
+The scan reads BOTH (the pilot one only if a pilot is present) and acts on each.
 
 Manifest row schema:
 ```
 | tool | role / stage slot | required|optional | detect (shell test) | install (shell cmd) |
 ```
 
-### Universal manifest (this repo's tools — domain-independent)
-The engine's INTAKE (raw → markdown) and its HARNESS are universal — every domain uses them. Only the
-deliverable BUILD-CHAIN is domain-specific. So intake extractors live here; build-chain tools do not.
+### Universal manifest (this repo's tools — pilot-independent)
+The engine's INTAKE (raw → markdown), its HARNESS, and the Claude Code toolchain are universal —
+every pilot uses them. Only the SYSTEM-specific build tools are per-pilot. So intake extractors and
+the Claude Code toolchain live here; the governed repo's own tools do not.
 
 Harness + state/memory:
 | tool | role | required | detect (shell test) | install (shell cmd) |
@@ -130,6 +133,8 @@ Harness + state/memory:
 | gbrain (CLI + global cfg) | retrieval projection (optional; readable files stay canonical) | optional | `command -v gbrain && [ -f ~/.gbrain/config.json ]` | clone+link — see note (do NOT `npm i -g gbrain`: the registry `gbrain` is a DIFFERENT package) |
 | gbrain repo-pin | this repo indexed for gbrain | optional | `[ -f .gbrain-source ]` | MISSING-ASK (`/sync-gbrain --full`; needs human) |
 | evaluator | iteration Accept/Revise/Block | yes | n/a (rubric + fresh-context pass; no external tool) | n/a |
+| claude (Claude Code CLI) | the domain runtime: every deliverable runs on it; iteration's live dry-run + conformance happen in a real session | yes | `command -v claude` | MISSING-ASK (install per official Claude Code docs; login/auth is machine-specific — never guess) |
+| skill-creator / skill-auditor (claude-plugins-official) | iteration: skill authoring conventions (build) + skill audit (conformance) | if the deliverable includes skills | `[ -d ~/.claude/plugins/marketplaces/claude-plugins-official/plugins/skill-creator ]` | MISSING-ASK (`/plugin install skill-creator@claude-plugins-official`, interactive slash cmd) |
 
 **LLMLingua scope (the content-side counterpart to ponytail):** LLMLingua compresses the INPUT
 context/prompt you feed the model — useful when a stage pulls a lot of source material into context
@@ -190,9 +195,9 @@ hand-written `.excalidraw` need NO install at all; the tools only matter when yo
 standalone asset. So "include mermaid + excalidraw" is satisfied by default — the formats ship with the
 engine; only the optional rasterizer is a download.
 
-NOT here (domain-specific, belongs in a pilot's `tooling.md`): the deliverable BUILD-CHAIN — e.g. a
-wiki compiler, a graph/comprehension tool, a course builder. Repo policy: intake + harness are
-universal; the build-chain is the domain's.
+NOT here (system-specific, belongs in a pilot's `tooling.md`): the governed repo's own toolchain
+(test runner, linter), MCP servers the system wires, and any extra extractors. Repo policy: intake +
+harness + the Claude Code toolchain are universal; the system's own tools are the pilot's.
 
 WHEN the scan runs (the trigger — wired into CLAUDE.md and SETUP.md):
 - on SETUP (first orientation in a repo), and
@@ -205,7 +210,7 @@ The scan algorithm (single-agent, glass-box):
    machine in a way the human should approve**: do NOT guess or run it. FLAG it (status `MISSING-ASK`)
    and surface it to the human. Guessing an install violates "you do not think; you execute."
 4. Write the result to `tool-status.md` at the repo root (universal tools) and, if a pilot is active,
-   to `pilots/<name>/tool-status.md` (domain tools). Glass-box: state on disk, regenerated each scan,
+   to `pilots/<name>/tool-status.md` (pilot tools). Glass-box: state on disk, regenerated each scan,
    per-machine. Never hold tool status only in your head.
 5. If a required tool is MISSING after the scan, the run cannot start that stage — STOP and report,
    per DRY-RUN.md scoping (wire only the subset a run needs; a missing required tool is a blocker, a

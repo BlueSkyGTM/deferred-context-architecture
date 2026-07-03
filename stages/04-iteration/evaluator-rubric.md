@@ -19,7 +19,7 @@ escalation path.
 - Was the design schema applied?
 - Does the output conform to the schema's shape?
 - Source-fidelity: does the deliverable contain only what the manifest supports? (the "no facts not in
-  my material" constraint — source-pinning is a conformance check). The instantiation states the
+  my material" constraint — source-pinning is a conformance check). The pilot states the
   concrete form of this check (see `iteration-workflow.md`).
 Verdict is on conformance and source-fidelity, never on "is this good." Quality lives in the schema.
 

@@ -1,8 +1,10 @@
-# Iteration-Workflow Interface — What the Instantiation Must Supply
+# Iteration-Workflow Interface — What the Pilot Must Supply
 
-The core does NOT prescribe HOW the deliverable is built — that is domain-specific and belongs to the
-instantiation (the pilot). The core declares the INTERFACE the build chain must satisfy; a pilot
-supplies the concrete chain. This keeps stage 04 domain-agnostic.
+The core does NOT prescribe HOW the deliverable is built — that is pilot-specific and belongs to the
+pilot. The core declares the INTERFACE the build chain must satisfy; a pilot supplies the concrete
+chain (a Claude Code default ships in `pilots/_TEMPLATE/iteration-workflow.md`). This keeps stage 04
+pilot-agnostic. The deliverable is a Claude Code system, and its ground truth is behavior: the chain
+must end in a live dry-run in a real Claude Code session, not a prose read-through.
 
 ## The interface (the contract any build chain must meet)
 - **Input:** the manifest at `manifest/` — pulled just-in-time, never loaded wholesale.
@@ -20,7 +22,7 @@ supplies the concrete chain. This keeps stage 04 domain-agnostic.
   schema-discovery iteration writes it there (see CONTRACT.md bootstrap rule).
 - The concrete source-fidelity check the evaluator enforces.
 
-A concrete instantiation supplies the chain — for example, compile the manifest into a linked
-intermediate artifact and then a final deliverable, source-pinned to the manifest. The concrete chain
-for any instantiation lives in `pilots/<name>/iteration-workflow.md` — a pilot detail; nothing in core
-may reference a specific one.
+A concrete pilot supplies the chain — for example, scaffold the target system's repo from the
+manifest, cut its law files, build its capabilities, then dry-run it live, source-pinned to the
+manifest. The concrete chain for any pilot lives in `pilots/<name>/iteration-workflow.md` — a pilot
+detail; nothing in core may reference a specific one.

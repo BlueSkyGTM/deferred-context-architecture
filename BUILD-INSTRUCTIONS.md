@@ -6,7 +6,8 @@
 > doing so silently invalidates the run. Route ALL material through vault/ → excavation → assay.
 
 You are Claude Code. You are building the **M2W** pipeline skeleton. M2W — Manifest to Workspace — is
-the name of the whole system: the transform it performs, manifest in, workspace out. Its governing
+the name of the whole system: the transform it performs, manifest in, workspace out. M2W builds
+Claude Code powered systems; a pilot supplies which one. Its governing
 discipline is deferral. You are an excellent
 builder. This document assumes you will interpret every instruction **literally**, so it is
 written literally. Where this spec is silent, do **nothing** — do not infer, do not improve, do

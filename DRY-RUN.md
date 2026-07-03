@@ -3,7 +3,7 @@
 The only way to know whether the open items work is to RUN the pipeline. A run is staged by FIDELITY
 and CONSEQUENCE: each pass carries more consequence than the last. This is M2W applied to its own
 validation — **defer consequence, not just execution.** This file defines the generic ladder; a
-concrete run (its domain, material, and grading) is an instantiation detail — see
+concrete run (its system, material, and grading) is a pilot detail — see
 `pilots/<name>/dry-run.md`.
 
 ## The two staging axes
@@ -29,7 +29,9 @@ Autonomy is earned across a LOOP, not granted in one run. A learned component pr
    advance.
 3. **Act / grade (blind)** — the component acts autonomously on material it has not seen, graded
    against a QUARANTINED answer key the human holds and the component does NOT. Still reversible.
-   PASS CONDITION: it handles blind material correctly with rare escalation to the bench.
+   PASS CONDITION: it handles blind material correctly with rare escalation to the bench. For this
+   engine's deliverables the act pass runs in a **live Claude Code session on reversible ground** (a
+   scratch clone / disposable session) — the concrete ladder stays in `pilots/<name>/dry-run.md`.
 
 Only after the blind grade holds does a run advance to LIVE, irreversible work — and even then it is
 not the component's first autonomous act, which was the entire point of the loop.
@@ -38,9 +40,9 @@ not the component's first autonomous act, which was the entire point of the loop
 A run produces evidence the spec deferred: whether conformance-by-shape holds (first tested when
 material flows the gates), whether the done-gate's substance-to-surface signal fires, whether the
 learned component discovers the boundary blind. These are BLOCKED-ON-RUN: waiting on evidence, not
-unfinished work. The instantiation lists its own.
+unfinished work. The pilot lists its own.
 
-## The instantiation supplies the concrete ladder
-An instantiation's concrete ladder — its watch/propose/act sub-runs, its blind-discovery experiment,
+## The pilot supplies the concrete ladder
+A pilot's concrete ladder — its watch/propose/act sub-runs, its blind-discovery experiment,
 its answer key, its live pass — lives in `pilots/<name>/dry-run.md`. Nothing in this core file names a
-specific domain; the pilot does.
+specific pilot; the pilot names itself.

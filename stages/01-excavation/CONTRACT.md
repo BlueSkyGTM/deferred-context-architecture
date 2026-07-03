@@ -14,7 +14,7 @@ is the contamination defense; the assets are a side effect of building the route
 
 ## Inputs
 - A located deposit (a source to extract from) and the bounded space to cover (what counts as "the
-  whole deposit"). These are domain-specific and supplied by the instantiation, NOT by core — see the
+  whole deposit"). These are system-specific and supplied by the pilot, NOT by core — see the
   pilot's deposit register and extractor-matching rule. On the pilot the human supplies the deposits.
 
 ## Process

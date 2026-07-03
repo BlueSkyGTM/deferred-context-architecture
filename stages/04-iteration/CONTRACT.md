@@ -11,16 +11,17 @@ conformance-gated, stopped by diminishing marginal utility.
   re-consumed; a later loop's iteration sees only the unsealed items (sealed material stays quotable by
   siblings but is never rebuilt).
 - The deliverable's design schema (the cookie-cutter that holds the quality judgment) — supplied by
-  the instantiation, or cut from logs of proven-good work.
-- The concrete build workflow — supplied by the instantiation (see the iteration-workflow interface
-  below). Core declares the interface; a pilot supplies the chain.
+  the pilot, or cut from logs of proven-good work.
+- The concrete build workflow — supplied by the pilot (see the iteration-workflow interface
+  below). Core declares the interface; a pilot supplies the chain (a Claude Code default ships in
+  `pilots/_TEMPLATE/iteration-workflow.md`).
 
 ## Design-schema bootstrap (the first-run rule — not a hole)
-The schema is cut from logs of proven-good work, so on a domain's FIRST run it does not exist yet.
+The schema is cut from logs of proven-good work, so on a pilot's FIRST run it does not exist yet.
 This is handled by an explicit rule, NOT by "flag and proceed":
 - **Iteration 1 runs in SCHEMA-DISCOVERY mode: conformance is explicitly UNGATED.** Its job is to
   produce the MVP and the logs from which the schema is cut. Record what the schema should capture.
-- **Where the schema lives:** the instantiation declares the schema's path (recommended:
+- **Where the schema lives:** the pilot declares the schema's path (recommended:
   `pilots/<name>/design-schema.md`). Schema-discovery WRITES the cut schema there; iterations 2+ READ
   it. Core names the slot; the pilot owns the file. If the path is undeclared, that is a stop-and-ask,
   not a guess.
@@ -78,7 +79,7 @@ visual form is a judgment, so it happens HERE, just-in-time, only on material th
   ```yaml
   ---
   id: <stable address>
-  kind: <deliverable kind, e.g. course | report | dataset>   # named by the instantiation
+  kind: <deliverable kind, e.g. skill-suite | agent | governed-repo>   # named by the pilot
   built_from: [<manifest item ids it consumed>]
   sealed: false   # flips true at the done-gate (ship)
   ---

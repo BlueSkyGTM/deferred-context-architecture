@@ -50,9 +50,10 @@ stage's exact behavior is owned by its `CONTRACT.md`; the deferral points by `pl
 
 ## The seam (the one mechanism worth naming here)
 
-The **seam** is the boundary defining what belongs to the domain in play. The operator supplies the
-domain; the core is agnostic. The seam is necessarily incomplete at the start and **accretes** — on a
-domain's first run the human teaches edges (every assay call logged with its reason), and the seam
+The **seam** is the boundary defining what belongs to the ONE system under build. The domain is
+fixed (Claude Code systems); the operator supplies the pilot — one specific system to build — and
+core is agnostic to *which*. The seam is necessarily incomplete at the start and **accretes** — on a
+pilot's first run the human teaches edges (every assay call logged with its reason), and the seam
 grows more complete each run. The highest-value training signal is the *looks-transferable-but-off-seam*
 case. The concrete seam shape lives in the pilot (`pilots/<name>/seam.md`); the term is defined in
 `platform/glossary.md`; the routing that uses it is `stages/02-assay/CONTRACT.md`.
@@ -86,7 +87,8 @@ and re-enters only on new operator deposits — progress marked by produced stat
 | Tool policy, the gstack fence, the model-tier policy | `platform/TOOLING.md` |
 | The gstack gate→play map | `platform/SKILLS.md` |
 | Authoritative term definitions | `platform/glossary.md` |
-| The instantiation (a supplied domain) | `pilots/<name>/` |
+| The pilot (one commissioned Claude Code system) | `pilots/<name>/` |
 
-The instantiation supplies the domain; core never names one. A domain's FIRST run is its seam's
+The pilot supplies the system; core never names a specific one — remove `pilots/` and the engine
+still stands, a standing factory for Claude Code systems. A pilot's FIRST run is its seam's
 training run, not a deployment. Tools are wired in a later pass, only the subset a run needs.

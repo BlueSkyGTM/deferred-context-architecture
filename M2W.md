@@ -3,8 +3,8 @@
 M2W is the name of this system: the transformation it performs. Raw material enters; a built
 workspace comes out. The arc runs from the **manifest** (catalogued, typed, sealed material) to the
 **workspace** (the built deliverable environment). The name is the function — manifest in, workspace
-out — and the system is agnostic to what domain the material belongs to. The operator supplies the
-domain; M2W supplies the transform.
+out — and the domain is fixed: M2W builds **Claude Code powered systems**. The operator supplies the
+target system (the pilot); M2W supplies the transform.
 
 ## The governing discipline: deferral
 

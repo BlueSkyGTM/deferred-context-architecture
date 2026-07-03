@@ -23,7 +23,7 @@ executing.
 contracts AUTHORIZE, and never a JUDGMENT a deferral point owns. Three kinds of choice the agent does
 make: (a) **deterministic checks** a contract spells out (did extraction reach its source? is every
 required frontmatter field present?); (b) following **operator-supplied inputs** (the located
-deposits, the seam edges, the design schema — supplied by the instantiation, not invented); (c)
+deposits, the seam edges, the design schema — supplied by the pilot, not invented); (c)
 **bench conditions** (when neither a clean match nor a clean fail, route to bench). What you must NOT
 do is supply a missing judgment yourself — seam-fit on an ambiguous piece, a quality call, a schema
 the logs have not yet produced. Those are deferred, not delegated to your guess.

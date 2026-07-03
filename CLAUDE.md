@@ -8,12 +8,16 @@ This file governs the machine; the machine produces the deliverable's own CLAUDE
 
 ## What M2W is, in one paragraph
 
-M2W — **Manifest to Workspace** — is the name of this system: the transform it performs, manifest in, workspace out. Its governing discipline is deferral (see M2W.md). It
-is a mining operation for turning raw, located material into finished deliverables while
+M2W — **Manifest to Workspace** — is the name of this system: the transform it performs, manifest in, workspace out. Its domain is fixed: M2W builds **Claude Code powered systems** — living
+systems that run on the Claude Code agent (skills, agents, hooks, MCP wiring, CLAUDE.md-governed
+repos) and keep working after they ship. Its governing discipline is deferral (see M2W.md). It
+is a mining operation for turning raw, located material — existing repos, docs, transcripts, skill
+libraries — into a working Claude Code system while
 **withholding every evaluation and execution until acting is safe** — until the context is clean
 enough that committing will not contaminate the result. Raw material is excavated, assayed (sorted
 on-seam / off-seam / uncertain) only when it arrives, transported and catalogued into a manifest,
-then iterated into a deliverable that ships when another iteration would add nothing. The structure
+then iterated into a system that ships when another iteration would add nothing — validated live,
+in a real Claude Code session, not by reading its own prose. The structure
 is the system: routing files and contracts encode where work goes and what each stage must produce,
 so the pipeline runs without a human steering it — escalating to the human only what it genuinely
 cannot decide. Nothing is judged or run to prove itself; everything is deferred until needed.
@@ -27,19 +31,34 @@ A cold agent reads in THIS order. Any other file that states a "read first" defe
 4. `ARCHITECTURE.md` — the architecture OVERVIEW (the shape + why; the contracts and platform/ files are authoritative and own all detail).
 5. `stages/` in order: 01-excavation → 02-assay → 03-manifest → 04-iteration.
 6. For a BUILD pass only: `BUILD-INSTRUCTIONS.md` — what to build this pass + the hard DO-NOT list.
-7. For a RUN: the instantiation under `pilots/<name>/` (the operator's supplied domain).
+7. For a RUN: the pilot under `pilots/<name>/` (the operator's commissioned system).
 8. `meta-seams/` — auto-applied output standards (e.g. `writing.md`). Not opt-in: applied at
    iteration/conformance in every pilot, triggered by the deliverable's content (any writing or
    persuasion). See the "Meta-seams" section below.
 
-## Core vs instantiation (the operator supplies the domain)
+## Core vs pilot (the domain is fixed; the operator supplies the system)
 
-This file and everything under `platform/`, `stages/`, the holding folders, `manifest/`, and `logs/`
-is the **domain-agnostic core**. It never names a domain. A **pilot** under `pilots/` is one supplied
-domain (the current instantiations live there; core does not name them). The law of the boundary:
-**a pilot may reference core; core must never reference a specific pilot.** If a core file names a specific domain, tool, or
-deliverable shape, that is a leak — flag it to `logs/failures.md`. Deletion test: remove `pilots/` and
-the core must still stand. (This is ICM's one-way-reference and canonical-source discipline.)
+The domain is no longer a variable: M2W builds **Claude Code powered systems**, and core names
+Claude Code freely — the runtime, its artifact shapes (skills, agents, hooks, MCP config, a governed
+repo's own CLAUDE.md), and its toolchain are core vocabulary. What core must never name is a
+**specific pilot**: one commissioned system, its repo, its seam edges, its deliverable. A **pilot**
+under `pilots/` is one such system (pilots live in their own projects; only the `_TEMPLATE/`
+contract ships here). The law of the boundary: **a pilot may reference core; core must never
+reference a specific pilot.** If a core file names a particular system, customer, or deliverable
+instance, that is a leak — flag it to `logs/failures.md`. Deletion test: remove `pilots/` and the
+engine still stands — **a standing factory for Claude Code systems, fully lawful and tooled, waiting
+for its next commission.** (This is ICM's one-way-reference and canonical-source discipline,
+narrowed: the domain moved into core; the pilot boundary did not.)
+
+## What M2W is NOT for
+
+M2W builds systems that live and breathe — Claude Code systems that keep triggering, running, and
+iterating after they ship. It is NOT a content mill. Deterministic one-shot deliverables — an essay,
+a report, a landing page, any artifact with no operational afterlife — are off-seam by definition,
+and the engine's checks actively fight them: schema-discovery expects a first run that teaches, the
+fresh-context evaluator expects behavior to re-verify, the done-gate's substance-vs-surface signal
+expects live behavior to move between iterations, and source-pinning expects a manifest the system
+keeps answering to. Point one-shot work at a simpler tool; point M2W at a system.
 
 ## Before a run (the TOOL SCAN)
 
@@ -47,7 +66,7 @@ On SETUP, and before a RUN actually fires excavation, run the **Tool scan**. The
 form is one command — `bash bin/scan-tools.sh` — which detects every universal tool, prints
 PRESENT/MISSING/MISSING-ASK, regenerates `tool-status.md`, and exits non-zero if a REQUIRED tool is
 missing. (The protocol it implements is in `platform/TOOLING.md`; if a pilot is active, also scan the
-pilot's domain manifest `pilots/<name>/tooling.md`.) It installs nothing on its own and never guesses
+pilot's tooling manifest `pilots/<name>/tooling.md`.) It installs nothing on its own and never guesses
 an install — it FLAGS `MISSING-ASK` for the human. A missing REQUIRED tool is a blocker: stop and
 report. `tool-status.md` is per-machine and gitignored, so a fresh clone has NO stale status — the
 first scan is what tips the model off about what to install. This is why a cold session on any clone
@@ -106,7 +125,7 @@ EXCAVATION  →  ASSAY/INTAKE  →  TRANSPORT/MANIFEST  →  ITERATION  →  (SH
   (`index.md` cargo list + `items/`). See its `CONTRACT.md` and `frontmatter-schema.md`.
 - **Iteration** (`stages/04-iteration/`) — build the deliverable from the manifest, MVP-first,
   stopping when marginal utility of another pass drops below its cost. The concrete build chain is
-  supplied by the instantiation, not core. Back half of MWP. See its `CONTRACT.md`,
+  supplied by the pilot, not core. Back half of MWP. See its `CONTRACT.md`,
   `iteration-workflow.md`, `evaluator-rubric.md`, and `done-gate.md`.
 
 ## The non-negotiables (full text in platform/PRINCIPLES.md)
@@ -150,11 +169,11 @@ Quality lives in the shape of the design schema, not in a gate's opinion. Three 
 
 ## Meta-seams (auto-applied output standards)
 
-`meta-seams/` holds cross-domain standards for *how* a deliverable is made — applied in **every
+`meta-seams/` holds cross-pilot standards for *how* a deliverable is made — applied in **every
 pilot, not opt-in**, triggered by the content itself rather than by a pilot naming them.
 **`meta-seams/writing.md` is binding on all prose: the moment a deliverable involves writing or
 persuasion, its output must meet that bar** — apply it as part of iteration conformance,
-automatically, in every project. A meta-seam is domain-agnostic and additive (remove `meta-seams/`
+automatically, in every project. A meta-seam is pilot-agnostic and additive (remove `meta-seams/`
 and the engine still runs, just without the standard). See `meta-seams/CONTEXT.md`.
 
 ## Your standing orders

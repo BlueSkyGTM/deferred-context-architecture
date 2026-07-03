@@ -12,12 +12,17 @@ a term you need, BENCH the question and stop — do not guess a definition.
 - **ICM** — Interpreted Context Methodology. MWP's lineage. EXCLUDED from this build. Do not use.
 - **ECA** — Earned Contract Architecture. RETIRED earlier name for the system; superseded by M2W
   (which emphasizes deferral/contamination-avoidance over performance-at-gates). Do not use.
+- **Claude Code system** — the fixed domain of this engine: a system whose runtime is the Claude
+  Code agent — skills, subagent definitions, hooks, MCP wiring, a CLAUDE.md-governed repo, or a
+  combination — and that keeps operating after it ships (living, not one-shot). Every pilot builds
+  exactly one.
 - **Material / ore** — raw excavated content before it has been assayed.
 - **Excavation** — stage 01. Mining raw material from located deposits into vault/. No judgment.
 - **Assay / Intake** — stage 02. The three-way seam sort: cart / tailings / bench.
-- **Seam** — the boundary defining what belongs to the domain in play. Operator-supplied; the system
-  is domain-agnostic. Necessarily incomplete; accretes over runs via logged human calls. The concrete
-  domain shape and near-miss edges are an instantiation detail (`pilots/<name>/seam.md`), never core.
+- **Seam** — the boundary defining what belongs to the ONE system under build. Operator-supplied per
+  pilot; the engine is pilot-agnostic — the domain itself (Claude Code systems) is fixed and core.
+  Necessarily incomplete; accretes over runs via logged human calls. The concrete shape and near-miss
+  edges are a pilot detail (`pilots/<name>/seam.md`), never core.
 - **Cart** — on-seam material that earned transport. Lands in carts/.
 - **Tailings** — off-seam material. Good but wrong seam. Tailed WITH a reason. Reviewable, never
   deleted. Lands in tailings/.
@@ -50,8 +55,8 @@ a term you need, BENCH the question and stop — do not guess a definition.
 - **Evaluator / Accept-Revise-Block** — the independent checker (worker != checker). Three verdicts:
   accept (conforms, advances), revise (fixable, re-run), block (wrong, escalate). Conformance + source-
   fidelity, never quality.
-- **Pilot vocabulary** — a domain's own terms (the name of its concrete iteration chain, the labels
-  for its validation sub-runs, its deliverable shape) are defined by the instantiation, NOT core. See
+- **Pilot vocabulary** — a pilot's own terms (the name of its concrete iteration chain, the labels
+  for its validation sub-runs, its system's deliverable shape) are defined by the pilot, NOT core. See
   `pilots/<name>/`. Core declares only the generic interfaces: the iteration-workflow interface
   (`stages/04-iteration/iteration-workflow.md`) and the validation ladder (`DRY-RUN.md`).
 - **context-compressor / memory-manager** — standing skills (State/Memory harness). Write durable
@@ -79,3 +84,6 @@ a term you need, BENCH the question and stop — do not guess a definition.
 - **ECA (retired → D2E, then M2W)** — earlier name emphasizing work "proving itself at gates"
   (performance framing). Retired because the system withholds commitment until context is clean, not
   to make work prove its worth.
+- **Domain-agnostic core (retired 2026-07-03)** — until this date, core law forbade naming any
+  domain. Narrowed: the domain is fixed (Claude Code systems) and core names it freely; core still
+  never names a specific pilot. Old "domain-agnostic" phrasing found in history is lineage, not law.
