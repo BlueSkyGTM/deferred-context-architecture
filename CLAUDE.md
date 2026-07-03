@@ -30,7 +30,8 @@ A cold agent reads in THIS order. Any other file that states a "read first" defe
 3. `M2W.md` — the governing discipline, explained.
 4. `ARCHITECTURE.md` — the architecture OVERVIEW (the shape + why; the contracts and platform/ files are authoritative and own all detail).
 5. `stages/` in order: 01-excavation → 02-assay → 03-manifest → 04-iteration.
-6. For a BUILD pass only: `BUILD-INSTRUCTIONS.md` — what to build this pass + the hard DO-NOT list.
+6. *(historical — skeleton build complete)* `BUILD-INSTRUCTIONS.md` — the completed skeleton-build
+   spec + its DO-NOT list; read only if re-entering a build pass.
 7. For a RUN: the pilot under `pilots/<name>/` (the operator's commissioned system).
 8. `meta-seams/` — auto-applied output standards (e.g. `writing.md`). Not opt-in: applied at
    iteration/conformance in every pilot, triggered by the deliverable's content (any writing or

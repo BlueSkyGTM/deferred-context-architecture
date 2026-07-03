@@ -1,16 +1,15 @@
 # SETUP.md — How to Start M2W (invocation + pre-load rules)
 
-> The canonical READ ORDER (the law) lives in CLAUDE.md. This file is not the law; it carries the
-> kickoff prompt and the one pre-load rule, so they live in the repo, not in your head.
-
-This file exists so the invocation and the pre-load rules live IN the repo, not in your head.
+> The canonical READ ORDER lives in CLAUDE.md; the Tool scan lives in CLAUDE.md "Before a run"
+> (`bash bin/scan-tools.sh`, protocol in platform/TOOLING.md). This file is not the law; it carries
+> the kickoff prompt and the one pre-load rule, so they live in the repo, not in your head.
 
 ## The kickoff prompt (paste this into Claude Code, pointed at this repo)
 
-> Two entry modes. A **BUILD pass** builds/verifies the skeleton — use the kickoff prompt below (it
-> routes to BUILD-INSTRUCTIONS.md, the build-pass DO-NOT list). A **RUN** assumes the skeleton already
-> stands — do NOT use BUILD-INSTRUCTIONS; instead follow CLAUDE.md's canonical read order, run the Tool
-> scan, and work the active pilot under `pilots/<name>/`. The prompt below is the BUILD-pass one.
+> Two entry modes. A **RUN** (the normal case — the skeleton stands): follow CLAUDE.md's canonical
+> read order, run the Tool scan, and work the active pilot under `pilots/<name>/`. A **BUILD pass**
+> (historical — the skeleton build is complete; only if re-entering a build) uses the prompt below,
+> which routes to BUILD-INSTRUCTIONS.md and its DO-NOT list.
 
 ```
 Read CLAUDE.md first. Then read platform/CONTEXT.md and every file it lists. Then read
@@ -19,15 +18,8 @@ anything not specified, and do not skip the read-order. If anything is ambiguous
 do not guess. Confirm you have read all of it before taking any action.
 ```
 
-The first act is READING, never building. CLAUDE.md routes to the law layer; platform/CONTEXT.md
-lists all eight law files (PRINCIPLES, MWP, GATES, LOGS, TOOLING, SKILLS, glossary, + itself);
-BUILD-INSTRUCTIONS.md carries the hard DO-NOT list. There is no magic phrase — the discipline is
-that reading comes first and improvisation is forbidden.
-
-After reading, run the **Tool scan** (CLAUDE.md "Before a run"; protocol in platform/TOOLING.md)
-against the active pilot's manifest. It tells you — on this machine, right now — what is installed,
-installs the safe missing ones, and flags the rest for you. This is how a cold session knows what to
-set up without failing mid-run.
+The first act is READING, never building. There is no magic phrase — the discipline is that reading
+comes first and improvisation is forbidden.
 
 ## Pre-loading material (IMPORTANT — one door only)
 

@@ -59,6 +59,13 @@ a term you need, BENCH the question and stop — do not guess a definition.
   for its validation sub-runs, its system's deliverable shape) are defined by the pilot, NOT core. See
   `pilots/<name>/`. Core declares only the generic interfaces: the iteration-workflow interface
   (`stages/04-iteration/iteration-workflow.md`) and the validation ladder (`DRY-RUN.md`).
+- **Fresh-context evaluator** — the conformance checker run as a separate pass with the build
+  context cleared (worker ≠ checker, same single agent). Defined in
+  `stages/04-iteration/evaluator-rubric.md`.
+- **Contamination defense** — why deferral exists: a context that admits only what is needed cannot
+  be polluted by work that was never needed. Canonical: `M2W.md`, `platform/PRINCIPLES.md` #2.
+- **Five-layer routing** — MWP's routing structure (task routing, context folders, contracts,
+  one-way refs, canonical sources). Canonical: `platform/MWP.md`.
 - **context-compressor / memory-manager** — standing skills (State/Memory harness). Write durable
   decisions to READABLE files (canonical), then optionally index into a retrieval store (projection).
   Never blackbox-only.

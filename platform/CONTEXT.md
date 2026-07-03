@@ -10,3 +10,5 @@ or running anything:
   manifest, and the Tool scan protocol.
 - SKILLS.md     — standing skills (context-compressor, memory-manager) and the readable-file rule.
 - glossary.md   — authoritative term definitions. If a term is ambiguous, this wins. If silent, bench.
+
+Companion (not law): TOOLING-NOTES.md — machine-specific install/troubleshooting for manifest tools.

@@ -31,3 +31,23 @@ intent), how it was tested, and what breaks if it is reverted.
   template defaults plus the claude-CLI / skill-auditor scan rows. The no-auto-loop law, single-agent
   law, ICM exclusion, deferral discipline, glass-box, and logging mandates were deliberately left
   verbatim — reverting this entry does not touch them because this change never did.
+
+## 2026-07-03 — Hygiene pass (post-pivot adversarial audit)
+- what: (1) machine-specific gbrain install/troubleshooting (~30 lines) extracted from
+  platform/TOOLING.md into NEW platform/TOOLING-NOTES.md (companion, not law; pointer left in place;
+  platform/CONTEXT.md names it); (2) BUILD-INSTRUCTIONS.md marked COMPLETE (status banner; CLAUDE.md
+  read-order item 6 marked historical); (3) SETUP.md slimmed — restated read-order/tool-scan prose
+  cut to pointers; kickoff prompt and the vault one-door rule kept verbatim, RUN mode made primary;
+  (4) glossary gains fresh-context evaluator / contamination defense / five-layer routing pointer
+  entries; (5) local-only: deprecated .claude/skills/save-memory removed (superseded by save).
+- why: an adversarial cold-read audit judged the repo designed-not-accumulated (~92% load-bearing)
+  with three hygiene debts: policy mixed with machine scaffolding, a completed pass still in the
+  mandatory read order, and a 62%-restated SETUP.md. Audit verdicts also recorded: naming stays
+  (mining vocab, "pilot", M2W); the CLAUDE.md↔README scope-guard duplication is deliberate (READMEs
+  are standalone).
+- tested: `bash bin/scan-tools.sh` exits 0 (manifest rows untouched); grep for the gbrain
+  machine-note strings hits only TOOLING-NOTES.md; read-order and BUILD-INSTRUCTIONS self-reference
+  agree. Does NOT alter anything in the 2026-07-03 pivot entry above.
+- revert-risk: re-inlining the machine notes re-mixes law with scaffolding; un-marking
+  BUILD-INSTRUCTIONS puts a completed pass back in the mandatory read path; restoring SETUP.md's
+  restatements re-creates the drift surface the canonical-source law forbids.

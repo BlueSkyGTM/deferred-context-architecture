@@ -26,3 +26,12 @@ losing the thread across long runs.
 - broken: nothing known.
 - next: commission the first pilot — copy `pilots/_TEMPLATE/` into a system's own project, name the
   system, and run the seam's training run (watch → propose → act).
+
+## 2026-07-03 — session 1 addendum (hygiene pass)
+- verified: adversarial audit verdict — designed-not-accumulated, ~92% load-bearing; scan still
+  exits 0 after the cleanup.
+- changed: TOOLING.md machine notes → TOOLING-NOTES.md; BUILD-INSTRUCTIONS marked complete/historical;
+  SETUP.md slimmed to kickoff prompt + vault rule; glossary pointer entries added (see changelog
+  hygiene-pass entry, tested).
+- broken: nothing known.
+- next: unchanged — commission the first pilot.

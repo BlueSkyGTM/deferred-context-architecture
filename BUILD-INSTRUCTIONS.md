@@ -1,6 +1,12 @@
 # BUILD-INSTRUCTIONS.md — READ IN FULL BEFORE TOUCHING ANYTHING (build pass)
 
-> Read order: the canonical order is in `CLAUDE.md`; follow it. This file is step 6 of that order — the DO-NOT list for a BUILD pass —
+> **STATUS: the skeleton build this file specified is COMPLETE (verified 2026-07-03; see
+> changelog/CHANGELOG.md). Historical spec — consult only to understand why the skeleton is shaped
+> this way, or if re-entering a build pass. The hard DO-NOT list below remains binding on any future
+> build pass.**
+
+> Read order: the canonical order is in `CLAUDE.md`; follow it. This file is step 6 of that order
+> (historical — read only for a build pass) — the DO-NOT list for a BUILD pass —
 > not the entry point. SETUP.md carries the kickoff prompt and the ONE pre-load rule: vault/ is the
 > only door; never place material directly into carts/, tailings/, bench/, manifest/, or platform/ —
 > doing so silently invalidates the run. Route ALL material through vault/ → excavation → assay.
