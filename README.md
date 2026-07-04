@@ -7,10 +7,14 @@ I want to learn AI systems engineering, and the courses that teach it well run $
 couldn't spend that. So I set myself a different problem: could I use Claude Code, an AI coding agent,
 to help me build the learning material myself, on subjects I am not yet an expert in?
 
-The honest first answer was no. My first attempt produced a pile of polished material that was quietly
-mediocre, and worse, I couldn't tell it was mediocre from inside the system that made it. I've kept
-that failure in this repo instead of hiding it, because working out *why* it happened is what actually
-taught me something worth keeping. This is the second attempt, built around that lesson.
+The honest first answers were no. It took four attempts. The ones before the last failed the same way:
+I would build one large system that produced a pile of polished material I could not tell was mediocre
+from inside the system that made it. The breakthrough on the fourth was structural, not a better prompt
+or a smarter model. Instead of one system building one big thing, I built many independent parts over
+one shared source. That structure is what finally shipped a real result,
+[seven finished technical books](https://ai-systems-scriptorium.vercel.app/), and it is what this repo
+names and generalizes as DCA. I've kept the failures in this repo instead of hiding them, because
+working out *why* they happened is what actually taught me something worth keeping.
 
 **Independent parts, one shared source of truth, a verified join between them.** DCA builds *silos*,
 self-contained workspaces that each produce one part of a larger system, over a single shared vault of
@@ -31,9 +35,9 @@ flowchart TD
 
 **Architecture is not proof.** A specification of how a system should behave is not evidence that it
 does. The only evidence is a run: something built, something that failed or held, recorded so the next
-person can check it. Most of the work in this repo, across both versions, was learning that the hard
-way: building elaborate structure, mistaking its elegance for a result, and eventually building
-something small enough to actually run and watch fail or hold.
+person can check it. Most of the work across those four attempts was learning that the hard way:
+building elaborate structure, mistaking its elegance for a result, and eventually building something
+small enough to actually run and watch fail or hold.
 
 The working claim now: a system with many moving parts stays sound when (1) its parts are built
 independently, so a change in one cannot corrupt another, and (2) they align through a shared,
@@ -94,9 +98,9 @@ always working from something real, not a blank page.
 configuration. The folder structure itself carries the instructions: one agent reads the files in
 order, top to bottom, with no orchestration framework underneath. You configure a silo once, then run
 it per deliverable, so an agent only ever loads the files a given step needs, not the whole workspace.
-The pattern is borrowed, not invented (see [References](#references)), and it already worked once
-before this repo existed: [seven finished technical books](https://ai-systems-scriptorium.vercel.app/),
-built in any order, none blocking another, no shared pipeline between them.
+The single-silo idea is borrowed, not invented (see [References](#references)); what DCA adds is the
+shared well beneath many of them, which is the piece that made the seven-book project above hold
+together instead of drifting into seven islands.
 
 **Independence:** a silo reads the well, the shared law, and the shared writing standard. It never
 reads another silo. This is what makes "any order, in parallel" true rather than aspirational: a silo
@@ -145,22 +149,34 @@ falsification holds: 2 violating records injected, all rejected
 PASS: two independent silos, one shared keystone, parts fit at the join, and the check can fail.
 ```
 
-**Why silos, not one generated workspace:** a typical workspace generator, used the ordinary way once
-per system, produces a single shape, decided at setup, and holds every part of what you're building to
-it. That works when the system really is one thing. It breaks the moment it isn't: a product's API,
-its docs, and its onboarding flow don't need the same stages or the same voice, and forcing them
-through one template is the same failure as M2W's hoarding in a different costume: one shape, applied
-uniformly, regardless of whether it fits the part. DCA doesn't generate one workspace. It generates as
-many as the system has real parts, each shaped for what it actually is (its own stage count, its own
-build chain, its own setup), and lets them stay one system not by sharing a shape, but by sharing a
-well and, wherever two parts must actually interoperate, a keystone. The shape is free to vary per
-part. The join is not.
-
 Independence guarantees parts don't corrupt each other. The keystone is what additionally guarantees
 two parts that must interoperate actually do, checked by running them, not assumed from the plan. That
 gap is one M2W never had to face, because M2W only ever built one thing. The keystone proof above is a
-small answer to one instance of it, not a finished system, but it is the first thing in either version
-of this repo with an actual operating history instead of a specification.
+small answer to one instance of it, not a finished system, but it is the first thing in this project
+with an actual operating history instead of a specification.
+
+## Why This Structure, And Not The Obvious Alternatives
+
+The scriptorium is seven books, in different domains, built from one large body of source over many
+sessions. Three things break at that size, and DCA is the structure that handles all three at once.
+The two obvious alternatives each handle some and miss the rest.
+
+| The problem at scale | Plain ICM, used once per system | A fresh Claude Code plan | DCA |
+|---|---|---|---|
+| The source is bigger than any one part needs | one workspace loads its source per run; a large corpus overflows the context or gets sampled thin | nowhere durable to hold it: you paste a sliver and it invents the rest | the shared well; each part draws only its slice, on demand |
+| Many parts, built over time, that must not corrupt each other | one shape forced on all of them, or separate workspaces that each re-hold the source and drift | one long session holds every part in one context; each new session re-plans from scratch | independent silos over one shared well: isolated and shared at the same time |
+| Telling a bad part from a good one | the mediocrity is smeared across the whole output and invisible from inside | the same: a clean plan can still produce a mediocre result you only see at the end | each part is judged on its own; a bad part fails in its own silo, cheaply and visibly |
+
+Plain ICM makes you choose: a shared source means one workspace and one shape for everything; keeping
+the parts independent means separate workspaces that each re-hold the source and drift apart. A fresh
+plan gives you neither a durable structure across the many sessions the work spans nor any way to hold
+a source that large. DCA keeps the parts independent and the source shared at the same time, with
+deferral so the size never drowns a single part, and, where two parts must interoperate, a keystone
+that makes the fit checkable by running it. The shape is free to vary per part; the join is not.
+
+The honest version: the fourth attempt did not work because the agent got better at writing. It worked
+because the structure finally made a bad part show itself, in its own silo, instead of hiding inside
+one big system, which was the exact blindness that sank the first three.
 
 ## What We Hope To Accomplish
 
@@ -168,8 +184,8 @@ Build systems with several real, interoperating parts, not a single deliverable,
 be built, changed, or replaced on its own schedule, and where "do the parts still fit" is a question
 the repo can answer by running something, not by re-reading the plan. The keystone mechanism is the
 first candidate answer to that question. It gets promoted from proof into standing convention only
-after it holds on a second, harder case: earned, not assumed, which is the discipline the first
-version of this repo talked about and did not consistently practice.
+after it holds on a second, harder case: earned, not assumed, which is the discipline the earlier
+attempts talked about and did not consistently practice.
 
 What is not solved, stated plainly: independence and a verified join tell you the parts don't break
 each other and do fit together. They tell you nothing about whether any one part is worth building.
@@ -193,5 +209,5 @@ The silo, a self-contained workspace whose folder structure is the architecture,
 Jake Van Clief: one agent reading files in order instead of a multi-agent framework. DCA adds the
 shared well and the keystone on top of it and does not modify ICM.
 
-Prior work: the [seven-book scriptorium](https://ai-systems-scriptorium.vercel.app/), where the
-one-workspace-per-part pattern first ran.
+Prior work: the [seven-book scriptorium](https://ai-systems-scriptorium.vercel.app/), the first real
+run of this structure and the result that made the fourth attempt work.
