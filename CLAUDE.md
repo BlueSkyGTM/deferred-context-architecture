@@ -1,184 +1,61 @@
-# CLAUDE.md — M2W Pipeline Operating Manual (THE LAW)
+# CLAUDE.md — DCA Operating Manual (THE LAW)
 
-This file is the law. It is present from the first moment and is never earned. It orients a cold
-agent — you — to the pipeline itself: how the stages run, where the deferral points are, what you
-are permitted and forbidden to do. It is not the *product's* instruction set. The product's
-instruction set is **produced** by the pipeline, downstream, as an output. Do not confuse the two.
-This file governs the machine; the machine produces the deliverable's own CLAUDE.md later.
+This file orients a cold agent to **DCA — Deferred Context Architecture** (formerly M2W). It governs
+the *machine*: how the well and the silos relate, what you may and may not do. It is not any silo's
+own instruction set — a silo produces that for itself, downstream, at `setup`. Do not confuse the two.
 
-## What M2W is, in one paragraph
+## What DCA is, in one paragraph
 
-M2W — **Manifest to Workspace** — is the name of this system: the transform it performs, manifest in, workspace out. Its domain is fixed: M2W builds **Claude Code powered systems** — living
-systems that run on the Claude Code agent (skills, agents, hooks, MCP wiring, CLAUDE.md-governed
-repos) and keep working after they ship. Its governing discipline is deferral (see M2W.md). It
-is a mining operation for turning raw, located material — existing repos, docs, transcripts, skill
-libraries — into a working Claude Code system while
-**withholding every evaluation and execution until acting is safe** — until the context is clean
-enough that committing will not contaminate the result. Raw material is excavated, assayed (sorted
-on-seam / off-seam / uncertain) only when it arrives, transported and catalogued into a manifest,
-then iterated into a system that ships when another iteration would add nothing — validated live,
-in a real Claude Code session, not by reading its own prose. The structure
-is the system: routing files and contracts encode where work goes and what each stage must produce,
-so the pipeline runs without a human steering it — escalating to the human only what it genuinely
-cannot decide. Nothing is judged or run to prove itself; everything is deferred until needed.
+DCA builds **silos** — independent pillars, each a self-contained ICM workspace that produces one
+kind of deliverable — over **one shared well** (`vault/`). Vanilla ICM configures a factory and feeds
+it source material per run; DCA's move is to pool all raw material in one well and let every silo
+**draw** the thin slice it needs, on demand. The governing discipline is **deferral**: pull context
+from the well only when a stage needs it, nothing speculative — which is exactly why a silo (and the
+ICM inside it) stops inventing on the spot, because it is always fed real drawn assets. Silos are
+independent: built in any order, in parallel, none waiting on another. The structure is the system —
+folder layout carries the architecture; prose is minimal.
 
-## Canonical read order (this is the one; other files defer to it)
+## Canonical read order
 
-A cold agent reads in THIS order. Any other file that states a "read first" defers to this list:
-1. `CLAUDE.md` (this file) — the law / orientation. The entry point.
-2. `platform/CONTEXT.md` and every law file it lists (PRINCIPLES, MWP, GATES, LOGS, TOOLING, SKILLS, glossary).
-3. `M2W.md` — the governing discipline, explained.
-4. `ARCHITECTURE.md` — the architecture OVERVIEW (the shape + why; the contracts and platform/ files are authoritative and own all detail).
-5. `stages/` in order: 01-excavation → 02-assay → 03-manifest → 04-iteration.
-6. *(historical — skeleton build complete)* `BUILD-INSTRUCTIONS.md` — the completed skeleton-build
-   spec + its DO-NOT list; read only if re-entering a build pass.
-7. For a RUN: the pilot under `pilots/<name>/` (the operator's commissioned system).
-8. `meta-seams/` — auto-applied output standards (e.g. `writing.md`). Not opt-in: applied at
-   iteration/conformance in every pilot, triggered by the deliverable's content (any writing or
-   persuasion). See the "Meta-seams" section below.
+1. `CLAUDE.md` (this file) — the law / orientation.
+2. `_core/CONVENTIONS.md` — how a silo is built (five-layer routing + the stage contract + the laws).
+3. `_core/deferral.md` — the Deferred-Context discipline.
+4. `_core/well-contract.md` — the shared well and the well↔silo handoff.
+5. `silos/CONTEXT.md` — how to spin up a pillar.
+6. For a specific silo: `silos/<name>/CLAUDE.md`.
 
-## Core vs pilot (the domain is fixed; the operator supplies the system)
-
-The domain is no longer a variable: M2W builds **Claude Code powered systems**, and core names
-Claude Code freely — the runtime, its artifact shapes (skills, agents, hooks, MCP config, a governed
-repo's own CLAUDE.md), and its toolchain are core vocabulary. What core must never name is a
-**specific pilot**: one commissioned system, its repo, its seam edges, its deliverable. A **pilot**
-under `pilots/` is one such system (pilots live in their own projects; only the `_TEMPLATE/`
-contract ships here). The law of the boundary: **a pilot may reference core; core must never
-reference a specific pilot.** If a core file names a particular system, customer, or deliverable
-instance, that is a leak — flag it to `logs/failures.md`. Deletion test: remove `pilots/` and the
-engine still stands — **a standing factory for Claude Code systems, fully lawful and tooled, waiting
-for its next commission.** (This is ICM's one-way-reference and canonical-source discipline,
-narrowed: the domain moved into core; the pilot boundary did not.)
-
-## What M2W is NOT for
-
-M2W builds systems that live and breathe — Claude Code systems that keep triggering, running, and
-iterating after they ship. It is NOT a content mill. Deterministic one-shot deliverables — an essay,
-a report, a landing page, any artifact with no operational afterlife — are off-seam by definition,
-and the engine's checks actively fight them: schema-discovery expects a first run that teaches, the
-fresh-context evaluator expects behavior to re-verify, the done-gate's substance-vs-surface signal
-expects live behavior to move between iterations, and source-pinning expects a manifest the system
-keeps answering to. Point one-shot work at a simpler tool; point M2W at a system.
-
-## Before a run (the TOOL SCAN)
-
-On SETUP, and before a RUN actually fires excavation, run the **Tool scan**. The concrete, runnable
-form is one command — `bash bin/scan-tools.sh` — which detects every universal tool, prints
-PRESENT/MISSING/MISSING-ASK, regenerates `tool-status.md`, and exits non-zero if a REQUIRED tool is
-missing. (The protocol it implements is in `platform/TOOLING.md`; if a pilot is active, also scan the
-pilot's tooling manifest `pilots/<name>/tooling.md`.) It installs nothing on its own and never guesses
-an install — it FLAGS `MISSING-ASK` for the human. A missing REQUIRED tool is a blocker: stop and
-report. `tool-status.md` is per-machine and gitignored, so a fresh clone has NO stale status — the
-first scan is what tips the model off about what to install. This is why a cold session on any clone
-knows immediately what is missing.
-
-## Before you change the machine (the REVERT GUARD)
-
-If the user asks you to **modify** the repo, **improve/refactor** it, or **undo/revert** a change,
-read `changelog/CHANGELOG.md` FIRST. Hard rule: **do not revert or overwrite a change whose entry is
-marked `tested:` without surfacing it to the human** — name the entry, what it was designed to do, and
-how it was validated, then let the human decide. A tested change that looks odd is usually the fix;
-the oddness is load-bearing. See `changelog/CONTEXT.md`.
-
-## Session memory (gbrain) — optional, only if configured
-
-A single M2W run spans many sessions between a manifest and a finished workspace. If gbrain is
-configured on this machine (`~/.gbrain/config.json` present), use it to bridge them so a cold
-session resumes instead of re-deriving:
-
-- **At session start** — query it to pick up where the last session stopped: `gbrain query
-  "<what I'm resuming>"` (or the `mcp__gbrain__recall` / `search` tools). Recovers prior
-  decisions, gotchas, and open threads.
-- **At session end, and on any durable decision** — push what a cold future agent would need:
-  `gbrain put <slug>`. The next session inherits it.
-
-gbrain is a **retrieval projection, not the source of truth** — the filesystem stays canonical
-(glass-box, non-negotiable #4). A gbrain miss must never block work: fall back to the files. If
-gbrain is not configured, skip this section entirely; it is never required. Detail in
-`platform/TOOLING.md`.
-
-## The overarching law: M2W
-
-See `M2W.md` and `platform/PRINCIPLES.md`. The short form: defer every evaluation, execution, and
-judgment until the moment it is actually required. A stage does not run because it exists; it runs
-because the stage before it produced something that **requests** it. This is why an empty folder is
-a valid state, why nothing is loaded into context speculatively, why the pipeline can stop cleanly
-at any point, and — most importantly — why context cannot be contaminated by work that was never
-needed. Deferral is the contamination defense.
-
-## The stages (mining-ops model)
+## The shape
 
 ```
-EXCAVATION  →  ASSAY/INTAKE  →  TRANSPORT/MANIFEST  →  ITERATION  →  (SHIP)
-  mine          three-way sort      catalogue +           build
-  raw material  cart/tailings/      frontmatter,          MVP-first,
-                bench               address               done-gate
+DCA/
+├── vault/     THE WELL — one shared source pool; enters by extraction or placement; catalogued in account.md
+├── silos/     THE PILLARS — each a self-contained ICM workspace; draws from the well; built in any order
+├── _core/     the shared law + the silo template (_core/templates/silo/)
+└── meta-seams/ shared output standards (writing.md) every silo clears
 ```
 
-- **Excavation** (`stages/01-excavation/`) — pull raw material from located deposits into `vault/`.
-  No judgment (deferred). Just extraction. Tooling-checks only. See its `CONTRACT.md`.
-- **Assay / Intake** (`stages/02-assay/`) — the seam deferral point. Sort each piece three ways
-  only when it arrives: **cart** (on-seam → `carts/`), **tailings** (off-seam → `tailings/`,
-  reviewable), **bench** (uncertain → `bench/`, escalate). Front half of MWP. See its `CONTRACT.md`.
-- **Transport / Manifest** (`stages/03-manifest/`) — load carted material, catalogue it, stamp it
-  with frontmatter (clean categorical data, born here), address it. The manifest lives in `manifest/`
-  (`index.md` cargo list + `items/`). See its `CONTRACT.md` and `frontmatter-schema.md`.
-- **Iteration** (`stages/04-iteration/`) — build the deliverable from the manifest, MVP-first,
-  stopping when marginal utility of another pass drops below its cost. The concrete build chain is
-  supplied by the pilot, not core. Back half of MWP. See its `CONTRACT.md`,
-  `iteration-workflow.md`, `evaluator-rubric.md`, and `done-gate.md`.
+## The non-negotiables
 
-## The non-negotiables (full text in platform/PRINCIPLES.md)
+1. **Structure is the system.** The folder layout carries the architecture. Keep prose thin; a rule
+   has one home (`_core/`), everything else points to it. Never restate.
+2. **Deferral.** Pull from the well only what a stage needs, when it needs it. Nothing speculative.
+   Deferral is the contamination defense. (`_core/deferral.md`)
+3. **Silos are independent.** One-way references only: silo → well / `_core` / `meta-seams`. Never
+   silo → silo; never well → silo. This is what lets any pillar be built in any order.
+4. **Single-agent, glass-box.** One agent runs one silo's path top to bottom; no subagents. All state
+   is on disk and inspectable — if you must remember, write it down.
+5. **Configure the factory, not the product.** A silo is set up once (voice, design, deliverable
+   type); each run produces a new deliverable from that config + a fresh draw.
+6. **Faithful to ICM, do not fix it.** The silo is a native ICM workspace. We feed ICM real assets
+   (the well); we do not modify ICM. Reference: `RinDig/Interpreted-Context-Methdology`.
 
-1. **You do not think; you execute.** Judgment lives in the files. When uncertain, bench it or log
-   it and stop. You never guess.
-2. **Defer, do not commit.** Nothing is evaluated, executed, or loaded into context until it is
-   needed. Deferral keeps the context clean — it is the contamination defense, not a delay tactic.
-3. **Earned, not given.** The repo starts empty except this law. Every piece of content earned its
-   place by clearing a deferral point. Nothing is entitled to exist.
-4. **Glass-box.** State is the filesystem. No hidden state. If you must remember, write it down.
-5. **Single-agent (not single-model).** No subagents, no parallel orchestration. One agent, one path,
-   depth-first — but that one agent SWITCHES ITS OWN MODEL TIER to fit the work (light/Haiku for
-   mechanical stages, top/Opus where judgment lives, mid/Sonnet between), self-directed, never the
-   operator's to drive. Switching tier is not multi-agent. See `platform/TOOLING.md` model-tier policy.
+## Before you change the machine (REVERT GUARD)
 
-## The deferral points (gates) — full text in platform/GATES.md
+If asked to modify, refactor, or revert the repo, read `changelog/CHANGELOG.md` FIRST. Do not revert
+or overwrite a change whose entry is marked `tested:` without surfacing it to the human.
 
-A gate is a **deferral point**, not a performance test. It does not ask "is this good." It asks
-"is the context clean enough to commit the next step, and does the output conform to its shape."
-Quality lives in the shape of the design schema, not in a gate's opinion. Three kinds:
+## Standing orders
 
-- **Tooling checks** (excavation) — did the extraction reach and cover its bounded space.
-- **The assay** (intake) — three-way seam sort, evaluated only when material arrives. Three exits
-  by nature: cart, tailings, bench. The bench exit is how the pipeline runs without a human while
-  never committing to an uncertain call.
-- **Conformance + done-gate** (iteration) — did the deliverable conform to its design schema, and
-  has marginal utility dropped below cost (ship) or not (iterate).
-- **The loop boundary** (after ship) — starting another loop is a deferral point, NOT an auto-loop:
-  it fires only when the operator supplies new deposits, never on the engine's own initiative.
-  Re-entry is made safe by PRODUCED STATE (consumed/sealed flags + repo-unique ids), not a run
-  counter — progress is marked by production, not numbering. An engine-initiated auto-loop was
-  considered and rejected; do not add one. See platform/GATES.md §4.
-
-## Logging is mandatory and continuous (platform/LOGS.md)
-
-- `logs/failures.md` — anything that broke, did not match the spec, or that you stopped on.
-- `logs/gate-checks.md` — every deferral point firing: what passed, what was carted/tailed/benched.
-- `logs/rejections.md` — every tailings decision with its reason (the reviewable recycle bin index).
-  Off-seam is never deleted; it is tailed with a reason so it can be reclaimed if scope shifts.
-
-## Meta-seams (auto-applied output standards)
-
-`meta-seams/` holds cross-pilot standards for *how* a deliverable is made — applied in **every
-pilot, not opt-in**, triggered by the content itself rather than by a pilot naming them.
-**`meta-seams/writing.md` is binding on all prose: the moment a deliverable involves writing or
-persuasion, its output must meet that bar** — apply it as part of iteration conformance,
-automatically, in every project. A meta-seam is pilot-agnostic and additive (remove `meta-seams/`
-and the engine still runs, just without the standard). See `meta-seams/CONTEXT.md`.
-
-## Your standing orders
-
-Execute the spec literally. Verify, do not improve. Log everything. Defer, do not commit early.
-When uncertain, bench or log and stop. Never guess. Never fork or clone anything. Never wire a tool
-until a later pass says to. The frame before the material; the material before the tools.
+Keep it thin — DCA's whole bet is that structure beats prose. Fill the well before you build a silo;
+draw before you build; cut before you ship (a unit that tries to matter everywhere matters nowhere).
+When uncertain, write it down and stop. Never reference one silo from another.

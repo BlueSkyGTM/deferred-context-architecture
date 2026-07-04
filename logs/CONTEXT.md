@@ -1,7 +1,7 @@
-# CONTEXT.md — logs/ (Observability, Built In, Mandatory)
-Three streams, always written. See platform/LOGS.md for entry formats.
-- failures.md   — what broke or stopped.
-- gate-checks.md — every deferral point firing and its outcome.
-- rejections.md — the tailings index: every off-seam decision WITH its curated reason.
-The logs are the system learning its own shape and, during the pilot, the seam layer's training
-corpus. Never optional.
+# CONTEXT.md — logs/ (observability, glass-box)
+
+- `failures.md` — what broke or stopped, append-only. When a stage cannot proceed, write it here and
+  stop; never guess past it.
+
+Glass-box: if something went wrong, it is a row here, not a memory. A silo may keep its own run notes
+in its `stages/*/output/`; this shared log is for machine-level failures.

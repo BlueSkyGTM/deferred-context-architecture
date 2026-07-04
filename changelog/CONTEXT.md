@@ -1,11 +1,12 @@
 # CONTEXT.md — changelog/ (the machine's change record + REVERT GUARD)
 
-This folder records changes to the **pipeline itself** (the core spec, contracts, the pilot) with
-their design intent AND their test outcome. Its job is to stop a future session from reverting a
-change without knowing it was already validated. It is glass-box memory for the machine.
+This folder records changes to the **architecture itself** (the DCA law, `_core/`, the well contract,
+the silo template) with their design intent AND their test outcome. Its job is to stop a future
+session from reverting a change without knowing it was already validated. It is glass-box memory for
+the machine.
 
 ## How this differs from the other written state (don't confuse them)
-- `logs/` — what fired DURING a run (gate-checks, rejections, failures). Per-run, per-item.
+- `logs/` — what broke DURING a run (failures). Per-run.
 - `session-handoff.md` — where the work is RIGHT NOW (the clock-out note). Mutable, present-tense.
 - `changelog/` — what CHANGED in the machine, WHY, and whether it was TESTED. Append-only, historical.
   This is the one a session consults before editing or undoing the spec.

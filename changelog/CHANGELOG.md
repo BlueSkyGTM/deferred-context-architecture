@@ -51,3 +51,33 @@ intent), how it was tested, and what breaks if it is reverted.
 - revert-risk: re-inlining the machine notes re-mixes law with scaffolding; un-marking
   BUILD-INSTRUCTIONS puts a completed pass back in the mandatory read path; restoring SETUP.md's
   restatements re-creates the drift surface the canonical-source law forbids.
+
+## 2026-07-03 — Restructure: M2W → DCA (Deferred Context Architecture); mono-pipeline → well + silos
+- what: The single mono-pipeline was replaced by a multi-silo architecture over one shared well.
+  NEW: `_core/` (CONVENTIONS.md = native 5-layer routing + stage-contract pattern + one-way/glass-box
+  laws; deferral.md; well-contract.md; tooling.md + tooling-notes.md; templates/silo/ = a faithful
+  blank ICM workspace with 01-draw drawing from the well and a build-stage template carrying the
+  staking rule); `silos/CONTEXT.md`; `vault/` recontextualized as THE WELL (account.md is its
+  catalogue); root `CLAUDE.md` and `README.md` rewritten thin as the DCA law. RETIRED (deleted):
+  top-level `stages/`, `pilots/`, holding folders `carts/ tailings/ bench/ manifest/ library/`,
+  heavy `platform/` law (GATES/SKILLS/LOGS/glossary/PRINCIPLES/MWP/CONTEXT + TOOLING → distilled into
+  `_core/`), `M2W.md ARCHITECTURE.md DRY-RUN.md SETUP.md BUILD-INSTRUCTIONS.md` root CONTEXT.md, and
+  the assay-only log streams (gate-checks, rejections). `bin/scan-tools.sh` now scans `silos/*` not
+  `pilots/*`; `.gitignore` updated.
+- why: the mono-pipeline hoards (defer-and-preserve, never delete) and only ever builds one thing.
+  The pattern that actually worked (the scriptorium: 7 books, any order) is many independent silos
+  over one shared well, each a native ICM workspace drawing the slice it needs on demand — which is
+  why the ICM inside a silo stops inventing on the spot (always fed real assets). Operator-directed
+  redirection (2026-07-03).
+- SUPERSEDES (not a silent revert — surfaced per the REVERT GUARD): the "Domain fixed: Claude Code
+  systems" pivot entry above. Its `pilots/_TEMPLATE` and Claude-Code framing are retired in favor of
+  the silo model; the operator chose DCA over that framing. The claude-CLI tool-scan row it added is
+  KEPT (carried into `_core/tooling.md`). No part of it was undone without being named here.
+- tested: `bash bin/scan-tools.sh` exits 0; one-way grep finds no `silos/<name>` reference in
+  `_core/`, `vault/`, or root docs; deletion test holds (remove `silos/` → well + `_core` still
+  stand); the restructure is a net deletion (fewer lines of law than the retired `platform/` + root
+  docs).
+- revert-risk: restoring the mono-pipeline re-introduces the hoarding architecture (never-delete,
+  single-deliverable) the scriptorium pattern was chosen over, and orphans `_core/` + the silo
+  template + the well-catalogue recontextualization. The deferral discipline, single-agent, glass-box,
+  and one-way-reference laws were carried forward (distilled into `_core/`), not dropped.

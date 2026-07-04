@@ -1,16 +1,16 @@
-# CONTEXT.md — vault/
-This folder starts EMPTY and is correct when empty. Do not populate it in the skeleton pass.
+# CONTEXT.md — vault/ (THE WELL)
 
-Role: INGEST holding — the ONE door into the pipeline. Raw excavated material lands here, addressed
-and accounted, BEFORE any assay. Filled by stage 01 (excavation); read by stage 02 (assay).
+The one shared well every silo draws from. Starts EMPTY and is correct when empty. Full contract:
+`../_core/well-contract.md`.
 
-Lifecycle note (vault is the exception to "earned, not given"): material here is **admitted and
-accounted**, NOT seam-earned. "Earned by clearing a deferral point" governs the DOWNSTREAM folders
-(carts/, tailings/, bench/, manifest/, library/) — a piece reaches those only by passing a gate.
-Vault is upstream of the first gate, so nothing here has earned anything yet; it has only been hauled
-and addressed. What vault requires is not a verdict but an ADDRESS: every piece has a row in
-`vault/account.md` (row format owned by `stages/01-excavation/CONTRACT.md`). Unaddressed material in
-vault is the only error state.
+Role: the shared source pool. Raw material enters ONE of two ways — **extracted** (pulled from a
+located deposit) or **placed** (you drop it in) — and is usable only once **addressed and accounted**
+(a stable id + a row in `account.md`). Unaddressed material is the only error state; a raw pile with
+no catalogue forces whole-well loading and defeats deferral.
 
-Nothing is loaded into context from here speculatively (M2W) — downstream stages follow an address to
-one piece, never absorb the pile.
+The well is the ONLY entrance to DCA. Nothing is hand-placed into a silo to fake a draw. Silos read
+the well (via `stages/01-draw`); the well never references a silo — that ignorance is what lets silos
+be built in any order, in parallel, without collision.
+
+Nothing is loaded from here speculatively (deferral): a silo follows the catalogue to the thin slice
+it needs, never absorbs the pile. See `../_core/deferral.md`.

@@ -35,3 +35,15 @@ losing the thread across long runs.
   hygiene-pass entry, tested).
 - broken: nothing known.
 - next: unchanged — commission the first pilot.
+
+## 2026-07-03 — session 1 (DCA restructure — the real redirection)
+- verified: `bash bin/scan-tools.sh` exits 0; one-way grep clean (no `silos/<name>` in `_core/`,
+  `vault/`, root docs); deletion test holds (remove `silos/` → well + `_core` stand); net deletion.
+- changed: M2W → **DCA (Deferred Context Architecture)**. Mono-pipeline retired; replaced by
+  `vault/` (THE WELL) + `silos/` (independent ICM pillars) + thin `_core/` (law + silo template).
+  See changelog 2026-07-03 restructure entry (tested); it SUPERSEDES the Claude-Code-systems pivot,
+  surfaced there per the REVERT GUARD. Skeleton only — dry rig, no deliverable content.
+- broken: nothing known. `pilots/` and the Claude-Code framing are gone by design.
+- next: fill the well (extract or place real material into `vault/`, add rows to `vault/account.md`),
+  then stand up the first silo: copy `_core/templates/silo/` → `silos/<name>/`, run `setup`, draw,
+  build. The earlier session's "cutting/staking" lever lives in the silo build-stage contract.
