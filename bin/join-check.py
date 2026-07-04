@@ -73,7 +73,7 @@ def main() -> int:
             return 1
     print(f"falsification holds: {len(violations)} violating records injected, all rejected")
 
-    print("PASS: two independent silos, one shared keystone, parts fit at the join -- and the check can fail.")
+    print("PASS: two independent silos, one shared keystone, parts fit at the join, and the check can fail.")
     return 0
 
 
