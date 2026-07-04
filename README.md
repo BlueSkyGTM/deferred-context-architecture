@@ -2,10 +2,9 @@
 ### (Formerly M2W: Manifest to Workspace)
 
 **Independent parts, one shared source of truth, a verified join between them.** DCA builds *silos*,
-self-contained [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) workspaces that each
-produce one part of a larger system, over a single shared vault of raw material. This repo is the
-second version of this idea. The first version failed publicly enough that the failure is now part of
-the thesis.
+self-contained workspaces that each produce one part of a larger system, over a single shared vault of
+raw material. This repo is the second version of this idea. The first version failed publicly enough
+that the failure is now part of the thesis.
 
 ## The Thesis
 
@@ -54,7 +53,7 @@ only the slice of shared material it actually needs, each built without knowledg
 ```
 DCA/
 ├── vault/        the well: one shared source pool, catalogued in account.md
-├── silos/        the parts: self-contained ICM workspaces, built in any order
+├── silos/        the parts: self-contained workspaces, built in any order
 ├── _core/        the thin shared law + the silo template
 └── meta-seams/   shared output standards every silo clears
 ```
@@ -64,10 +63,11 @@ is addressable rather than a pile. A silo draws only what one of its stages name
 runs; nothing is pulled speculatively. This is why a silo stops inventing material on the spot: it is
 always working from something real, not a blank page.
 
-**Silos:** each is a native ICM workspace, where folder structure carries the architecture, context
-loads in five layers, and you "configure the factory once, then run it per deliverable." This is not
-new invention; it is [ICM](https://github.com/RinDig/Interpreted-Context-Methdology), applied
-faithfully, one instance per part of the system. It is also the pattern that already worked once,
+**Silos:** each is a self-contained workspace with its own folder, its own stages, and its own
+configuration. The folder structure itself carries the instructions: one agent reads the files in
+order, top to bottom, with no orchestration framework underneath. You configure a silo once, then run
+it per deliverable, so an agent only ever loads the files a given step needs, not the whole workspace.
+The pattern is borrowed, not invented (see [References](#references)), and it already worked once
 before this repo existed: [seven finished technical books](https://ai-systems-scriptorium.vercel.app/),
 built in any order, none blocking another, no shared pipeline between them.
 
@@ -106,9 +106,9 @@ falsification holds: 2 violating records injected, all rejected
 PASS: two independent silos, one shared keystone, parts fit at the join, and the check can fail.
 ```
 
-**Why silos, not one generated workspace:** a typical workspace generator (a scaffolding tool, or ICM
-used the ordinary way, once per system) produces a single shape, decided at setup, and holds every
-part of what you're building to it. That works when the system really is one thing. It breaks the
+**Why silos, not one generated workspace:** a typical workspace generator, used the ordinary way once
+per system, produces a single shape, decided at setup, and holds every part of what you're building to
+it. That works when the system really is one thing. It breaks the
 moment it isn't: a product's API, its docs, and its onboarding flow don't need the same stages or the
 same voice, and forcing them through one template is the same failure as M2W's hoarding in a different
 costume: one shape, applied uniformly, regardless of whether it fits the part. DCA doesn't generate
@@ -146,3 +146,13 @@ python bin/join-check.py                   # run the proof end to end
 ```
 
 Then, inside the silo: run `setup` to configure it once, fill the well, draw, build.
+
+## References
+
+The silo, a self-contained workspace whose folder structure is the architecture, is borrowed from
+[ICM (Interpreted Context Methodology)](https://github.com/RinDig/Interpreted-Context-Methdology) by
+Jake Van Clief: one agent reading files in order instead of a multi-agent framework. DCA adds the
+shared well and the keystone on top of it and does not modify ICM.
+
+Prior work: the [seven-book scriptorium](https://ai-systems-scriptorium.vercel.app/), where the
+one-workspace-per-part pattern first ran.
