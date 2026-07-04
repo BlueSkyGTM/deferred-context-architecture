@@ -1,28 +1,21 @@
-# Stage 02 — [Build] (rename per this silo's setup; one stage, one job)
+# Stage 02: Build (the emitter)
 
-Template build stage. A silo names its real build stages at `setup` and writes each to this shape.
-Reads the drawn material (Layer 4) + the factory (Layer 3); produces the next artifact. One job only.
+Build the program that emits `task` records matching the keystone drawn in stage 01. One job.
 
 ## Inputs
 | Source | File/Location | Scope | Why |
 |--------|--------------|-------|-----|
-| Drawn material | `../01-draw/output/` | this run | what to build from |
-| Factory | `../../reference/CONTEXT.md` | as named | voice, design, conventions |
-| Writing bar | `../../../../meta-seams/writing.md` | full | the prose standard |
+| Drawn keystone | `../01-draw/output/` | full | the contract to emit against |
 
 ## Process
-1. Build the artifact from the drawn material — source-pinned: contains only what the draw supports,
-   nothing invented outside it.
-2. **Staking rule (enforced per unit, not hoped for):** each unit declares the ONE thing it is staked
-   on. Everything not serving that is **cut, not shrunk.** Even coverage is the defect — a unit that
-   tries to matter everywhere matters nowhere. Rank the claims; keep the top; cut the rest.
-3. Clear the prose against the writing bar.
+1. Write `output/produce.py`: emit `task` records as JSONL, one per line.
+2. Every record carries exactly the keystone's fields (`id`, `title`, `done`): no extra, none missing.
 
 ## Outputs
 | Artifact | Location | Format |
 |----------|----------|--------|
-| [Built artifact] | `output/` | [format] |
+| The emitter | `output/produce.py` | Python; prints JSONL to stdout |
 
 ## Do not
-- Do not invent facts the drawn material does not support (source-pinning).
-- Do not shrink a weak unit to keep it — cut it. Perfection is subtraction, not padding.
+- Do not add fields the keystone does not define, or drop ones it requires.
+- Do not reference the consumer silo. The two align only through the keystone.

@@ -1,4 +1,4 @@
-# shared/identity.md — producer silo
+# shared/identity.md: producer silo
 
 - **Produces:** a program that emits `task` records (JSONL) conforming to the shared keystone.
 - **For / voice:** the proof system's data source; terse, code-only.

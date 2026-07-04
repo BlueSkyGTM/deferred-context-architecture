@@ -1,8 +1,8 @@
-# reference/ — the factory (Layer 3)
+# reference/: the factory (Layer 3)
 
 The stable context this silo builds against: voice, design, conventions, domain knowledge. Configured
 once at `setup`, unchanged across runs. This is internalized as *constraints and patterns* (write
-like this, use these conventions), not processed as input — that is Layer 4 (`stages/*/output/`).
+like this, use these conventions), not processed as input, that is Layer 4 (`stages/*/output/`).
 
 | Resource | Where | Contains |
 |----------|-------|----------|

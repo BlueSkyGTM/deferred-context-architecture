@@ -1,4 +1,4 @@
-# failures.md — What Broke or Stopped (append-only)
+# failures.md: What Broke or Stopped (append-only)
 
 # Entry format:
 # ## <ISO-8601 timestamp>

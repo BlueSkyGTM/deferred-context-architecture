@@ -1,4 +1,4 @@
-# shared/identity.md — who/what this silo produces (set at setup)
+# shared/identity.md: who/what this silo produces (set at setup)
 
 - **Produces:** `<one deliverable type>`
 - **For / voice:** `<audience + author voice>`

@@ -1,10 +1,31 @@
 # DCA: Deferred Context Architecture
 ### (Formerly M2W: Manifest to Workspace)
 
+## Why I Built This
+
+I want to learn AI systems engineering, and the courses that teach it well run $3,000 to $5,000. I
+couldn't spend that. So I set myself a different problem: could I use Claude Code, an AI coding agent,
+to help me build the learning material myself, on subjects I am not yet an expert in?
+
+The honest first answer was no. My first attempt produced a pile of polished material that was quietly
+mediocre, and worse, I couldn't tell it was mediocre from inside the system that made it. I've kept
+that failure in this repo instead of hiding it, because working out *why* it happened is what actually
+taught me something worth keeping. This is the second attempt, built around that lesson.
+
 **Independent parts, one shared source of truth, a verified join between them.** DCA builds *silos*,
 self-contained workspaces that each produce one part of a larger system, over a single shared vault of
-raw material. This repo is the second version of this idea. The first version failed publicly enough
-that the failure is now part of the thesis.
+raw material.
+
+```mermaid
+flowchart TD
+    W["THE WELL<br/>one shared pool of raw material"]
+    W --> A["silo A"]
+    W --> B["silo B"]
+    W --> C["silo C"]
+    A --> S["the finished system"]
+    B --> S
+    C --> S
+```
 
 ## The Thesis
 
@@ -22,8 +43,14 @@ first one and calls it done.
 
 ## What M2W Was, And Why It Failed
 
-M2W was a single pipeline: one shared vault, one sorting stage, one build stage, one deliverable. Its
-governing rule was "defer and preserve": never discard, catalogue everything, escalate anything
+M2W was a single pipeline: one shared vault, one sorting stage, one build stage, one deliverable.
+
+```mermaid
+flowchart LR
+    v["vault"] --> s["sort"] --> b["build"] --> d["one deliverable"]
+```
+
+Its governing rule was "defer and preserve": never discard, catalogue everything, escalate anything
 uncertain to a human. That rule is a defensible position for holding raw material. It is also a
 description of how an averaged, unopinionated deliverable gets produced: if nothing is ever cut,
 nothing is ever prioritized, and every output part gets equal weight whether or not it deserves it.
@@ -84,9 +111,21 @@ Every silo repeats this independently, and none of them see each other's folders
 
 **The keystone:** a contract placed in the well, owned by no single silo, that more than one silo
 agrees to build against. It is the only thing that lets two parts align without referencing each
-other. The proof in this repo is deliberately small: `vault/keystone-task.md` defines a `task` record
-with exactly three fields (`id`, `title`, `done`). That file, sitting in the well, is the entire
-coordination mechanism between the two silos below.
+other.
+
+```mermaid
+flowchart TD
+    K["keystone<br/>shared contract in the well"]
+    K -.draws.-> P["producer silo"]
+    K -.draws.-> C["consumer silo"]
+    P -->|emits| J{{"join-check"}}
+    C -->|reads| J
+    J --> R["parts fit,<br/>verified by running them"]
+```
+
+The proof in this repo is deliberately small: `vault/keystone-task.md` defines a `task` record with
+exactly three fields (`id`, `title`, `done`). That file, sitting in the well, is the entire
+coordination mechanism between the two silos in the diagram.
 
 **Producer and consumer:** roles a silo can take against a keystone, not a fixed pair the architecture
 requires, illustrated here by two silos literally named that. `silos/producer` draws the keystone and
@@ -108,14 +147,14 @@ PASS: two independent silos, one shared keystone, parts fit at the join, and the
 
 **Why silos, not one generated workspace:** a typical workspace generator, used the ordinary way once
 per system, produces a single shape, decided at setup, and holds every part of what you're building to
-it. That works when the system really is one thing. It breaks the
-moment it isn't: a product's API, its docs, and its onboarding flow don't need the same stages or the
-same voice, and forcing them through one template is the same failure as M2W's hoarding in a different
-costume: one shape, applied uniformly, regardless of whether it fits the part. DCA doesn't generate
-one workspace. It generates as many as the system has real parts, each shaped for what it actually is
-(its own stage count, its own build chain, its own setup), and lets them stay one system not by
-sharing a shape, but by sharing a well and, wherever two parts must actually interoperate, a keystone.
-The shape is free to vary per part. The join is not.
+it. That works when the system really is one thing. It breaks the moment it isn't: a product's API,
+its docs, and its onboarding flow don't need the same stages or the same voice, and forcing them
+through one template is the same failure as M2W's hoarding in a different costume: one shape, applied
+uniformly, regardless of whether it fits the part. DCA doesn't generate one workspace. It generates as
+many as the system has real parts, each shaped for what it actually is (its own stage count, its own
+build chain, its own setup), and lets them stay one system not by sharing a shape, but by sharing a
+well and, wherever two parts must actually interoperate, a keystone. The shape is free to vary per
+part. The join is not.
 
 Independence guarantees parts don't corrupt each other. The keystone is what additionally guarantees
 two parts that must interoperate actually do, checked by running them, not assumed from the plan. That

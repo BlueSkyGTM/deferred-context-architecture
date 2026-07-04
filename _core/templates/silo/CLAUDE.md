@@ -1,31 +1,31 @@
 # [Silo Name]
 
-[One sentence: what this silo produces.] One pillar of DCA — a self-contained ICM workspace that
+[One sentence: what this silo produces.] One pillar of DCA, a self-contained ICM workspace that
 draws its raw material from the shared well (`../../vault`) and builds one kind of deliverable.
 
 ## Folder map
 
 ```
 [silo-name]/
-├── CLAUDE.md              (you are here — Layer 0)
-├── CONTEXT.md             (start here for task routing — Layer 1)
+├── CLAUDE.md              (you are here, Layer 0)
+├── CONTEXT.md             (start here for task routing, Layer 1)
 ├── setup/
 │   └── questionnaire.md   (one-time: configure identity, voice, deliverable type)
-├── reference/             (Layer 3 — the factory: voice, design, conventions)
+├── reference/             (Layer 3, the factory: voice, design, conventions)
 │   └── CONTEXT.md
 ├── shared/
-│   └── identity.md        (who/what this silo produces — set at setup)
+│   └── identity.md        (who/what this silo produces, set at setup)
 └── stages/
     ├── 01-draw/           (draw the slice this silo needs from the well)
     ├── 02-[name]/         ([build stage])
-    └── 0N-[name]/         ([final stage → deliverable in its output/])
+    └── 0N-[name]/         ([final stage to deliverable in its output/])
 ```
 
 ## Triggers
 
 | Keyword | Action |
 |---------|--------|
-| `setup` | Run `setup/questionnaire.md` once — configure the factory (identity, voice, deliverable type, default start stage). |
+| `setup` | Run `setup/questionnaire.md` once, configure the factory (identity, voice, deliverable type, default start stage). |
 | `status` | Scan `stages/*/output/`. A stage with files (beyond .gitkeep) is COMPLETE, else PENDING. Render the pipeline line. |
 
 ## Routing
@@ -36,14 +36,14 @@ draws its raw material from the shared well (`../../vault`) and builds one kind 
 | [Build task] | `stages/02-[name]/CONTEXT.md` |
 | [Final task] | `stages/0N-[name]/CONTEXT.md` |
 
-## What to load (minimal set per task — loading more dilutes quality)
+## What to load (minimal set per task: loading more dilutes quality)
 
 | Task | Load these | Do NOT load |
 |------|-----------|-------------|
 | Draw | `stages/01-draw/CONTEXT.md`, `../../vault/account.md` | the raw well; other silos |
 | Build | this stage's `CONTEXT.md`, `reference/`, `stages/01-draw/output/` | the whole well; unrelated stages |
 
-## Laws (from `../../_core/CONVENTIONS.md` — do not restate, follow)
+## Laws (from `../../_core/CONVENTIONS.md`: do not restate, follow)
 
 One-way refs: this silo reads only `../../vault`, `../../_core`, `../../meta-seams`. Never another
 silo. Deferral: draw only what a stage needs. Single-agent, glass-box. Configure the factory, not the

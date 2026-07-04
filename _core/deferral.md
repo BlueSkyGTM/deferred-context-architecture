@@ -1,4 +1,4 @@
-# _core/deferral.md — the Deferred-Context discipline (the D in DCA)
+# _core/deferral.md: the Deferred-Context discipline (the D in DCA)
 
 DCA is **Deferred Context Architecture.** The governing discipline is one line:
 

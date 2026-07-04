@@ -1,4 +1,4 @@
-# shared/identity.md — consumer silo
+# shared/identity.md: consumer silo
 
 - **Produces:** a program that reads `task` records (JSONL) and reports on them, relying on the shared keystone.
 - **For / voice:** the proof system's reporter; terse, code-only.

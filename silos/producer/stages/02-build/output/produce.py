@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""producer silo — emits `task` records as JSONL, conforming to vault/keystone-task.md.
+"""producer silo, emits `task` records as JSONL, conforming to vault/keystone-task.md.
 Built drawing ONLY the keystone; knows nothing about any consumer."""
 import json
 

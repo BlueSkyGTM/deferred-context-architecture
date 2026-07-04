@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""consumer silo — reads `task` records (JSONL) from stdin and reports, per vault/keystone-task.md.
+"""consumer silo, reads `task` records (JSONL) from stdin and reports, per vault/keystone-task.md.
 Built drawing ONLY the keystone; knows nothing about any producer.
 Relies on exactly the keystone fields: id, title, done."""
 import sys
