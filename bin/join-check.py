@@ -58,7 +58,22 @@ def main() -> int:
         return 1
 
     print(f"consumer accepted the producer's output: {cons.stdout.strip()!r}")
-    print("PASS: two independent silos, one shared keystone, parts fit at the join.")
+
+    # 4. falsification: the check must be able to FAIL, or a pass means nothing.
+    #    Inject records that violate the keystone; the consumer must reject each (exit 1).
+    violations = {
+        "extra field": {"id": 99, "title": "x", "done": True, "extra": 9},
+        "missing field": {"id": 99, "title": "x"},
+    }
+    for name, bad in violations.items():
+        probe = subprocess.run([sys.executable, str(CONSUMER)], input=json.dumps(bad) + "\n",
+                               capture_output=True, text=True)
+        if probe.returncode == 0:
+            print(f"FAIL: consumer ACCEPTED a violating record ({name}) — the join check has no teeth")
+            return 1
+    print(f"falsification holds: {len(violations)} violating records injected, all rejected")
+
+    print("PASS: two independent silos, one shared keystone, parts fit at the join -- and the check can fail.")
     return 0
 
 

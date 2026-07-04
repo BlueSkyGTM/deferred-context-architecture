@@ -20,10 +20,13 @@ shared **keystone** from the well, produce parts that **fit** at the join.
 keystone fields (from the well): ['done', 'id', 'title']
 producer output conforms to the keystone
 consumer accepted the producer's output: '3 tasks, 2 done'
-PASS: two independent silos, one shared keystone, parts fit at the join.
+falsification holds: 2 violating records injected, all rejected
+PASS: two independent silos, one shared keystone, parts fit at the join -- and the check can fail.
 ```
-The check has teeth (verified): a producer emitting an extra field, or a missing field, is REJECTED
-at the join (exit 1). It is falsifiable, not a rubber stamp.
+The falsification is ENCODED in the check, not testimonial: `join-check.py` itself injects records
+that violate the keystone (extra field, missing field) and requires the consumer to reject each
+before it will print PASS. A check that cannot fail proves nothing; this one demonstrates its own
+ability to fail on every run.
 
 ## What this proves — and what it does not
 - **Proves:** DCA composition + integration works. Independent silos align through a well keystone
