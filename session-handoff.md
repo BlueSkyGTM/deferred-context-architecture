@@ -47,3 +47,16 @@ losing the thread across long runs.
 - next: fill the well (extract or place real material into `vault/`, add rows to `vault/account.md`),
   then stand up the first silo: copy `_core/templates/silo/` → `silos/<name>/`, run `setup`, draw,
   build. The earlier session's "cutting/staking" lever lives in the silo build-stage contract.
+
+## 2026-07-03 — session 1 (DCA proof — first operating history)
+- verified: `python bin/join-check.py` → PASS; two independently-built silos (producer, consumer)
+  aligned through one well **keystone** (`vault/keystone-task.md`) produce parts that fit at the join;
+  negative probes (extra/missing field) rejected exit 1 — the check is falsifiable. scan still 0.
+- changed: added the proof — keystone in the well, `silos/producer` + `silos/consumer`,
+  `bin/join-check.py`, `silos/PROOF.md`. See changelog "Proof build" (tested). This is DCA's first
+  operating history and the demonstrated fix for the integration gap the review named.
+- broken: nothing known.
+- next: (a) a second, non-trivial keystone to confirm the mechanism before promoting "keystone" into
+  `_core/` law (earned, not given); (b) then a real multi-part build on real well material. Quality of
+  any silo's output is still human taste + the staking rule — the proof is does-it-compose, not
+  does-it-land.

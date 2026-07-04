@@ -81,3 +81,24 @@ intent), how it was tested, and what breaks if it is reverted.
   single-deliverable) the scriptorium pattern was chosen over, and orphans `_core/` + the silo
   template + the well-catalogue recontextualization. The deferral discipline, single-agent, glass-box,
   and one-way-reference laws were carried forward (distilled into `_core/`), not dropped.
+
+## 2026-07-03 — Proof build: DCA composes (first operating history) + the keystone mechanism
+- what: A minimal two-silo system proving DCA end to end. NEW: `vault/keystone-task.md` (a **keystone**
+  — a shared contract in the well two silos build against) + its `account.md` row; `silos/producer`
+  and `silos/consumer` (real silos copied from the template, each drawing only the keystone, built
+  independently — one-way, neither references the other); `bin/join-check.py` (integration check:
+  reads the keystone from the well, verifies producer conformance, runs producer → consumer); a
+  falsifiable-check probe (extra/missing field → rejected); `silos/PROOF.md` (the run record).
+- why: the architecture review named DCA's gap — composition without verified integration — and the
+  session's own verdict (architecture is not proof) demanded a real run, not admiration. The keystone
+  closes the gap: interoperating silos align through a shared well contract without referencing each
+  other; fit is mechanically checked at the join.
+- tested: `python bin/join-check.py` → PASS (`3 tasks, 2 done`); negative probes (extra field, missing
+  field) → REJECTED exit 1; positive probe → exit 0. The check is falsifiable, not a rubber stamp.
+  Deletion test still holds (remove `silos/` → well + `_core` stand). `bash bin/scan-tools.sh` exits 0.
+- revert-risk: removing the proof erases DCA's only operating history and the keystone mechanism —
+  the one demonstrated answer to the integration gap. The proof silos are examples, not core; they may
+  be deleted without touching the rig, but the keystone concept they validated is the load-bearing
+  finding.
+- follow-up (NOT done — earned, not given): the keystone is proven but not yet written into the law
+  (`_core/`). Promote it to a first-class DCA concept only after a second, non-trivial keystone holds.

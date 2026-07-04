@@ -20,3 +20,4 @@ is read-only from a silo; entries are never edited by a draw. See `../_core/well
 
 | id | source | addressed | descriptor |
 |----|--------|-----------|------------|
+| keystone-task | placed | yes | shared contract: the `task` JSONL record (id·title·done) two silos build against |
