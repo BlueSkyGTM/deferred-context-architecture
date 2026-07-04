@@ -1,5 +1,5 @@
 # DCA — Deferred Context Architecture
-### (formerly M2W — Manifest to Workspace)
+### (Formerly M2W — Manifest to Workspace)
 
 **Independent parts, one shared source of truth, a verified join between them.** DCA builds *silos*
 — self-contained [ICM](https://github.com/RinDig/Interpreted-Context-Methdology) workspaces that each
@@ -7,7 +7,7 @@ produce one part of a larger system — over a single shared vault of raw materi
 second version of this idea. The first version failed publicly enough that the failure is now part of
 the thesis.
 
-## The thesis
+## The Thesis
 
 **Architecture is not proof.** A specification of how a system should behave is not evidence that it
 does. The only evidence is a run: something built, something that failed or held, recorded so the next
@@ -21,7 +21,7 @@ inspectable contract rather than by referencing each other directly — and that
 not assumed. Composition and integration are separate problems. Most agentic tooling only solves the
 first one and calls it done.
 
-## What M2W was, and why it failed
+## What M2W Was, And Why It Failed
 
 M2W was a single pipeline: one shared vault, one sorting stage, one build stage, one deliverable. Its
 governing rule was "defer and preserve" — never discard, catalogue everything, escalate anything
@@ -44,7 +44,7 @@ never inside what that method could observe. Every review came back clean. That 
 not the fix: the checks and the work shared the same blind spot, so agreement between them meant
 nothing about the thing they were supposedly checking.
 
-## What changed
+## What Changed
 
 DCA keeps the parts of M2W that were sound — a shared source pool, deferred loading, glass-box state,
 single-agent execution — and inverts the part that wasn't. The unit of work is no longer one pipeline
@@ -53,10 +53,10 @@ only the slice of shared material it actually needs, each built without knowledg
 
 ```
 DCA/
-├── vault/      THE WELL — one shared source pool; enters by extraction or placement; catalogued in account.md
-├── silos/      THE PARTS — each a self-contained ICM workspace; draws from the well; built in any order
-├── _core/      the shared law (thin) + the silo template (_core/templates/silo/)
-└── meta-seams/ shared output standards (writing.md) every silo clears
+├── vault/        the well — one shared source pool, catalogued in account.md
+├── silos/        the parts — self-contained ICM workspaces, built in any order
+├── _core/        the thin shared law + the silo template
+└── meta-seams/   shared output standards every silo clears
 ```
 
 **The well.** All raw material pools in one vault, entered by extraction or by hand, catalogued so it
@@ -75,7 +75,7 @@ blocking another, no shared pipeline between them.
 reads another silo. This is what makes "any order, in parallel" true rather than aspirational — a
 silo cannot be broken by a change somewhere else, because nothing points to it.
 
-## How it works
+## How It Works
 
 **The well → silo chain, mechanically.** Raw material enters `vault/` and gets a row in
 `vault/account.md`. A silo's first stage, `01-draw`, reads that catalogue and pulls only the pieces it
@@ -95,9 +95,10 @@ keystone and builds something that *reads* records assuming it holds. Neither si
 other's folder or code. Both only know the keystone. `bin/join-check.py` runs the producer's output
 through the consumer — and then runs its own falsification: it injects records that violate the
 keystone and requires the consumer to reject each one, so a pass is earned against demonstrated
-failure, not assumed. The run record (`python bin/join-check.py`, reproduced in `silos/PROOF.md`):
+failure, not assumed. The run record (reproduced in `silos/PROOF.md`):
 
-```
+```console
+$ python bin/join-check.py
 keystone fields (from the well): ['done', 'id', 'title']
 producer output conforms to the keystone
 consumer accepted the producer's output: '3 tasks, 2 done'
@@ -122,7 +123,7 @@ That gap is one M2W never had to face, because M2W only ever built one thing. Th
 is a small answer to one instance of it, not a finished system, but it is the first thing in either
 version of this repo with an actual operating history instead of a specification.
 
-## What we hope to accomplish
+## What We Hope To Accomplish
 
 Build systems with several real, interoperating parts — not a single deliverable — where every part
 can be built, changed, or replaced on its own schedule, and where "do the parts still fit" is a
@@ -138,5 +139,11 @@ otherwise.
 
 ## Start
 
-Read `CLAUDE.md` for the canonical read order. To stand up a new part: copy `_core/templates/silo/`
-into `silos/<name>/`, run `setup`, fill the well, draw, build.
+Read `CLAUDE.md` for the canonical read order. To stand up a new part:
+
+```bash
+cp -r _core/templates/silo silos/<name>   # scaffold a new silo from the template
+python bin/join-check.py                   # run the proof end to end
+```
+
+Then, inside the silo: run `setup` to configure it once, fill the well, draw, build.
