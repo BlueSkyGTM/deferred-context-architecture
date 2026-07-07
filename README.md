@@ -1,89 +1,45 @@
 # DCA: Deferred Context Architecture
 
-**Independent parts, one shared source of truth, a verified join between them.**
+DCA is a way to build a big system out of many small parts using an AI coding
+agent (like Claude Code), so that:
 
-This repo is the reference implementation of an architecture for building
-many-part systems with an AI coding agent — where every part can be built,
-changed, or replaced on its own schedule, and where "do the parts still fit" is
-a question the repo answers by *running something*, not by re-reading the plan.
-It exists to become the engine of a production revenue system. The pattern is
-proven here on a deliberately small case; it deploys at scale in a clone (see
-[Roadmap](#roadmap)). This repo stays frozen as the reference: the proof, the
-templates, the test tooling, and the recorded failures that shaped the design.
+- **the parts can't corrupt each other** — each is built in its own folder and
+  never reads any other part, so building or breaking one can't damage the rest;
+- **the parts share one source of truth** — all raw material lives in one pool,
+  and each part pulls only the slice it needs, when it needs it;
+- **you can prove the parts actually fit** — when two parts must work together,
+  a script runs both and verifies the result, and that check is built to fail
+  when they don't.
 
-## The Thesis
+It is a folder layout plus a few small scripts, not a framework you install.
+You clone it, drop your source material in, and point an AI agent at one part
+at a time.
 
-**Architecture is not proof.** A specification of how a system should behave is
-not evidence that it does. The only evidence is a run: something built,
-something that failed or held, recorded so the next person can check it.
+## What it does, concretely
 
-The working claim: a system with many moving parts stays sound when (1) its
-parts are built independently, so a change in one cannot corrupt another, and
-(2) they align through a shared, inspectable contract rather than by
-referencing each other directly — and that alignment is *checked*, not assumed.
-Composition and integration are separate problems. Most agentic tooling only
-solves the first one and calls it done.
+1. **You fill the well.** All raw source material goes into `vault/` (the
+   *well*) and gets one row in a catalogue (`vault/account.md`) so it's
+   addressable, not a pile.
+2. **You stand up a part.** A part is its own workspace folder. The AI agent
+   reads the files in order, top to bottom — no orchestration framework
+   underneath. Its first step *draws* from the well: it pulls only the source
+   its current task names, nothing speculative. (This is the "deferred context"
+   in the name — context is loaded late, only when a step needs it, which is
+   what stops the agent from inventing filler.)
+3. **Parts stay independent.** A part reads only the shared well and the shared
+   rules. It never reads another part. That's what makes "build them in any
+   order, in parallel" real: nothing points to a part, so nothing can break it
+   from outside.
+4. **When two parts must interoperate, they share a keystone.** A *keystone* is
+   a tiny contract that lives in the well — say, "a task record has exactly the
+   fields `id`, `title`, `done`." Both parts build against it without ever
+   seeing each other. A script then runs them together and checks the fit.
 
-## The Shape
+## Try the proof
 
-```
-DCA/
-├── vault/           the well: one shared source pool, catalogued in account.md
-├── silos/           the frozen proof: producer + consumer, as they ran
-├── arms/            the operating layer: where new work happens
-├── keystone-forge/  how contracts are authored and validated before use
-├── _core/           the thin shared law + templates (silo and arm)
-├── bin/             executable checks: join-check, hedge_count, scan-tools
-└── meta-seams/      shared output standards every part clears
-```
-
-```mermaid
-flowchart TD
-    W["THE WELL<br/>one shared pool of raw material"]
-    W --> A["arm A"]
-    W --> B["arm B"]
-    W --> C["arm C"]
-    A --> S["the running system"]
-    B --> S
-    C --> S
-```
-
-**The well:** all raw material pools in `vault/`, entered by extraction or by
-hand, catalogued so it is addressable rather than a pile. A part draws only
-what one of its stages names, when that stage runs; nothing is pulled
-speculatively. This is why a part stops inventing material on the spot: it is
-always working from something real, not a blank page.
-
-**Independence:** a part reads the well, the shared law, and the shared writing
-standard. It never reads another part. This is what makes "any order, in
-parallel" true rather than aspirational: a part cannot be broken by a change
-somewhere else, because nothing points to it.
-
-## The Keystone
-
-A contract placed in the well, owned by no single part, that more than one part
-agrees to build against. It is the only thing that lets two parts align without
-referencing each other. **Not acted out** (it is not a persona). **Not a tool**
-(it is inert — read, conformed to, checked; it never executes). Plural and tiny
-— one per join, never one master contract.
-
-```mermaid
-flowchart TD
-    K["keystone<br/>shared contract in the well"]
-    K -.draws.-> P["producer"]
-    K -.draws.-> C["consumer"]
-    P -->|emits| J{{"join-check"}}
-    C -->|reads| J
-    J --> R["parts fit,<br/>verified by running them"]
-```
-
-The proof here is deliberately small: `vault/keystone-task.md` defines a `task`
-record with exactly three fields (`id`, `title`, `done`). That file, sitting in
-the well, is the entire coordination mechanism between two silos that have
-never seen each other's folders. `bin/join-check.py` runs the producer's output
-through the consumer, then runs its own falsification: it injects records that
-violate the keystone and requires the consumer to reject each one — a pass is
-earned against demonstrated failure, not assumed.
+The repo ships a working example: two parts (`silos/producer` and
+`silos/consumer`) that have never seen each other's code, both built against one
+keystone (`vault/keystone-task.md`). Run the check:
 
 ```console
 $ python bin/join-check.py
@@ -94,49 +50,72 @@ falsification holds: 2 violating records injected, all rejected
 PASS: two independent silos, one shared keystone, parts fit at the join, and the check can fail.
 ```
 
-Independence guarantees parts don't corrupt each other. The keystone
-additionally guarantees that two parts that must interoperate actually do —
-checked by running them. A check that cannot fail proves nothing; this one
-demonstrates its teeth on every run.
+The last two lines are the point. The check doesn't just confirm the parts fit
+— it *injects broken records and requires the consumer to reject them*, so a
+PASS is earned against demonstrated failure, not assumed. A check that can't
+fail proves nothing.
 
-## The Forge
+## The pieces
 
-Contracts are engineered artifacts, and untested contracts are liabilities.
-`keystone-forge/FORGE.md` carries the creation template and the validation
-protocol: N independent generations per candidate contract, a deterministic
-hedge-density metric (`bin/hedge_count.py`), blind operator scoring, and pass
-conditions measured on *variance*, not vibes. The standing law: **no keystone
-enters production untested.** Run 001's results are recorded in the forge —
-including the finding that contracts encoding rules stabilize while contracts
-encoding goals re-sample and wobble, and the boundary conditions of that claim.
+| Folder | What it is |
+|---|---|
+| `vault/` | The **well** — the one shared pool of source material, catalogued in `account.md`. |
+| `silos/` | The **frozen proof** — the `producer` + `consumer` example above, kept exactly as it ran. Not extended. |
+| `arms/` | The **operating layer** — where you do new work. An arm is a part plus the discipline to run it over time (below). |
+| `keystone-forge/` | How keystones are **authored and tested** before use (`FORGE.md`). |
+| `_core/` | The thin shared law + the templates you copy to make a new part. |
+| `bin/` | The runnable checks: `join-check.py`, `hedge_count.py`, `scan-tools.sh`. |
+| `meta-seams/` | The shared writing standard every part clears. |
 
-## Arms: The Operating Layer
+```mermaid
+flowchart TD
+    W["THE WELL (vault/)<br/>one shared pool of source"]
+    W --> A["arm A"]
+    W --> B["arm B"]
+    W --> C["arm C"]
+    A --> S["the running system"]
+    B --> S
+    C --> S
+```
 
-The proof is preserved exactly as it ran — `silos/` is frozen as the operating
-record. New work goes in `arms/`. An **arm** is structurally a silo (same
-workspace shape, same one-way draw from the well) plus the discipline that
-makes it operable over time: a runbook that runs cold, a done-when metric the
-operator supplies, and a decision log copied to `vault/exhaust/` when the arm
-closes. Arms are where this architecture stops being a diagram and starts being
-an operations pattern: quarantined functions, each holding one job, so the
-coordinating layer never has to hold everything at once.
+## Arms: doing new work
 
-## Lineage (kept on purpose)
+`silos/` is frozen — it's the proof record, left as it ran. New work goes in
+`arms/`. An **arm** is structurally the same as a silo (same workspace shape,
+same one-way draw from the well) plus three things that make it operable over
+time: a **runbook** that runs from a cold start, a **done-when** metric the
+operator supplies (a session never invents it), and a **decision log** copied
+to `vault/exhaust/` when the arm closes. To start one:
 
-This is the fourth iteration. The third — M2W, a single pipeline over ~750,000
-words of source with a "never discard, catalogue everything" rule — shipped
-output that was competent and flat: when nothing is ever cut, nothing is ever
-prioritized. Its deeper failure was structural: a thousand lines of prose
-specification, one executable script, and a verification method (model review
-passes) that could only confirm internal consistency — the checks and the work
-shared the same blind spot, so agreement between them meant nothing. The
-failure records live in `logs/` and the M2W history remains public, because
-working out *why* it failed is what produced this design. The first full-scale
-run of the corrected structure produced a seven-book technical corpus in six
-domains — cited here as evidence the shape holds at scale, not as the goal. The
-goal is the system this repo seeds.
+```bash
+cp -r _core/templates/arm arms/<name>   # scaffold a new arm
+python bin/join-check.py                 # re-run the proof end to end
+```
 
-## Why This Structure, Not the Obvious Alternatives
+Then, inside the arm: run `setup` to configure it once, fill the well, draw,
+build.
+
+## The forge: keystones are tested, not trusted
+
+A contract is only as good as its stability. `keystone-forge/FORGE.md` carries
+the creation template and a validation protocol: generate N independent outputs
+per candidate contract, measure hedge-density deterministically
+(`bin/hedge_count.py`), score blind, and judge on *variance*, not vibes. The
+standing law is **no keystone enters production untested.** Run 001 is recorded
+there, including its main finding: contracts written as *rules* stay stable
+across runs, while contracts written as *goals* re-sample and wobble.
+
+## The thesis (why it's built this way)
+
+**Architecture is not proof.** A description of how a system should behave is
+not evidence that it does. The only evidence is a run: something built, that
+held or failed, recorded so the next person can check it. Composition (parts
+don't corrupt each other) and integration (parts actually fit) are separate
+problems — most agentic tooling solves the first and calls it done. DCA's whole
+move is to make the second one *runnable*: the keystone plus `join-check.py` is
+the answer to "do the parts still fit?" that you execute instead of re-reading.
+
+## Why not the obvious alternatives
 
 | The problem at scale | Plain ICM, one workspace | A fresh agent plan | DCA |
 |---|---|---|---|
@@ -144,45 +123,38 @@ goal is the system this repo seeds.
 | Many parts that must not corrupt each other | one shape forced on all, or workspaces that drift | one long session holds everything; each new session re-plans | independent parts over one shared well |
 | Telling a bad part from a good one | mediocrity smears across the whole output | visible only at the end | a bad part fails in its own folder, cheaply and visibly |
 
-The honest version: the fourth attempt did not work because the agent got
-better at writing. It worked because the structure finally made a bad part show
-itself, in its own folder, instead of hiding inside one big system.
+## Lineage (kept on purpose)
+
+This is the fourth iteration. The third — M2W, a single pipeline over ~750,000
+words of source with a "never discard, catalogue everything" rule — shipped
+output that was competent and flat: when nothing is ever cut, nothing is ever
+prioritized. Its deeper failure was structural — a thousand lines of prose
+spec, one executable script, and a review method that could only confirm
+internal consistency, so the checks and the work shared the same blind spot.
+The failure records live in `logs/`, on purpose: working out *why* it failed is
+what produced this design. The first full-scale run of the corrected structure
+produced a [seven-book technical corpus](https://ai-systems-scriptorium.vercel.app/)
+across six domains — evidence the shape holds at scale, not the goal itself.
 
 ## Roadmap
 
 1. **Here (reference):** templates, proof, forge. Keystones are authored and
-   tested only — none deploy into arms in this repo.
-2. **The clone (production):** this repo seeds the Deferred Revenue
-   Architecture OS — a keystoned operating system for a live revenue pipeline,
-   with connectors (enrichment, CRM, content) as arms, each on its own
-   contract, bound only at tested keystones. Keystones deploy there, one join
-   at a time, first arm proven before the second exists.
-3. Promotion is earned: the keystone mechanism becomes standing convention only
-   after it holds on a second, harder case.
+   tested only — none deploy into arms in this repo, which stays frozen as the
+   reference.
+2. **The clone (production):** this repo seeds the Deferred Revenue Architecture
+   OS — a live revenue pipeline whose connectors (enrichment, CRM, content) are
+   arms, each on its own contract, bound only at tested keystones. Keystones
+   deploy there, one join at a time, first arm proven before the second exists.
+3. Promotion is earned: the keystone becomes standing convention only after it
+   holds on a second, harder case.
 
-## Start
+## References & what's not solved
 
-Read `CLAUDE.md` for the canonical read order. To stand up a new part:
-
-```bash
-cp -r _core/templates/arm arms/<name>     # scaffold a new arm from the template
-python bin/join-check.py                  # re-run the proof end to end
-```
-
-Then, inside the arm: run `setup` to configure it once, fill the well, draw,
-build.
-
-## References
-
-The self-contained workspace whose folder structure is the architecture is
+The self-contained workspace whose folder structure *is* the architecture is
 borrowed from [ICM (Interpreted Context Methodology)](https://github.com/RinDig/Interpreted-Context-Methdology)
-by Jake Van Clief: one agent reading files in order instead of a multi-agent
-framework. DCA adds the shared well and the keystone on top of it and does not
+by Jake Van Clief. DCA adds the shared well and the keystone on top and does not
 modify ICM.
 
-## What Is Not Solved
-
-Independence and a verified join tell you the parts don't break each other and
-do fit together. They tell you nothing about whether any one part is worth
-building. That judgment is a human's, applied per part, and no architecture in
-this repo claims otherwise.
+One honest limit: independence and a verified join tell you the parts don't
+break each other and do fit together. They tell you nothing about whether any
+one part is *worth building*. That judgment stays a human's, applied per part.
