@@ -60,3 +60,17 @@ losing the thread across long runs.
   `_core/` law (earned, not given); (b) then a real multi-part build on real well material. Quality of
   any silo's output is still human taste + the staking rule — the proof is does-it-compose, not
   does-it-land.
+
+## 2026-07-06 — session 2 (restructure order executed: arms + keystone-forge)
+- verified: `python3 bin/join-check.py` → PASS after the restructure (proof layer untouched);
+  `bash bin/scan-tools.sh` exits 0; `python3 bin/hedge_count.py` runs from bin/; one-way grep clean
+  (no arms/arm-01 refs from _core/, vault/, silos/; no arm→silo or arm→arm refs).
+- changed: RESTRUCTURE-STANDBY.md order executed with operator inputs (silos frozen as proof, new
+  arms/ operating layer, no conversions, arm-01 done-when = join-check PASS + four pieces,
+  connectors none). NEW: arms/ + arms/CONTEXT.md, _core/templates/arm/ (silo template + runbook +
+  done-when + decision-log), arms/arm-01/ (scaffolded, unconfigured), keystone-forge/FORGE.md
+  (from root), bin/hedge_count.py (from root), vault/exhaust/. See changelog 2026-07-06 (tested).
+- broken: nothing known.
+- next: operator moves — (a) run `setup` in arms/arm-01 (or rename it first; nothing references it)
+  and set its first real objective in done-when.md; (b) when ready for production keystones, clone
+  this repo as the DRA OS seed per RESTRUCTURE-STANDBY.md sequencing — keystones deploy only there.

@@ -2,8 +2,12 @@
 
 Each silo is one **pillar**: a self-contained ICM workspace that draws from the shared well
 (`../vault`) and builds one kind of deliverable. Silos are independent, built in any order, in
-parallel, none waiting on another. This folder starts EMPTY (no pillar stood up yet) and is correct
-empty.
+parallel, none waiting on another.
+
+**This layer is FROZEN as the proof record (restructure order executed 2026-07-06).** `producer`
+and `consumer` are the two pillars of DCA's first operating history (`PROOF.md`), preserved exactly
+as they ran so `../bin/join-check.py` re-verifies them forever. New operating work goes in
+`../arms/` — see `../arms/CONTEXT.md`.
 
 ## Spin up a new silo
 1. Copy `../_core/templates/silo/` to `silos/<name>/`.

@@ -102,3 +102,30 @@ intent), how it was tested, and what breaks if it is reverted.
   finding.
 - follow-up (NOT done — earned, not given): the keystone is proven but not yet written into the law
   (`_core/`). Promote it to a first-class DCA concept only after a second, non-trivial keystone holds.
+
+## 2026-07-06 — Restructure order executed: arms layer + keystone-forge; silos frozen as proof
+- what: The RESTRUCTURE-STANDBY.md order was issued in-session and executed. NEW: `arms/` (the
+  operating layer; `arms/CONTEXT.md` = the four required pieces + one-way/no-connector laws);
+  `_core/templates/arm/` (the silo template + `runbook.md`, `done-when.md`, `decision-log.md`);
+  `arms/arm-01/` (first arm, scaffolded empty, done-when filled by the operator);
+  `keystone-forge/FORGE.md` (moved from root — creation + validation of keystones, Run 001 record);
+  `bin/hedge_count.py` (moved from root, beside join-check.py, per FORGE.md's own pointer);
+  `vault/exhaust/` (the well's record of closed arms' decision logs — records, not drawable
+  material, no account.md rows). CHANGED: RESTRUCTURE-STANDBY.md status FROZEN → EXECUTED with the
+  four operator inputs recorded; silos/CONTEXT.md marked frozen-as-proof; CLAUDE.md shape/read-order
+  updated; README gains the "Arms: The Operating Layer" section. UNTOUCHED: `vault/keystone-task.md`,
+  `bin/join-check.py`, all silo internals — silos/ stays exactly as it ran so the hardcoded
+  join-check paths keep working (this is why silos/ was frozen rather than renamed).
+- why: operator-issued restructure order (2026-07-06). Operator inputs, not invented: silos stay as
+  frozen proof + new arms/ layer; no silo→arm conversions; first arm done-when = join-check PASS +
+  all four pieces present; connectors = none. Keystones deploy only in the DRA clone, never here
+  (standby sequencing, kept as standing law).
+- tested: `python3 bin/join-check.py` → PASS (proof layer intact post-restructure);
+  `bash bin/scan-tools.sh` → exit 0; `python3 bin/hedge_count.py README.md` runs from its new home;
+  one-way grep — nothing in `_core/`, `vault/`, or `silos/` references `arms/arm-01`; nothing in
+  `arms/` references a silo or another arm; arm-01 contains all four required pieces (done-when met).
+- revert-risk: removing `arms/` orphans the executed order and the arm template but does not touch
+  the proof (deletion test: well + `_core` + silos still stand). Un-freezing `silos/` for new work
+  re-couples the proof record to live changes and risks breaking the immutable join-check's
+  hardcoded paths. Moving FORGE.md or hedge_count.py back to root breaks FORGE.md's internal
+  `bin/hedge_count.py` pointer and the standby doc's `keystone-forge/` location law.

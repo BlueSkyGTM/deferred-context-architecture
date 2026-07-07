@@ -1,16 +1,28 @@
 # RESTRUCTURE-STANDBY.md
-*Place at the root of manifest-to-workspace (DCA). This file is a standing
-instruction to any session that opens this repo. 2026-07-05.*
+*At the root of the DCA repo. Written 2026-07-05 as a standing freeze
+instruction; executed 2026-07-06. Now the record of the order and its
+still-standing fences.*
 
-## Status: FROZEN — awaiting operator order
+## Status: EXECUTED 2026-07-06
 
-The DCA proof passed (silos/PROOF.md — join-check green, falsification encoded).
-The repo is correct as-is. **Do not restructure, extend, or "improve" anything
-until the operator issues an explicit restructure order in-session.** If you are
-a Claude session reading this: your only permitted actions before that order are
-reading, answering questions, and running the existing join-check.
+The operator issued the restructure order in-session on 2026-07-06 and supplied
+the required inputs verbatim:
 
-## What the restructure will be, when ordered
+1. **Rename shape:** `silos/` stays untouched as the frozen proof layer (this
+   also resolves the conflict that `bin/join-check.py` hardcodes silo paths and
+   must never be edited). A new `arms/` directory is the operating layer.
+2. **Silo→arm map:** no conversions — producer/consumer remain proof silos.
+   The first arm (`arms/arm-01/`) is scaffolded new and empty.
+3. **First arm done-when:** `python bin/join-check.py` still exits PASS AND the
+   arm has all four required pieces (contract draw, runbook, done-when,
+   decision log).
+4. **Connectors:** none — strict one-way arm → well / `_core` / `meta-seams`.
+
+The sections below are kept as the record of what was ordered and as standing
+law where marked. The "What must NOT change" fences and the sequencing remain
+in force permanently.
+
+## What the restructure was, as ordered
 
 Target shape: **README → arms.** Silos are renamed and re-documented as *arms* —
 independent operating branches, each with:
@@ -18,10 +30,10 @@ independent operating branches, each with:
 - a runbook (re-runnable cold) and a done-when metric
 - a decision log (three lines per decision, copied to well/exhaust on close)
 
-The operator will supply, in the order: which silos become which arms, the
-first arm's done-when, and any connector permissions. Do not invent these.
+The operator supplied, in the order: which silos become which arms, the
+first arm's done-when, and connector permissions (recorded under Status above).
 
-## What must NOT change, ever, in the restructure
+## What must NOT change, ever (STANDING LAW — survives the execution)
 
 - `vault/keystone-task.md` — the contract. Arms conform to it; nothing edits it
   except the operator by hand.

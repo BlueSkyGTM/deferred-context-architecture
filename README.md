@@ -155,6 +155,18 @@ gap is one M2W never had to face, because M2W only ever built one thing. The key
 small answer to one instance of it, not a finished system, but it is the first thing in this project
 with an actual operating history instead of a specification.
 
+## Arms: The Operating Layer
+
+The proof above is preserved exactly as it ran: `silos/producer` and `silos/consumer` are frozen as
+the operating record, and `bin/join-check.py` re-verifies them on demand. New work does not extend
+that layer. It goes in `arms/`: an **arm** is structurally a silo (same ICM workspace, same one-way
+draw from the well) plus the discipline that makes it operable over time — a runbook that runs cold,
+a done-when metric the operator supplies, and a decision log that is copied to `vault/exhaust/` when
+the arm closes. `keystone-forge/` sits alongside as the demonstration layer: how contracts are
+authored and how they are validated before any production use (`keystone-forge/FORGE.md`). In this
+repo keystones are authored and tested only; they deploy into arms exclusively in the production
+clone, never here.
+
 ## Why This Structure, And Not The Obvious Alternatives
 
 The scriptorium is seven books, in different domains, built from one large body of source over many

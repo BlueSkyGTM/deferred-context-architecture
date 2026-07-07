@@ -21,18 +21,26 @@ folder layout carries the architecture; prose is minimal.
 2. `_core/CONVENTIONS.md`, how a silo is built (five-layer routing + the stage contract + the laws).
 3. `_core/deferral.md`, the Deferred-Context discipline.
 4. `_core/well-contract.md`, the shared well and the well-to-silo handoff.
-5. `silos/CONTEXT.md`, how to spin up a pillar.
-6. For a specific silo: `silos/<name>/CLAUDE.md`.
+5. `silos/CONTEXT.md`, the frozen proof layer.
+6. `arms/CONTEXT.md`, how to spin up and operate an arm.
+7. For a specific arm: `arms/<name>/CLAUDE.md`.
 
 ## The shape
 
 ```
 DCA/
 ├── vault/     THE WELL, one shared source pool; enters by extraction or placement; catalogued in account.md
-├── silos/     THE PILLARS, each a self-contained ICM workspace; draws from the well; built in any order
-├── _core/     the shared law + the silo template (_core/templates/silo/)
+│   └── exhaust/  the well's record of closed arms (decision logs copied at close)
+├── silos/     THE PROOF, the two pillars of the first operating history (PROOF.md); frozen, not extended
+├── arms/      THE OPERATING BRANCHES, each a silo + runbook + done-when + decision log; built in any order
+├── keystone-forge/ the demonstration layer: how contracts are authored and validated (FORGE.md)
+├── _core/     the shared law + the templates (_core/templates/silo/, _core/templates/arm/)
 └── meta-seams/ shared output standards (writing.md) every silo clears
 ```
+
+Silos are the frozen proof record; arms are where DCA operates (restructure order executed
+2026-07-06, see RESTRUCTURE-STANDBY.md). Everything true of a silo is true of an arm; an arm adds
+the operating discipline.
 
 ## The non-negotiables
 
