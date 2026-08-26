@@ -55,14 +55,18 @@ one thing ICM most emphatically fixes. Everything is on disk. Nothing on that di
 turn.
 
 ICM builds the courtroom. It never schedules a hearing.
-`../mechanics/the-board.md` names the three parts that close it: the context file is the law,
-a construct is the hearing, and the board is the docket.
+`../mechanics/the-bbs.md` names the three parts that close it: the context file is the law, the
+binding is the hearing, and the board is where the hearing gets scheduled.
 
-There is a second edge, visible once building is separated from milling. Numbered stages
-encode a sequence known before the work starts, which is right for milling and wrong for
-building, where the sequence is the thing being discovered. So the board replaces ICM's stage
-ordinality. It leaves ICM's folder legibility untouched, and that legibility is what the next
-section depends on.
+There is a second edge, visible once building is separated from milling. Numbered stages encode a
+sequence known before the work starts, which is right for milling and wrong for building, where
+the sequence is the thing being discovered.
+
+**This does not replace ICM's stage ordinality. It makes ordinality per card rather than per
+tree.** Numbered folders still carry sequence wherever sequence is genuinely permanent, and a
+mill keeps its numbers untouched. A card carries sequence where it is not. Nothing is taken away
+from ICM; a second place to put order is added, for the case ICM's own text says it loses. The
+first version of this file claimed replacement, which was both wrong and a worse claim.
 
 ## The shape of the gap
 
@@ -131,21 +135,21 @@ ICM's objection to mid-pipeline branching is that the system branching on model 
 ICM toward the framework it replaced. The objection is about where the logic lives, not about
 branching itself.
 
-A construct is frontmatter in a stage contract. The branch condition, what it wakes, what it
-may see, and what it returns are all plain text in the file the branch belongs to. There is no
-orchestration code, no registry, no runtime holding a graph.
+The branch is a card. The condition, what it wakes, what it may see, and what it returns are
+plain text in a file a person can read before anything runs. There is no orchestration code, no
+registry, no runtime holding a graph.
 
 Check it against ICM's own invariants:
 
-| ICM invariant | Under DCA |
+| ICM invariant | Here |
 |---|---|
-| One folder, one job | Unchanged. A construct is that folder stating one more thing about its job |
-| Small stable entry file | Unchanged. Constructs live in stage contracts, never in the entry file |
-| Every contract explicit | Strengthened. `hands-down` makes the context handed to a branch auditable rather than inferred |
-| Load only what the step needs | Extended from reading to activation |
-| Plain text, linkable | Unchanged. Frontmatter, the format ICM already specifies |
-| The filesystem is the state machine | Unchanged. Nothing is held in a process |
-| Every output is an edit surface | Unchanged, and load-bearing: a finding is a file the operator edits before anything acts on it |
+| One folder, one job | Unchanged. The folder states its job; the card names which job is being run |
+| Small stable entry file | Unchanged. Cards live on the board, never in the entry file |
+| Every contract explicit | Strengthened. A card is written before anything fires and can be read first |
+| Load only what the step needs | Extended from reading to activation, and enforced by the working directory rather than requested |
+| Plain text, linkable | Unchanged. Markdown, the format ICM already specifies |
+| The filesystem is the state machine | Unchanged for stage state. A card is an authored decision rather than derived state, which is a different artifact class, not a violation |
+| Every output is an edit surface | Unchanged, and load-bearing twice over: a finding is a file the operator edits, and so is a card before it is played |
 
 Nothing in that table is a concession. The branch is a file, so the structure remains the
 documentation and the operator can still walk the building with their own eyes.
@@ -156,10 +160,9 @@ The fit problem above describes a skill invoked on a folder deciding the form fr
 folder contains, while the information that settles the form lives in the surrounding
 contracts.
 
-Under DCA there is no path to the agent that does not pass through the context file. The
-construct is in the contract, so the contract is what wakes the work. An agent is never called
-with go and structure this folder. It is woken by a file that already states what the folder
-is for, what enters it, and what it must answer.
+Here there is no path to the agent that does not pass through a folder and a card. An agent is
+never called with go and structure this folder. It arrives inside a folder that already states
+what it is for, holding a card that states what finished means.
 
 Decontextualisation is not reduced. It is made unreachable, because activation and context
 are the same artifact.
@@ -196,3 +199,8 @@ That is the host system's standing rule for additions, applied here without exce
 Founding session, 2026-08-25. Quotations are from `icm-architect/references/core.md` and
 `icm-architect/SKILL.md`, vendored in this folder under MIT licence, copyright 2026 Jake Van
 Clief. Method: Interpretable Context Methodology, Van Clief and McDermott, arXiv:2603.16021.
+
+Revised 2026-08-26. The ordinality claim was corrected from replacement to per-card ordering, the
+invariant table was re-checked against the mechanism as it now stands, and
+`icm-upstream/` was added beside the skill because the two are complementary artifacts rather
+than versions of one thing. `icm-upstream/VENDORED.md` records that check.

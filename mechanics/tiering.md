@@ -1,6 +1,7 @@
 # Tiering
 
-Four rungs. A construct declares one. Nothing chooses centrally, which is the point.
+Three rungs a card can declare, and one seat that is not a rung at all. Nothing chooses
+centrally, which is the point.
 
 ## The ladder
 
@@ -9,22 +10,38 @@ Four rungs. A construct declares one. Nothing chooses centrally, which is the po
 | none | Not a model question. Shell, script, a diff | Walking a tree, checking a path resolves, comparing a fingerprint, counting files | Nothing |
 | fetch | Fast retrieval. Returns facts, makes no calls | Searching, reading, gathering, listing what exists | Least |
 | build | Executes a complete specification | Writing to a contract, applying a convention, producing volume from a settled decision | More |
-| judgment | Decides. Emits little | Fit, precedence, whether a contract was right, reconciling siblings | Most |
+
+## The seat that is not a rung
+
+An earlier version of this file listed a fourth rung called judgment, for fit, precedence,
+whether a contract was right, and reconciling siblings. Every one of those is something
+`evaluation.md` forbids a woken agent to do, and `../rungs.md` records what actually serves that
+position: the core, in session.
+
+A card cannot declare the core. The core is what reads the card.
+
+So judgment is not a tier anyone routes to. It is the seat the deliberation happens in, and the
+work listed above is the core's own, done before a card is written or after a result comes back.
+Keeping it on the ladder invited a card to hand its hardest question to a woken model, which is
+the one thing the architecture is built to prevent.
+
+**On the word.** This ladder is measured in **rungs**. The authority ladder in
+`../foundations/authority.md` is measured in **levels**. Two ordered lists sharing one word was a
+live defect until 2026-08-26.
 
 ## The rule that makes it work
 
 **Capability is spent per decision. Cost is spent per token.**
 
-The judgment rung is not rationed because it is expensive. It is expensive per token and
-cheap per decision, so it is used wherever a decision is genuinely being made and kept away
-from anything that produces volume. A strong model writing four hundred lines of boilerplate
-is the failure this ladder exists to prevent. The same model emitting one routing call is the
-success.
+The core is not rationed because it is expensive. It is expensive per token and cheap per
+decision, so it is spent wherever a decision is genuinely being made and kept away from anything
+that produces volume. A strong model writing four hundred lines of boilerplate is the failure
+this ladder exists to prevent. The same model writing one card is the success.
 
 ## Rung zero earns the most
 
 The bottom rung saves more than the others because it does not cost less, it costs nothing.
-Most of what an workspace-walking agent does is not reasoning:
+Most of what gets done to a workspace is not reasoning:
 
 - Enumerate the tree
 - Check whether an entry file exists in each folder
@@ -40,32 +57,32 @@ reliable than one.
 The house convention already requires counts to be verified against the tree rather
 than remembered. Rung zero is that rule given a mechanism.
 
-## Why the tier belongs on the construct
+## Why the tier belongs on the card
 
 The routing fallacy in `../foundations/constraints-over-capability.md` exists because tier was
 being chosen at the wrong granularity. One call for a whole braided task forces the maximum,
 because the caller does not know which strands the run will hit.
 
-Put the tier on the construct and nobody makes that call. Each strand is already labelled where
-it lives. The braid does not have to be untangled by anyone, because it was never tied: each
+Put the tier on the card and nobody makes that call. Each strand is labelled when the card that
+governs it is written. The braid does not have to be untangled by anyone, because it was never tied: each
 thread was tagged at the point it was written.
 
 Capability stops being a decision and becomes a property of position. That is the same move
-`constructs.md` makes with activation, one level down.
+`../foundations/the-binding.md` makes with activation, one level down.
 
 ## Escalation
 
 A rung below judgment will meet something its contract does not cover. Two things can happen
 and only one of them is acceptable.
 
-It stops and files, per `escalates-when` on its construct. Or it guesses.
+It stops and files, per `escalate` on its card. Or it guesses.
 
 Routing down without a named exit condition does not avoid the hard case. It relocates the
 hard case to the least capable reader in the system, unobserved, and the completion fallacy
 guarantees the result comes back reported as a success.
 
-Every construct below the judgment rung states its exit. A construct that cannot state one is a
-construct whose tier was set too low.
+Every card states its exit. A card that cannot state one is a card whose tier was set too low,
+or a question that belonged to the core in the first place.
 
 ## Fan-out and what it costs
 
@@ -91,8 +108,8 @@ Two costs stay on the logic layer no matter who runs the workers:
 
 - **The fan-in.** Someone writes the work orders and someone reads the results. Ten outputs
   arriving at once is the strong tier paying strong-tier prices, which is the original
-  detonation wearing a different hat. `returns` names a path for this reason, and the board
-  holds the paths so the core opens one deliberately rather than ten because they all came
+  detonation wearing a different hat. A card names a return path for this reason, and the board
+  holds those paths so the core opens one deliberately rather than ten because they all came
   back.
 - **The review surface.** Ten results nobody reads individually collapse into a summary of
   summaries. No vendor arrangement buys back a single unit of that, which is why the ceiling
@@ -136,8 +153,8 @@ main window holding outputs. A foreign worker returning forty thousand tokens po
 as much and charges a second supplier for the privilege. The protection is `returns` naming a
 path.
 
-**Write rungs, never vendor names.** A construct declares `fetch` or `build`; one mapping file
-says which model serves each rung today. Swapping a supplier, including a local one on the
+**Write rungs, never vendor names.** A card declares `fetch` or `build`; one mapping file says
+which model serves each rung today. Swapping a supplier, including a local one on the
 operator's own hardware, is then an edit to that one file rather than a sweep through every
 contract. Model agnosticism is not something to build. It is something to avoid breaking.
 
@@ -153,3 +170,8 @@ contract was right is not.
 
 Operator and session, 2026-08-25. Rung zero derives from the Stripe deterministic orchestrator
 described in `../foundations/constraints-over-capability.md`.
+
+Revised 2026-08-26. The judgment rung was removed from the ladder because it named the core,
+which no card can declare, and because the work listed under it was work `evaluation.md` forbids
+a woken agent. The rung and level collision with the authority ladder was resolved in the same
+pass.

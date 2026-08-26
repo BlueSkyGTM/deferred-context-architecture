@@ -38,7 +38,7 @@ decays further before anything fires on it.
 | The orchestrator is dissolved, not centralised | Stripe's constraint discipline survives the inversion. The dispatcher does not |
 | One push tick is required | Pull-based activation is blind at unvisited nodes, which is where decay lives |
 | Evaluation criteria live one level above the stage | Otherwise a stage writes its own passing grade and the loop reports green forever |
-| A woken agent proposes, never settles | It sits on rung five and cannot see the ladder |
+| A woken agent proposes, never settles | It sits at level five and cannot see the ladder |
 | Multi-agent swarms are declined | Sub-agents are taken for verification and cheap limbs. Worktrees and parallel fan-out are not |
 | ICM stays underneath | Remove it and DCA becomes the opaque thing the operator rejected |
 
@@ -90,7 +90,7 @@ earned by a second and third run.
 | id | What is missing | Consequence if trusted as is |
 |---|---|---|
 | `reconciliation-unrun` | `mechanics/reconciliation.md` has a responsibility and a procedure and no implementation behind it. The weakest file in the workspace | Sibling divergence is the one failure mode with no tested guard. The first parallel run should be expected to rewrite the file |
-| `construct-unexercised` | The frontmatter shape in `mechanics/constructs.md` is a proposal. No construct has been written, fired, or audited | Field names, and especially whether `hands-down` is sufficient in practice, are guesses until a real branch runs |
+| `construct-unexercised` | The frontmatter shape in `../_archive/constructs.md` is a proposal. No construct has been written, fired, or audited | Superseded 2026-08-26: the frontmatter mechanism was replaced by the binding, and the defect stands in the new form. See `../decisions/2026-08-26-the-binding-and-the-bbs.md` |
 | `ignition-unscheduled` | No walk is scheduled. No fingerprint format is implemented, no threshold set, no cap configured | The unvisited-node hole that ignition exists to close is currently open. Structural decay still waits on the operator noticing |
 | `tiering-unmeasured` | The four rungs are reasoned, not measured. No run has been costed at any rung | The claim that this reduces spend is untested. It is the premise of the whole architecture |
 
@@ -119,7 +119,7 @@ reasoning behind them.
 ### What was settled
 
 **The board.** A mutable file holding what is outstanding, in what order, and what counts as
-done. `../mechanics/the-board.md` carries it.
+done. Superseded 2026-08-26 by `../mechanics/the-bbs.md`; the original is `../_archive/the-board.md`.
 
 **Mandate and method are separate artifacts.** The board says which work, in what order, and
 what finishing means. The context file behind the named door says how that work is done. Two
@@ -198,7 +198,8 @@ Why it was accepted rather than filed as a restatement. Every mechanic in the wo
 onto one of the four given a mechanism, and the mapping is exhaustive: the board picks a door
 and so fixes three of them, the construct delivers all four, tiering is capability, evaluation is
 standard, ignition decides whether a door is reached, reconciliation handles siblings that
-assembled the four differently. `the-two-deferrals.md` already ended on the law that an agent
+assembled the four differently. `../foundations/the-two-deferrals.md` already ended on the law
+that an agent
 is exactly as good as what its construct encodes; the four parts are what that sentence
 decomposes into, so the relationship was already implied and only needed naming.
 

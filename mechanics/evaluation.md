@@ -14,11 +14,19 @@ own output, but it undoes the mechanism in one specific way: a stage becomes abl
 its own passing grade, and nothing downstream can see that it did. The loop reports green
 forever.
 
-**The rule: criteria belong to the contract one level above the stage, never to the stage
-itself.** A stage may state what it produces. It may not state what counts as good.
+**The rule: whoever writes the card writes the acceptance, and never the party doing the work.**
+A stage may state what it produces. It may not state what counts as good.
 
-In practice `judged-by` on a construct points upward, and a stage contract that defines its own
-success condition is a defect to be fixed rather than a style choice.
+That is a rule about authorship, not about where a file sits. An earlier version stated it
+positionally, as criteria living one level above the stage and reached by a relative path.
+Position cannot survive a reader with no location, and the relative path it depended on resolved
+only for something standing in the folder. Authorship survives, because it is a fact about who
+held the pen rather than about who can see what.
+
+Two halves, both written before the work starts: standing criteria in the folder's contract, and
+this run's acceptance on the card. A stage contract that defines its own success condition is a
+defect to be fixed rather than a style choice. `acceptance.md` holds the checks that enforce
+it.
 
 ## What an evaluator can and cannot do
 
@@ -33,8 +41,8 @@ The right-hand column is not a shortcoming to be engineered away. It is the pric
 independence in the left-hand column, and trying to buy both by letting the evaluator see
 more turns it back into an insider.
 
-Fit judgment therefore never belongs to a woken evaluator. It belongs to a ruling, decided
-by something that had the picture, handed down through `hands-down`.
+Fit judgment therefore never belongs to a woken evaluator. It belongs to a ruling, decided by
+something that had the picture, and it reaches the work through the card.
 
 ## Verify by acting, not by reading
 
@@ -64,7 +72,7 @@ asked whether the work looks acceptable returns agreement.
 ## The escalation it owes
 
 An evaluator that finds something outside its contract does not resolve it. It files, per
-`escalates-when` in `constructs.md`. Its authority is to reject and to report, never to repair,
+`escalate` on its card. Its authority is to reject and to report, never to repair,
 because repairing requires knowing what should have been built, and it cannot see that.
 
 Rejection without repair feels incomplete. It is the correct boundary: a blind agent that
@@ -75,3 +83,6 @@ starts fixing is a blind agent making structural decisions.
 Rajasekaran's acting-evaluator practice is reported in HuaShu, *Loop Engineering* (June 2026
 edition), section 05. The criteria-placement rule was settled in the founding session,
 2026-08-25.
+
+Revised 2026-08-26. The rule was restated as authorship rather than filesystem placement, and
+`judged-by` was dropped along with the relative path it depended on.

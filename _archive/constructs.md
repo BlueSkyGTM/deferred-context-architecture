@@ -1,3 +1,21 @@
+> **Archived 2026-08-26. Replaced by `../foundations/the-binding.md`.**
+>
+> The mechanism in this file is superseded. A construct as frontmatter living in a stage
+> contract tried to persist something whose whole nature is to be transient, and it required
+> every folder to declare in advance what work would arrive at it. What wakes is assembled at
+> the moment work begins and discarded when it ends, so there is nothing to write down in a
+> folder and nothing to keep in sync.
+>
+> The argument that survived is the one about authorship: a prompt composed at runtime is not
+> an artifact, a borrowed library holds roles rather than judgments, and a prompt's debugging
+> surface is its author's understanding of it. That reasoning moved into `the-binding.md`
+> intact and is the reason the hardest line in this architecture still holds.
+>
+> Two smaller things are wrong here and are worth naming so nobody reinstates them. The two
+> rules at the end are addressed to a construct, which is a list and can neither permit nor
+> forbid anything; they belong to the core that assembles the payload. And `judged-by` names a
+> relative path, which cannot resolve for a reader that has no location.
+
 # Constructs
 
 The unit of the architecture. A construct is an instruction, living in a context file, that

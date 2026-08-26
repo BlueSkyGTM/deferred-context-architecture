@@ -26,8 +26,13 @@ current structural fingerprint against the last recorded one and notice what mov
 has gone untouched past a threshold. It does not interpret, it does not restructure, and it
 does not decide anything.
 
-When it finds something, it names the folder and stops. The folder's own context file takes
-over from there, and everything downstream is pull as normal.
+When it finds something, it writes a card naming the folder and stops. Nothing else happens
+until a person reads that card and plays it.
+
+Writing a card is the whole of what ignition may produce, and the reason is that nothing else
+would run. There is no traversal in this architecture, so a folder that has been named but never
+carded is a folder nobody visits. An earlier version of this file had the folder's own context
+file taking over from there, which is a file being asked to act.
 
 **One ignition, everything after it lazy.** That is the shape that keeps the topology intact
 while closing the hole.
@@ -89,10 +94,10 @@ So the caps are not hygiene. They are the condition under which the premise hold
 ## What ignition may never do
 
 It may not restructure. It may not write to any contract. It may not decide which of the five
-ICM forms fits.
+ICM forms fits. It may not play the card it wrote.
 
-It notices and it names. Everything else is a finding that waits for a ruling, per
-`../foundations/authority.md`. An ignition with write authority is an unattended rung-five
+It notices, it names, and it stops. Everything else is a finding that waits for a ruling, per
+`../foundations/authority.md`. An ignition with write authority is an unattended level-five
 agent editing the structure the whole host system routes through, which is the worst available
 configuration of this architecture.
 

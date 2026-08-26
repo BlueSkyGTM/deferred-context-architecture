@@ -31,19 +31,28 @@ highest first, is a workable default:
 4. Method: the contracts themselves
 5. A session's own reasoning, lowest
 
-Substitute your own rungs. What must survive substitution is that there are five of them, that
+Substitute your own levels. What must survive substitution is that there are five of them, that
 they are ordered, that the order is written where a person can read it, and that the bottom
-rung is where a woken agent sits.
+level is where a woken agent sits.
 
-A woken agent sits on rung five. It is the least authoritative thing in the building, and
-deferred scope means it cannot see rungs one through four unless they were handed to it.
+A woken agent sits at level five. It is the least authoritative thing in the building, and
+deferred scope means it cannot see levels one through four unless they were handed to it.
+
+**On the word.** This ladder is measured in **levels**. The capability ladder in
+`../mechanics/tiering.md` is measured in **rungs**. Two ordered lists in one bundle sharing one
+word was a live defect until 2026-08-26, and a contract author hitting a bare number should
+never have to work out which ladder is meant.
 
 Two consequences, and they are the load-bearing ones:
 
 **A woken agent proposes. It does not settle.** Structural change is filed as a finding and
-waits for a ruling. This is not caution about model quality. It is that rung five cannot
+waits for a ruling. This is not caution about model quality. It is that level five cannot
 promote itself, and an agent that cannot see the ladder cannot know it is standing at the
 bottom of one.
+
+A folder under construction is not an exception. The operator authorised that structure by
+creating the folder and writing its contract, before anything ran. An agent fills a space that
+was already sanctioned; it never decides that a space should exist.
 
 **A ruling is how sight reaches the blind.** `completion-fallacy.md` establishes that
 withholding buys independence and not competence, so the standard has to arrive already
