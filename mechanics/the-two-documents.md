@@ -80,7 +80,7 @@ output. Promotion is a person saying this one is good enough to be copied from.
 - Audit, as checks with pass conditions
 - Outputs, named with their paths
 
-The second shape is ICM's and is not ours to redesign. `../amendment/icm-upstream/` carries the
+The second shape is ICM's and is not ours to redesign. `../origins/icm-upstream/` carries the
 current version of it.
 
 ## The rule that generalises

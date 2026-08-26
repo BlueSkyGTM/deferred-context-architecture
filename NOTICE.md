@@ -13,10 +13,10 @@ Two artifacts, both **Interpretable Context Methodology**, both MIT, and complem
 than versions of one thing. The method is published as Van Clief and McDermott,
 arXiv:2603.16021.
 
-**`amendment/icm-architect/`** is the `icm-architect` skill, copyright 2026 **Jake Van Clief**.
+**`origins/icm-architect/`** is the `icm-architect` skill, copyright 2026 **Jake Van Clief**.
 It carries the five forms, the walk test, and the build and restructure modes.
 
-**`amendment/icm-upstream/`** is the method repository's `_core`, copyright 2026 **Model
+**`origins/icm-upstream/`** is the method repository's `_core`, copyright 2026 **Model
 Workspace Protocol Contributors**, created by Jake Van Clief. Taken 2026-08-26 at commit
 `02ba5d85c7871b75c7c702a2d8da6524723d53d4`, dated 2026-07-25, from
 https://github.com/RinDig/Interpretable-Context-Methodology. It carries fifteen numbered
@@ -24,13 +24,17 @@ patterns, checkpoints, and stage audits.
 
 Both are vendored **unmodified**, each with its own `LICENSE` in place, as MIT requires. Nothing
 in either has been edited, and nothing has been copied out of them into the files around them.
-`amendment/icm-upstream/VENDORED.md` is this repository's own note, records the comparison
+`origins/icm-upstream/VENDORED.md` is this repository's own note, records the comparison
 between the two, and lists what was omitted from the second: the worked example workspaces, the
 repository's own entry file, and its `.gitignore`.
 
-This repository is an amendment to that method and is unreadable without it, which is why
-working copies are carried rather than citations. If you want ICM on its own, take it from its
-author rather than from here.
+This repository **descends from** that method rather than amending it. Its aims diverge:
+ICM's stated goal is one agent doing what a framework would otherwise do, and this method's is
+many bounded agents. `origins/divergence.md` sets out where they part.
+
+Working copies are carried rather than citations because the argument here quotes them and
+because descent is easier to check against the source. If you want ICM on its own, take it from
+its author rather than from here.
 
 ## Cited, not carried
 
@@ -54,7 +58,7 @@ point of use.
 
 ## Ours
 
-Everything outside `amendment/icm-architect/` is original work, MIT licensed, copyright 2026
+Everything outside `origins/icm-architect/` is original work, MIT licensed, copyright 2026
 BlueSkyGTM. See `LICENSE`.
 
 The specific claims that are ours rather than inherited are listed in `lineage.md` under

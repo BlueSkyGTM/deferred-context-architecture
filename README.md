@@ -226,8 +226,9 @@ deferred-context-architecture/
 │
 ├── templates/              copyable starting points for a card, contract, router, board
 │
-├── amendment/
-│   ├── the-amendment.md                 what ICM cannot do, and how this extends it
+├── origins/
+│   ├── divergence.md                    what was inherited, and where the aims part
+│   ├── the-machinery.md                 every upstream pattern, with a verdict
 │   ├── icm-architect/                   the ICM skill, vendored under MIT
 │   └── icm-upstream/                    ICM's current conventions, vendored under MIT
 │
@@ -272,25 +273,31 @@ repository is currently the former.
 
 **Interpretable Context Methodology**, by Van Clief and McDermott, arXiv:2603.16021, in which
 folder structure does the orchestration a framework would otherwise do in code. ICM is vendored
-twice under `amendment/`, both under the MIT licence with their own LICENSE files: the
+twice under `origins/`, both under the MIT licence with their own LICENSE files: the
 `icm-architect` skill, which teaches how to design a workspace, and the method repository's
-core, which specifies the conventions one must follow. They are complementary rather than
-versions of one thing, and `amendment/icm-upstream/VENDORED.md` records how they differ.
+core, which specifies the conventions one must follow.
 
-This is an amendment to ICM, not a replacement. **ICM defers what is read. This defers what is
-woken.** ICM owns everything inside a folder. What this adds is the gap between folders: what
-travels it, what that thing may see, and how anyone knows it arrived. Everything ICM guarantees has to keep holding, and one guarantee in particular is
+**This descends from ICM rather than amending it.** ICM's stated goal is one agent doing what a
+framework would otherwise do. This method's goal is many bounded agents, and the instincts run
+opposite: ICM consolidates toward one roof, this defers toward many. Consolidate an ICM workspace
+and it gets simpler. Consolidate this one and it stops working, because there is nothing left to
+defer between.
+
+What is inherited is everything inside a folder, and it is load-bearing rather than borrowed:
+blindness is only safe because the picture stays in human-readable files. What is added is the
+gap between folders. `origins/divergence.md` and `origins/the-machinery.md` carry the detail,
+pattern by pattern. Everything ICM guarantees has to keep holding, and one guarantee in particular is
 load-bearing rather than merely nice: a person can open any folder and see what state the
 system is in. Blindness is only safe because the picture stays in human-readable files. Start
 encoding that picture in agent configuration instead and this becomes the opaque thing it was
 built to avoid.
 
-`amendment/the-amendment.md`, `lineage.md`, `NOTICE.md`
+`origins/divergence.md`, `lineage.md`, `NOTICE.md`
 
 ---
 
 ## Licence
 
 The original work in this repository is MIT, copyright 2026 BlueSkyGTM. The vendored ICM
-bundle under `amendment/icm-architect/` is separately MIT, copyright 2026 Jake Van Clief, and
+bundle under `origins/icm-architect/` is separately MIT, copyright 2026 Jake Van Clief, and
 carries its own LICENSE file. See `NOTICE.md`.

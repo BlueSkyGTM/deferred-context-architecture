@@ -7,7 +7,7 @@ two things: activation, so nothing is instantiated until a card is written for i
 what is instantiated is bounded by a folder rather than trusted with a system. The first makes it
 cheap and reviewable. The second makes its judgment trustworthy.
 
-It is an amendment to Interpretable Context Methodology, not a replacement. ICM stays
+It descends from Interpretable Context Methodology rather than amending it. ICM stays
 underneath. Where the two overlap, ICM wins.
 
 ## Routing
@@ -20,7 +20,8 @@ underneath. Where the two overlap, ICM wins.
 | Why the strong model should decide and not type | `foundations/constraints-over-capability.md` |
 | Whose call is this, and what a woken agent may not do | `foundations/authority.md` |
 | What is outstanding, what a card must carry, and where the core is forced to think | `mechanics/the-bbs.md` |
-| Which folders are built, which are under construction, and who decides | `mechanics/the-router.md` |
+| Which wings exist, which folders are built, and who decides | `mechanics/the-router.md` |
+| What a wing owns, may reach, may spend, and must refer upward | `templates/CHARTER.md` |
 | What assembles an agent, and why there is nothing to store | `foundations/the-binding.md` |
 | What goes into a folder being built and what comes out of it | `mechanics/the-two-documents.md` |
 | How work is judged finished without the core reading it | `mechanics/acceptance.md` |
@@ -30,10 +31,11 @@ underneath. Where the two overlap, ICM wins.
 | The scheduled walk, its caps, and what it may never do | `mechanics/ignition.md` |
 | Who says no, and who is allowed to have written the standard | `mechanics/evaluation.md` |
 | Two branches disagreed | `mechanics/reconciliation.md` |
-| What ICM cannot do, and how this extends it without becoming a framework | `amendment/the-amendment.md` |
-| The method being amended, as a skill | `amendment/icm-architect/SKILL.md` |
-| The method being amended, as its current conventions | `amendment/icm-upstream/_core/CONVENTIONS.md` |
-| Why both are vendored and how they differ | `amendment/icm-upstream/VENDORED.md` |
+| What was inherited, where the aims part, and why this is descent | `origins/divergence.md` |
+| Every upstream pattern, with a verdict on what happened to it here | `origins/the-machinery.md` |
+| The method being amended, as a skill | `origins/icm-architect/SKILL.md` |
+| The method being amended, as its current conventions | `origins/icm-upstream/_core/CONVENTIONS.md` |
+| Why both are vendored and how they differ | `origins/icm-upstream/VENDORED.md` |
 | Something has gone wrong and reports fine | `foundations/failure-modes.md` |
 | Who said what, and what is ours | `lineage.md` |
 | What is vendored, from whom, under what terms | `NOTICE.md` |
@@ -48,7 +50,7 @@ underneath. Where the two overlap, ICM wins.
 `foundations/completion-fallacy.md` for why this exists, then
 `foundations/the-four-parts.md`, which is the claim the rest of the workspace serves, then
 `foundations/the-two-deferrals.md` for how those four get delivered, then
-`foundations/the-binding.md` for what actually wakes, then `amendment/the-amendment.md`. Those
+`foundations/the-binding.md` for what actually wakes, then `origins/divergence.md`. Those
 five carry the argument. Then `mechanics/the-bbs.md`, where it becomes something that runs. Everything else is how it is
 built or how it fails.
 

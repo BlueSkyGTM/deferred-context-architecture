@@ -4,6 +4,7 @@ Copyable starting points. Instantiate by copying, never by writing from a blank 
 
 | File | Copy it to | Who writes it |
 |---|---|---|
+| `CHARTER.md` | each wing's root | the operator, granting it |
 | `ROUTER.md` | the host system root | the operator, and a script keeps it honest |
 | `BBS.md` | the host system root | the core, one card at a time |
 | `CONTRACT.md` | a folder about to be built | the operator, before anything runs |

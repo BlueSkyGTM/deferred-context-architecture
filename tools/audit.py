@@ -70,7 +70,7 @@ import sys
 from pathlib import Path
 
 SKIP_DIRS = {".git", "_archive", "templates",
-             "amendment/icm-architect", "amendment/icm-upstream"}
+             "origins/icm-architect", "origins/icm-upstream"}
 
 # Names this method uses as nouns rather than as pointers. "Write a CONTEXT.md" names a kind of
 # file, not a file. Treating them as pointers produced findings nobody would act on, and an

@@ -7,8 +7,8 @@ tell a citation from a claim.
 
 | Source | What it contributes | Where it is used |
 |---|---|---|
-| Interpretable Context Methodology, the `icm-architect` skill, Jake Van Clief, MIT | The five forms, the walk test, build and restructure modes, the five-layer hierarchy | `amendment/icm-architect/`, vendored entire |
-| Interpretable Context Methodology, the method repository, MIT | Fifteen numbered patterns. Selective section routing, checkpoints, stage audits, and docs over outputs are load-bearing here | `amendment/icm-upstream/`, core vendored |
+| Interpretable Context Methodology, the `icm-architect` skill, Jake Van Clief, MIT | The five forms, the walk test, build and restructure modes, the five-layer hierarchy | `origins/icm-architect/`, vendored entire |
+| Interpretable Context Methodology, the method repository, MIT | Fifteen numbered patterns. Selective section routing, checkpoints, stage audits, and docs over outputs are load-bearing here | `origins/icm-upstream/`, core vendored |
 | Addy Osmani, Loop Engineering, June 2026 | The named layer above the harness. Five moves, six parts. The rule that automation fires a named skill rather than a pasted wall of instructions | `mechanics/ignition.md`, `foundations/the-binding.md` |
 | Peter Steinberger and Boris Cherny, June 2026 | The position shift: design the loops that prompt the agent rather than prompting it | Context for the whole workspace |
 | Prithvi Rajasekaran, Anthropic | Agents confidently praise their own output. Tuning a standalone sceptic is more tractable than making a generator self-critical. An evaluator should act rather than read | `foundations/completion-fallacy.md`, `mechanics/evaluation.md` |
@@ -39,9 +39,9 @@ Claims below were derived in the founding session and are not in any source abov
 | Acceptance is authored by someone who is not doing the work, and written before it starts | `mechanics/evaluation.md`, `mechanics/acceptance.md` |
 | Depth costs uniformity, and the parent owes reconciliation | `mechanics/reconciliation.md` |
 | Loop engineering has a verification model and no precedence model | `foundations/authority.md` |
-| ICM defers what is read, DCA defers what is woken | `amendment/the-amendment.md` |
-| A variation becomes dispatch rather than data | `amendment/the-amendment.md` |
-| Blindness is safe only because the picture stays in human-readable folders | `foundations/authority.md`, `amendment/the-amendment.md` |
+| ICM defers what is read, DCA defers what is woken | `origins/divergence.md` |
+| A variation becomes dispatch rather than data | `origins/divergence.md` |
+| Blindness is safe only because the picture stays in human-readable folders | `foundations/authority.md`, `origins/divergence.md` |
 
 ## A note on the secondary source
 
@@ -55,12 +55,13 @@ Where this workspace repeats such a specific, it says so at the point of use.
 
 ## Licence
 
-Two artifacts are vendored under `amendment/`, both MIT, and they are complementary rather than
+Two artifacts are vendored under `origins/`, both MIT, and they are complementary rather than
 versions of one thing. `icm-architect/` is the skill, copyright 2026 Jake Van Clief.
 `icm-upstream/` is the method repository's core, copyright 2026 Model Workspace Protocol
 Contributors, taken at commit `02ba5d8` on 2026-08-26. Each LICENSE file travels with its copy,
-and `amendment/icm-upstream/VENDORED.md` records how the two differ and what was omitted. It is a working copy taken so that the amendment can be
-developed against a stable version and fed back as one system, per the founding session.
+and `origins/icm-upstream/VENDORED.md` records how the two differ and what was omitted. Working
+copies are carried so this method can be developed against, and checked against, a stable
+version of what it descends from.
 
 The host system this was extracted from made an earlier and different call about the same
 source: ICM's CONTEXT.md audit checklist was absorbed rather than vendored, and its naming

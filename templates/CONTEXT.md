@@ -1,4 +1,4 @@
-# <NN_folder-name> - <one line saying what this folder does>
+# <NN-folder-name> - <one line saying what this folder does>
 
 One job: <the single thing that happens here>.
 

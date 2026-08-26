@@ -1,6 +1,7 @@
 # The BBS
 
-Where the core is forced to think, and the one interface this method adds to the one it amends.
+Where the core is forced to think, and the interface this method adds to the one it descends
+from.
 
 ## What it is
 

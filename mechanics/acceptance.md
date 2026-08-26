@@ -33,7 +33,7 @@ The core reads three exit codes and one short document. It never reads the produ
 
 ## 1. The stage audit
 
-ICM's own pattern, inherited whole from `../amendment/icm-upstream/_core/CONVENTIONS.md`: a
+ICM's own pattern, inherited whole from `../origins/icm-upstream/_core/CONVENTIONS.md`: a
 table of checks with pass conditions, run by the agent after the work and before saving, with
 revision if anything fails.
 

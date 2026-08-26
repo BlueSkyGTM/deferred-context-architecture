@@ -150,7 +150,7 @@ Under DCA a variation is dispatch. It names which intelligence the branch requir
 it. The pipeline stops being a template with slots and becomes a tree where each branch
 carries its own specialist, instantiated only if that branch is taken.
 
-That is the whole amendment, and `../amendment/the-amendment.md` develops it.
+That is the whole amendment, and `../origins/divergence.md` develops it.
 
 ## Source
 

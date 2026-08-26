@@ -103,13 +103,14 @@ are visible.
 
 **Symptom.** Two files describe the host system's shape and disagree.
 
-**Cause.** DCA documentation drifting from the ICM structure it amends, or a second entry
+**Cause.** This method's documentation drifting from the ICM structure it descends from, or a
+second entry
 file appearing beside the first.
 
 **Why it hides.** Each file is internally consistent and both are believed.
 
 **Guard.** One home per fact, a link beats a copy. This workspace points into
-`amendment/icm-architect/` rather than restating it, and the host system keeps exactly one entry
+`origins/icm-architect/` rather than restating it, and the host system keeps exactly one entry
 file.
 
 ## 9. The quality loop

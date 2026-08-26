@@ -15,6 +15,25 @@ sent there.
 
 That is the whole file. Two columns and a rule.
 
+## Wings, and the grain above folders
+
+A folder is a boundary. A **wing** is a folder holding folders, and it is a boundary too. The
+mechanism does not change with the grain; only the size of the wall does.
+
+The router therefore carries two levels. Which wings exist, and which folders inside each are
+built or under construction.
+
+| Wing | Charter | Folder | Mode |
+|---|---|---|---|
+| `<wing>` | `<wing>/CHARTER.md` | `<wing>/01-name/` | built |
+
+A wing's territory and the doors out of it live in its charter, not here. The router says what
+exists and what mode it is in; the charter says what may be reached and at what cost. Facts in
+one, grants in the other.
+
+**One board serves every wing.** Cards carry a wing column. Splitting the board per wing would
+split its authorship, and the single-author rule is what makes an unmoved card mean something.
+
 ## Why it is separate from the board
 
 A router holds a **fact**. A board holds a **decision**. They have different lifetimes and
@@ -56,7 +75,7 @@ rebuilding it, and that is a ruling rather than a maintenance task.
 A dependency graph. A schedule. A place to record which folder feeds which.
 
 Order between folders lives on the card for building work and in folder numbering for milling
-work, per `../amendment/the-amendment.md`. A router that starts describing flow has begun
+work, per `../origins/divergence.md`. A router that starts describing flow has begun
 reimplementing the pipeline in a second place, and the two will disagree.
 
 If the router grows past a table, something has been put in it that belongs elsewhere.

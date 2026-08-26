@@ -8,6 +8,7 @@ A written card has not fired. Playing it commits a model and a spend, and is a s
 
 ```
 id:       <JOB-001>
+wing:     <wing name>
 door:     <path/to/folder>
 mode:     <built | under construction>
 tier:     <none | fetch | build>
@@ -35,7 +36,10 @@ returns:  <path the output will land at>
 
 ## Rules
 
-- One card, one folder, one return path.
+- One card, one wing, one folder, one return path.
+- `door` sits inside the wing's chartered territory, or the card is void and the gate refuses it.
+- `tier` is one the wing's charter permits. A wing that may not reach a rung cannot be sent
+  there by a card.
 - `done` is checkable by something that is not a model. If it needs an opinion, it is not done.
 - `escalate` is never blank. A rung below the core will meet what its contract does not cover,
   and without a named exit it guesses.

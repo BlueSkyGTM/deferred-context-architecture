@@ -16,9 +16,9 @@ A method bundle, not a running system. Two files execute and neither runs any pa
 architecture: `tools/probe_models.py` measures a vendor, and `tools/audit.py` checks a tree.
 Everything else is prose.
 
-It amends Interpretable Context Methodology, which is vendored twice in `amendment/` under the
-MIT licence: the `icm-architect` skill, and the method repository's core. They are complementary
-rather than versions of one thing, and `amendment/icm-upstream/VENDORED.md` says how.
+It descends from Interpretable Context Methodology, which is vendored twice in `origins/` under
+the MIT licence: the `icm-architect` skill, and the method repository's core. ICM consolidates
+toward one roof; this defers toward many. `origins/divergence.md` says where the aims part.
 
 Throughout, **the host system** means whatever workspace this architecture is installed into:
 your repo, your folder tree, your contracts. This bundle was extracted from one such system
@@ -31,7 +31,7 @@ deferred-context-architecture/
 ├── foundations/              the laws, and the silent ways this goes wrong
 ├── mechanics/                how it runs. The BBS, the router, the two documents, acceptance
 ├── templates/                the copyable starting points
-├── amendment/                the ICM relationship, and ICM vendored twice
+├── origins/                  where this came from, the pattern verdicts, ICM vendored twice
 ├── decisions/                what was settled, what is open, what is broken
 ├── rungs.md                  which model serves which rung today. The only file naming one
 ├── tools/                    two executable files. One probes a vendor, one audits a tree
@@ -65,8 +65,8 @@ never to both.
 
 ## Hard lines
 
-- ICM stays underneath. Remove it and this becomes opaque agent state, which is the thing it
-  was built to avoid.
+- ICM's folder legibility stays underneath. Remove it and this becomes opaque agent state,
+  which is the thing it was built to avoid.
 - The picture lives in human-readable folders, never in agent configuration or in a stream of
   spent cards. That property is the whole safety argument.
 - Acceptance is written before the work by someone who is not doing it. A stage never states
@@ -76,5 +76,7 @@ never to both.
 - Nothing fires that the operator could not have read first. A written card is inert until it
   is played.
 - Nothing scheduled runs without a spend ceiling and a genuine no-op exit.
+- One form only, the umbrella. Deferral needs more than one wall, and no other form has one.
+- A wing reaches outside itself only where its charter names the path. Absence is prohibition.
 - Superseded files are archived with a dated note, never deleted.
 - Specified, not exercised. Every mechanics file is a first version.

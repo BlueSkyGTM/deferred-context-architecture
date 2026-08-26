@@ -80,7 +80,7 @@ the reasoning that produced it. Appended with a date rather than rewritten.
 | id | What is wrong | Why it matters |
 |---|---|---|
 | `shared-tool-touched` | The host system's pointer checker had to gain a vendored-tree skip so its whole-repo check stays clean with ICM vendored inside this bundle. A shared tool widened for one workspace's benefit | The skip is categorised and prints under a verbose flag, so it is visible rather than silent. It still widens a check everything else depends on, and a second vendored tree will want the same treatment. Anyone vendoring this bundle inherits the same problem |
-| `conventions-tension` | The host system's own conventions record that ICM was absorbed rather than vendored, with its naming section deliberately not carried. ICM is now vendored whole in `amendment/icm-architect/` | Both calls stand for different purposes and `lineage.md` says so. A reader meeting the conventions note alone will think the vendoring is a mistake to correct |
+| `conventions-tension` | The host system's own conventions record that ICM was absorbed rather than vendored, with its naming section deliberately not carried. ICM is now vendored whole in `origins/icm-architect/` | Both calls stand for different purposes and `lineage.md` says so. A reader meeting the conventions note alone will think the vendoring is a mistake to correct |
 
 ### Unfinished
 

@@ -83,10 +83,10 @@ exist in the method repository, which lives at
 https://github.com/RinDig/Interpretable-Context-Methodology. That repository carries fifteen
 numbered patterns, checkpoints and stage audits; the skill carries the five forms, the walk test
 and the build and restructure modes. Neither contains the other, the copyright strings differ, and
-`../amendment/icm-upstream/VENDORED.md` records the comparison.
+`../origins/icm-upstream/VENDORED.md` records the comparison.
 
 Following the plan literally would have replaced the skill with the repository and orphaned five
-citations, including the fit argument in `../amendment/the-amendment.md` which depends on the
+citations, including the fit argument in `../origins/divergence.md` which depends on the
 five forms. Both are now vendored, side by side.
 
 **Four upstream patterns were being reinvented here.** Selective section routing, checkpoints,
