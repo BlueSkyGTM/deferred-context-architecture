@@ -4,10 +4,15 @@ What makes any output good, decomposed. There are four contributors and there is
 
 | Part | What it is | Where it lives | Who writes it |
 |---|---|---|---|
-| Method | How this kind of work is done here | The context file behind the door | The operator, once, and it accumulates |
-| Materials | The specific facts this task needs, and the ones it must not see | `hands-down` on the construct | The operator, per branch |
-| Standard | What counts as good, and who says so | `judged-by`, and the card's acceptance condition | The operator, one level above the work |
-| Capability | Raw model horsepower | `tier` on the construct | Declared where the work lives, never chosen at runtime |
+| Method | How this kind of work is done here | Standing, in the method file the job's `door` names. Job-local steps on the job | The operator, once, and it accumulates |
+| Materials | The specific facts this task needs, and the ones it must not see | `inputs` on the job, selected from the material the workspace holds | The operator, per job |
+| Standard | What counts as good, and who says so | `done` on the job. Standing criteria stay in the method file | The operator, and never the party doing the work |
+| Capability | Raw model horsepower | `tier` on the job, which is its only home | Declared when the job is written, never chosen at runtime |
+
+The addresses above moved on 2026-08-26 and the parts did not. Three of the four were previously
+spread across a context file, a construct and a card; they now arrive on one artifact. Capability
+is the only part with a single home, because a folder has no horsepower requirement and a task
+does.
 
 ## What is not on the list
 
@@ -63,6 +68,15 @@ returning:
 encodes, and that depth is in what is handed down. This file is what that sentence decomposes
 into. The four parts name what "what is handed down" actually consists of.
 
+Both deferrals turn out to be two properties of one artifact:
+
+> **A job's existence is deferred activation. A job's `inputs` list is deferred scope.**
+
+Nothing else in the workspace defers anything. Material stores, the router addresses, the
+product returns, and the job carries the whole mechanism. That is worth knowing mostly as a
+warning: everything that can go wrong structurally goes wrong on the job, so that is where the
+checks belong.
+
 Read in that order, every mechanic in this workspace is one of the four given a mechanism.
 
 | Mechanic | Serves |
@@ -112,3 +126,8 @@ Operator and session, 2026-08-25, second pass. The decomposition was drawn in co
 the operator identified it as upstream of the two deferrals rather than beside them. Not yet
 exercised: no run has tested whether the four are separable in practice as cleanly as they
 separate on paper.
+
+Revised 2026-08-26. The four parts were cross-referenced against the layers and against the two
+deferrals and came through unchanged; only their addresses moved, and the deferrals were found to
+collapse onto the job. The rest of this file still cites `constructs.md` and describes the board
+as one mechanic among several. Both are superseded and are not yet rewritten.
