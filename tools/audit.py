@@ -14,6 +14,7 @@ cheaper than a model, it is more reliable than one.
     python3 tools/audit.py --repo                 # every pointer in this bundle resolves
     python3 tools/audit.py --folder path/to/dir   # audit one worked folder
     python3 tools/audit.py --folder path --relay  # allow declared handoffs outside the folder
+    python3 tools/audit.py --harness              # is the gate installed and live on this device
 
 Exit code is the verdict, so what reaches the core is a number rather than a paragraph.
 Zero is clean, one is findings, two is a usage error.
@@ -34,6 +35,9 @@ Some names are used as nouns rather than as pointers. "Write a `CONTEXT.md`" nam
 file. Those are listed in `GENERIC_NAMES` and not resolved, because treating them as pointers
 produced findings nobody would act on.
 
+A few files are device-local by design and are absent from a clean tree on purpose. They are
+listed in `DEVICE_LOCAL`, and whether they exist is `--harness`'s question rather than this one's.
+
 ## What --folder checks
 
 Three things, in the order they matter:
@@ -52,6 +56,19 @@ Three things, in the order they matter:
    purchase anyone has on fit, and it is partial: a coherent build of the wrong thing can still
    line up. `foundations/failure-modes.md` number ten is that case.
 
+## What --harness checks
+
+Whether the gate in `tools/hooks/card_gate.py` is actually in force **on this device**, which is
+a different question from whether it is in the repository. Four facts, none of them opinions:
+the project settings file exists and carries the hook, the script exists and is executable, the
+device-local settings file is not being used to install it, and the timestamp the gate stamps on
+every run.
+
+The last one is the one that matters. A gate can be committed, correct, and never once consulted,
+because hooks load from directories that already had a settings file when a session started.
+Never fired is reported as not live, which is the state a fresh clone is in until somebody opens
+the hooks menu or restarts.
+
 ## What it deliberately does not do
 
 It does not parse claims about counts out of prose. A tool that guesses which numbers in a
@@ -65,6 +82,8 @@ Standard library only. A check that needs an install is a check someone skips.
 """
 
 import argparse
+import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -76,8 +95,13 @@ SKIP_DIRS = {".git", "_archive", "templates",
 # file, not a file. Treating them as pointers produced findings nobody would act on, and an
 # untrusted check is worse than no check.
 GENERIC_NAMES = {"CONTRACT.md", "CONTEXT.md", "CLAUDE.md", "AGENTS.md", "SKILL.md",
-                 "BLOCKED.md", "ROUTER.md", "BBS.md"}
+                 "BLOCKED.md", "ROUTER.md", "BBS.md", "CHARTER.md"}
 PATH_SUFFIXES = {".md", ".py", ".txt", ".json", ".yaml", ".yml", ".html", ".sh"}
+
+# Files that are device-local by design and are absent from a clean tree on purpose. Prose has to
+# be able to name them, so naming one is not a broken pointer. `--harness` is what checks these,
+# because whether they exist is a fact about the machine rather than about the method.
+DEVICE_LOCAL = {".claude/gate-last-fired", ".claude/settings.local.json"}
 
 MD_LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 BACKTICKED = re.compile(r"`([^`\n]+)`")
@@ -130,6 +154,8 @@ def audit_repo(root):
             continue
         for raw, resolved in named_paths(md_file):
             if Path(raw).name in GENERIC_NAMES and "/" not in raw:
+                continue
+            if raw in DEVICE_LOCAL:
                 continue
             checked += 1
             # Prose in this bundle names some paths from the repository root rather than from
@@ -199,11 +225,72 @@ def audit_folder(folder, allow_relay):
         asked = set(table_paths(issued_text, "Available"))
         used = set(table_paths(emitted_text, "Inputs"))
         for path in sorted(asked - used):
-            findings.append("issued `{}` as available, emitted contract does not use it".format(path))
+            findings.append(
+                "issued `{}` as available, emitted contract does not use it".format(path))
         for path in sorted(used - asked):
             findings.append("emitted contract uses `{}`, which was never issued".format(path))
 
     return findings
+
+
+HOOK_MATCHER = "Write|Edit|NotebookEdit"
+GATE = Path("tools/hooks/card_gate.py")
+SETTINGS = Path(".claude/settings.json")
+LOCAL_SETTINGS = Path(".claude/settings.local.json")
+STAMP = Path(".claude/gate-last-fired")
+
+
+def audit_harness(root):
+    """Is the gate in force on this device. Reports facts; findings are what is not true."""
+    findings = []
+    facts = []
+
+    gate = root / GATE
+    if not gate.exists():
+        findings.append("{} is missing, so nothing is enforcing delegation".format(GATE))
+    else:
+        facts.append("gate script present")
+        if not os.access(gate, os.X_OK):
+            findings.append("{} is not executable".format(GATE))
+
+    settings = root / SETTINGS
+    if not settings.exists():
+        findings.append("{} is missing, so the hook is not registered".format(SETTINGS))
+    else:
+        try:
+            data = json.loads(settings.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as error:
+            data = {}
+            findings.append("{} is not valid JSON ({}), which silently disables every "
+                            "setting in it".format(SETTINGS, error))
+        commands = [
+            hook.get("command", "")
+            for entry in data.get("hooks", {}).get("PreToolUse", [])
+            if entry.get("matcher") == HOOK_MATCHER
+            for hook in entry.get("hooks", [])
+        ]
+        if any(GATE.name in command for command in commands):
+            facts.append("hook registered on {}".format(HOOK_MATCHER))
+        else:
+            findings.append("{} carries no PreToolUse hook matching {} that runs {}".format(
+                SETTINGS, HOOK_MATCHER, GATE.name))
+
+    if (root / LOCAL_SETTINGS).exists():
+        text = (root / LOCAL_SETTINGS).read_text(encoding="utf-8", errors="replace")
+        if GATE.name in text:
+            findings.append("{} installs the gate. Local settings do not travel with a clone, "
+                            "so the gate would be live here and absent everywhere else".format(
+                                LOCAL_SETTINGS))
+
+    stamp = root / STAMP
+    if not stamp.exists():
+        findings.append("the gate has never fired on this device, so it is not live yet. "
+                        "Open the hooks menu once or restart, then edit any file to confirm")
+    else:
+        facts.append("last fired {}".format(
+            stamp.read_text(encoding="utf-8", errors="replace").strip()))
+
+    return findings, facts
 
 
 def main():
@@ -213,6 +300,8 @@ def main():
                        help="check that every pointer in the bundle resolves")
     group.add_argument("--folder", metavar="PATH",
                        help="audit one worked folder's contracts against what is there")
+    group.add_argument("--harness", nargs="?", const=".", metavar="ROOT",
+                       help="check that the card gate is installed and live on this device")
     parser.add_argument("--relay", action="store_true",
                         help="permit declared handoffs that reach outside the folder")
     args = parser.parse_args()
@@ -224,6 +313,15 @@ def main():
             return 2
         findings, checked = audit_repo(root)
         print("checked {} pointers across {}".format(checked, root))
+    elif args.harness is not None:
+        root = Path(args.harness).resolve()
+        if not root.is_dir():
+            print("not a directory: {}".format(root), file=sys.stderr)
+            return 2
+        findings, facts = audit_harness(root)
+        print("harness at {}".format(root))
+        for fact in facts:
+            print("  {}".format(fact))
     else:
         folder = Path(args.folder).resolve()
         if not folder.is_dir():
