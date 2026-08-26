@@ -35,6 +35,10 @@ A write outside the wing's chartered territory, even with a valid played card. T
 grant, absence is prohibition, and `../../templates/CHARTER.md` says acting outside a charter is
 void rather than discouraged. Void has to mean something a person cannot override by wanting to.
 
+A card sending a wing to a rung its charter withholds. `templates/BBS.md` has always said a card
+may not do this and nothing enforced it, which is where territory was before this file existed.
+Spend ceilings are still unenforced, because the gate sees a write rather than a bill.
+
 A card carrying an unfilled placeholder authorises nothing. That is upstream's placeholder sweep
 with teeth: ICM completes setup only when no `{{` patterns remain, and here an unfilled card is
 simply not playable. It is also what keeps the example card in `templates/BBS.md` from granting
@@ -101,21 +105,48 @@ def section(text, heading):
     return out
 
 
-def played_doors(root):
-    """Every folder a played card currently opens, as paths relative to the root."""
+def played_cards(root):
+    """Every played card, as a dict of its filled fields. A fenced block per card.
+
+    Fields carrying a placeholder are dropped rather than the card, so a half-filled card opens
+    nothing while still being visible to a person reading the board.
+    """
     board = root / BOARD
     if not board.exists():
         return []
     text = board.read_text(encoding="utf-8", errors="replace")
-    doors = []
+    cards = []
+    current = {}
     for line in section(text, "Played"):
+        if line.strip().startswith("```"):
+            if current:
+                cards.append(current)
+                current = {}
+            continue
         match = FIELD.match(line)
         if not match:
             continue
         key, value = match.group(1), match.group(2).strip().strip("`")
-        if key in ("door", "returns") and not unfilled(value):
-            doors.append(value.rstrip("/"))
-    return doors
+        if not unfilled(value):
+            current[key] = value.rstrip("/")
+    if current:
+        cards.append(current)
+    return cards
+
+
+def permitted_rungs(charter):
+    """The rungs a charter's Capability table marks allowed."""
+    text = charter.read_text(encoding="utf-8", errors="replace")
+    allowed = set()
+    for line in section(text, "Capability"):
+        cells = [cell.strip().strip("`*") for cell in line.strip().strip("|").split("|")]
+        if len(cells) < 2 or cells[0].lower() in ("rung", "---", ""):
+            continue
+        if set(cells[0]) <= set("-: "):
+            continue
+        if cells[1].lower() in ("yes", "y", "true"):
+            allowed.add(cells[0].lower())
+    return allowed
 
 
 def charter_for(target, root):
@@ -196,8 +227,11 @@ def decide(payload, root):
     if rel.parts[0] in CORE_DIRS:
         return "allow", "core territory"
 
-    doors = played_doors(root)
-    opened = [d for d in doors if inside(target, (root / d).resolve())]
+    opened = [
+        card for card in played_cards(root)
+        for path in (card.get("door"), card.get("returns"))
+        if path and inside(target, (root / path).resolve())
+    ]
     if not opened:
         return "deny", (
             "No played card opens `{}`. This is a working folder, and the core does not do the "
@@ -221,7 +255,17 @@ def decide(payload, root):
                 rel.as_posix(), charter.relative_to(root).as_posix())
         )
 
-    return "allow", "card played, inside territory"
+    allowed = permitted_rungs(charter)
+    tiers = {card.get("tier", "").lower() for card in opened if card.get("tier")}
+    if allowed and tiers and not (tiers & allowed):
+        return "deny", (
+            "The card opening `{}` runs at {}, and `{}` permits only {}. A wing cannot be sent "
+            "to a rung its charter withholds, whatever the card says.".format(
+                rel.as_posix(), " or ".join(sorted(tiers)),
+                charter.relative_to(root).as_posix(), ", ".join(sorted(allowed)))
+        )
+
+    return "allow", "card played, inside territory, rung permitted"
 
 
 def main():

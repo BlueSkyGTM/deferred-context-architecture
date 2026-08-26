@@ -71,13 +71,13 @@ returning:
 - **There is nothing to store.** A registry of experts is a registry of costumes. What is
   worth deriving is an index of construction conditions, which is a different artifact.
 - **A menu of experts is a menu of doors.** The door fixes method, materials and standard;
-  the fourth is declared on the construct at that same door. There is no second list.
+  the fourth is declared on the card at that same door. There is no second list.
 - **"Make it an expert in X" is not a buildable instruction.** "Write down how X is done here"
   is, and it is the same work, done once, in a form that survives the session.
 
 ## Why this is the heart, and the deferrals are the method
 
-`the-two-deferrals.md` ends on the law that a DCA agent is exactly as good as what its construct
+`the-two-deferrals.md` ends on the law that a DCA agent is exactly as good as what its binding
 encodes, and that depth is in what is handed down. This file is what that sentence decomposes
 into. The four parts name what "what is handed down" actually consists of.
 

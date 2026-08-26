@@ -1,6 +1,6 @@
 # Rungs
 
-The one file that names models. Constructs declare a rung; this says what serves that rung
+The one file that names models. A card names a tier; this says which model serves that rung
 today. Changing supplier is an edit here and nowhere else, which is the whole of what model
 agnosticism requires.
 

@@ -15,7 +15,7 @@ underneath. Where the two overlap, ICM wins.
 | You need | Go |
 |---|---|
 | Why this exists at all, and why a blind agent judges better than a second model | `foundations/completion-fallacy.md` |
-| What actually makes an output good, and what a construct can carry | `foundations/the-four-parts.md` |
+| What actually makes an output good, and what a card can carry | `foundations/the-four-parts.md` |
 | What "deferred" actually refers to | `foundations/the-two-deferrals.md` |
 | Why the strong model should decide and not type | `foundations/constraints-over-capability.md` |
 | Whose call is this, and what a woken agent may not do | `foundations/authority.md` |

@@ -3,7 +3,7 @@
 The ways this architecture goes wrong. Each one is silent, which is what they have in common
 and why they are listed rather than trusted to be noticed.
 
-## 1. The starved construct
+## 1. The starved binding
 
 **Symptom.** Work comes back locally correct and globally wrong, reported as a success.
 
@@ -63,12 +63,12 @@ write the settlement back into the contract rather than into the output.
 **Symptom.** Structure changes and no ruling explains it.
 
 **Cause.** A woken agent was given write authority over structure, so level five acted at level
-one. A construct holds no authority of its own; the agent assembled around it does.
+one. A card holds no authority of its own; the binding assembled around it does.
 
 **Why it hides.** The change was well executed and passed its evaluator. Nothing in the output
 records that it was never authorised.
 
-**Guard.** A construct proposes. Findings wait for rulings. `foundations/authority.md` treats
+**Guard.** A woken agent proposes. Findings wait for rulings. `foundations/authority.md` treats
 this as a hard line rather than a preference.
 
 ## 6. Token detonation
@@ -136,7 +136,7 @@ one thing it does read is the contract the agent emitted about its own work, whi
 **Cause.** A capable agent given an inadequate mandate builds something coherent. Coherence is
 what the emitted contract tests, so a wrong build describes itself accurately and passes.
 
-**Why it hides.** This is the starved construct wearing the evidence of its own success. Every
+**Why it hides.** This is the starved binding wearing the evidence of its own success. Every
 mechanical check is green and the artifact reads well, because it is well made.
 
 **Guard.** Diff the emitted contract against the issued one. Inputs or outputs that do not match

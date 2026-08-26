@@ -106,7 +106,7 @@ Independence at both ends, from one mechanism pointed in opposite directions, at
 
 ## The two rules, addressed to the party that can obey them
 
-**The core hands down. It never lets an agent look up.** A construct is a list and cannot permit
+**The core hands down. It never lets an agent look up.** A card is a list and cannot permit
 or forbid anything. The party that can breach this is the one assembling the payload.
 
 **A woken agent proposes. It does not settle.** Structural change returns as a finding and waits

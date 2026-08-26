@@ -8,7 +8,7 @@ Deferred scope manufactures an independent reader at no extra cost. That settles
 evaluates. It does not settle where the criteria live, and the answer matters more than it
 looks.
 
-If the criteria sit in the same file as the construct that wakes the generator, then generator
+If the criteria sit in the same file as the card that wakes the generator, then generator
 and judge share an author. The windows differ, so this is weaker than an agent grading its
 own output, but it undoes the mechanism in one specific way: a stage becomes able to write
 its own passing grade, and nothing downstream can see that it did. The loop reports green

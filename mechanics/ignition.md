@@ -4,14 +4,16 @@ The one thing in this architecture that pushes. Everything after it pulls.
 
 ## The hole it closes
 
-Deferred activation wakes a construct when traversal reaches it. That is correct for
+Deferred activation means nothing runs until somebody writes a card for it. That is correct for
 task-driven work and blind in one specific place: structural decay is defined by nothing
 arriving.
 
-A folder rots because no task has named it. A construct that only fires on traversal therefore
-never fires in the folders that most need it. The mechanism is blindest exactly where the
-disease is, and the failure is silent, because an unvisited node produces no output to
-inspect.
+A folder rots because no card has named it. Activation that begins with authorship therefore
+never begins at all in the folders that most need it, and the hole is wider than it was under
+the traversal definition this method used to hold, because a walker at least passed through.
+`../foundations/the-two-deferrals.md` records that the unvisited node got worse rather than
+better in the move. The mechanism is blindest exactly where the disease is, and the failure is
+silent, because a folder nobody wrote a card about produces no output to inspect.
 
 Left unaddressed, the trigger for structural repair is the operator noticing degradation.
 That is the condition this architecture was built to remove, so a purely pull-based design
@@ -93,8 +95,8 @@ So the caps are not hygiene. They are the condition under which the premise hold
 
 ## What ignition may never do
 
-It may not restructure. It may not write to any contract. It may not decide which of the five
-ICM forms fits. It may not play the card it wrote.
+It may not restructure. It may not write to any contract. It may not create a folder or a wing.
+It may not play the card it wrote.
 
 It notices, it names, and it stops. Everything else is a finding that waits for a ruling, per
 `../foundations/authority.md`. An ignition with write authority is an unattended level-five

@@ -41,7 +41,7 @@ cheap this quarter.
 | Fills a gap from training rather than stopping | Stopping is rarely rewarded | Name the exit. `escalate` is not optional for exactly this reason |
 | Infers convention from surrounding files | Every other context it has seen had surroundings | Never write "as elsewhere in this repo", "the usual pattern", or "match the existing style". It has no surroundings |
 | Treats an example as a template to copy literally | An example next to an instruction reads as the instruction | Label an example illustrative, or make it exact and mean it |
-| Reports success by default | `../foundations/completion-fallacy.md` | Acceptance must be checkable by something that is not the construct |
+| Reports success by default | `../foundations/completion-fallacy.md` | Acceptance must be checkable by something that is not the binding |
 
 ## The rules that follow
 
@@ -58,10 +58,10 @@ cheap this quarter.
 7. **Where acceptance can be mechanical, make it mechanical.** Rung zero has no quirks, and it
    is the only reader in the system that behaves identically every time.
 
-## The cold-construct test
+## The cold-binding test
 
 ICM validates with the walk test: can an agent with no memory navigate the workspace. That
-test is still necessary and it is no longer sufficient, because a DCA construct does not
+test is still necessary and it is no longer sufficient, because a DCA binding does not
 navigate. It arrives.
 
 So the test changes shape. Take the folder and the card, and nothing else:
@@ -97,5 +97,5 @@ for it.
 Revised 2026-08-26. The allowlist is the working directory rather than a named list, and the
 token budget was corrected: it had been inherited from a reader that walks.
 The behaviour classes above are stated from the architecture's own failure modes rather than
-from measurement. No construct has yet been run against a foreign model, so treat the table as
+from measurement. No binding has yet been assembled against a foreign model, so treat the table as
 a first version and correct it from the first real run.

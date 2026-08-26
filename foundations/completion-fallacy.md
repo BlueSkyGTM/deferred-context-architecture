@@ -92,7 +92,7 @@ rather than a compromise.
 Withholding manufactures independence. It does not manufacture competence.
 
 An evaluator with no picture can check the work against the contract and cannot check the
-contract. So the standard has to arrive with the construct, already decided, from something
+contract. So the standard has to arrive with the card, already decided, from something
 that did have the picture when it decided. In the host system that is a ruling: dated, recorded,
 and outranking whatever the session in front of it happens to think.
 

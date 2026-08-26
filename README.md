@@ -112,6 +112,7 @@ of execution that a file structurally lacks.
 A card is a work order. It is written, and then, separately, played.
 
 ```
+wing:     storefront                whose charter governs, and therefore what is permitted
 door:     stages/03-build/          the folder, which is also the boundary
 mode:     built                     so a miller goes, not a builder
 tier:     build                     which rung, resolved in rungs.md
@@ -119,7 +120,7 @@ done:     output/pricing.html exists · npm run check passes · no TODO strings
 escalate: brand colours not in the design system -> stop and file, do not infer
 ```
 
-Five fields, and none can be filled without a decision. That is the point: **the act of writing
+Five of those fields are questions, and none can be filled without a decision. That is the point: **the act of writing
 a card is where the core is forced to think**, and the card is what the deliberation leaves
 behind, dated and diffable and readable before it commits anything.
 
@@ -148,6 +149,48 @@ Making the agent describe what it built, in the form the workspace uses, forces 
 with its own output, and incoherence shows up in twenty lines instead of four hundred.
 
 `mechanics/the-router.md`, `mechanics/the-two-documents.md`, `mechanics/acceptance.md`
+
+### Wings, and what a charter grants
+
+A folder is a boundary. A **wing** is a folder holding folders, and it is a boundary too. Only
+the size of the wall changes.
+
+Each wing carries a `CHARTER.md`: the territory it owns, the paths outside itself it may reach,
+which rungs it is permitted, what it may spend, and what it must refer upward. Every field is
+checkable, and prose with no pass condition fails its own audit, because a charter is an
+operations config rather than a description of a personality.
+
+**Absence is prohibition.** A wing reaches outside itself only where its charter names the path.
+That rule is what keeps the shared layer from quietly becoming a hole: this method uses one of
+ICM's five workspace forms, the umbrella, because it is the only one with more than one wall in
+it, and an umbrella's whole purpose is a shared layer several pipelines can read.
+
+Two wings whose exercised charters come out substantially identical are one wing. A wing with no
+card played against it in a long stretch is the same finding wearing the opposite symptom.
+
+`templates/CHARTER.md`, `mechanics/the-router.md`
+
+### The gate
+
+Everything above is prose, and prose is read by the party with an interest in not following it.
+One rule is not: `tools/hooks/card_gate.py` is a harness hook that refuses a write into a working
+folder unless a played card names that folder and the path sits inside the wing's chartered
+territory.
+
+Three layers were available and only the last is a default.
+
+| Layer | Enforced by | Strength |
+|---|---|---|
+| an instruction in a context file | the model choosing to comply | a request |
+| a skill | the model deciding it applies | a method |
+| a hook | the harness | a default |
+
+It fails open and says so, because a gate that failed closed would turn any bug in itself into a
+tree nobody can edit. The price of that is a gate that could die quietly, so every run the
+harness starts stamps a file, and `python3 tools/audit.py --harness` reports whether the gate is
+actually live on this device. Never fired reports as not live.
+
+`templates/harness/README.md`, `decisions/2026-08-26-the-gate.md`
 
 ### The rungs
 
@@ -224,7 +267,8 @@ deferred-context-architecture/
 │   ├── evaluation.md                    who says no, and who wrote the standard
 │   └── reconciliation.md                two branches disagreed
 │
-├── templates/              copyable starting points for a card, contract, router, board
+├── templates/              copyable starting points for a card, contract, charter, router, board
+│   └── harness/                         installing the gate into a host system
 │
 ├── origins/
 │   ├── divergence.md                    what was inherited, and where the aims part
@@ -236,7 +280,9 @@ deferred-context-architecture/
 ├── _archive/               superseded files, each with a note naming its replacement
 ├── rungs.md                which model serves which rung today. The only file naming one
 ├── lineage.md              what was brought in, from whom, and what is ours
-└── tools/                  two executable files. One probes a vendor, one audits a tree
+├── tools/                  three executable files. One probes a vendor, one audits a tree
+│   └── hooks/card_gate.py               and one refuses the write, which is the gate
+└── .claude/                the gate's registration, and the skill that runs once it refuses
 ```
 
 ---
@@ -257,6 +303,7 @@ Specifically, and in the order that matters:
 | **The card shape is a proposal** | The five fields have never been written for real work, played, or audited. Whether a folder plus a card carries enough is a guess | Write one against a real stage and see which fields survive |
 | **No model has been tried at any rung** | Every measurement in `rungs.md` comes from asking a model to reply with the word "ok". That proves reachability and latency. It says nothing about quality | Run one folder three times on identical input and diff the emitted contracts |
 | **Tiering is reasoned, not measured** | The claim that this reduces spend is the premise of the architecture and is untested. No run has been costed at any rung | One real run, costed per rung |
+| **The gate has never refused real work** | It is installed, and eight defeat attempts in a sandbox behaved. No wing exists, so it has never stood between the core and work it actually wanted to do. Its enforcement is also partial: it checks territory and the charter's rung ceiling, and cannot see spend at all | One chartered wing, and one honest attempt to work around it |
 | **Reconciliation has no implementation** | A responsibility and a procedure and nothing behind them. Sibling divergence is the one failure mode with no tested guard | The first parallel run, which should be expected to rewrite the file |
 | **Ignition is unscheduled** | No walk runs. No fingerprint format is implemented, no drift threshold set, no spend cap configured | Schedule one, cap it, and calibrate the threshold against a real tree |
 | **The fetch rung is unresolved** | Not unavailable. The retrieval endpoints return a server error rather than a clean rejection, which means the request shape is wrong, not the access | Find the right shape, or accept that rung zero holds it |

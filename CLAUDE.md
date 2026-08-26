@@ -49,7 +49,7 @@ deferred-context-architecture/
 **The core hands down, and never lets an agent look up.** What a woken agent can reach is the
 folder it was put in. If it can read the host system, scope was not deferred and the
 independence that makes its judgment worth having was never manufactured. These rules address
-the core because a construct is a list and can neither permit nor forbid anything.
+the core because a card is a list and can neither permit nor forbid anything.
 
 **A woken agent proposes, never settles.** It sits at the lowest level of the host system's
 authority ladder and cannot see that ladder. Structural change is filed as a finding and waits

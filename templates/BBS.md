@@ -39,7 +39,7 @@ returns:  <path the output will land at>
 - One card, one wing, one folder, one return path.
 - `door` sits inside the wing's chartered territory, or the card is void and the gate refuses it.
 - `tier` is one the wing's charter permits. A wing that may not reach a rung cannot be sent
-  there by a card.
+  there by a card, and the gate refuses the write rather than trusting the rule.
 - `done` is checkable by something that is not a model. If it needs an opinion, it is not done.
 - `escalate` is never blank. A rung below the core will meet what its contract does not cover,
   and without a named exit it guesses.
