@@ -55,6 +55,18 @@ of descent.
 Forking also raises the attribution bar rather than lowering it. `../NOTICE.md` states what is
 carried and under what terms; both copies stay unmodified.
 
+**The second failure of descent is wanting the room.** Not reinventing a pattern, which is merely
+expensive, but building a case that the origin was wrong so that the descendant can replace it
+rather than depend on it. It never arrives as an argument about the text, because the text does
+not support it. It arrives as a claim about what the author believes, and it is usually stated
+warmly, by someone who has read the work and is trying to place it.
+
+The tell is a citation with no line reference. A position attributed to a person is unfalsifiable
+by anyone downstream, so this repository quotes and never characterises: every claim about ICM
+here points at a file, and where the two methods disagree, the disagreement is between two
+statements a reader can put side by side. That is why `../NOTICE.md` and `../lineage.md` name
+authorship, copyright and terms, and nothing else.
+
 ## The gap that was found first
 
 `icm-architect/references/core.md`, under Where ICM Loses, names three limits:
