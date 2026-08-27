@@ -11,9 +11,42 @@ names, the subject repository `BlueSkyGTM/albatross-engineering-os`, and no acco
 sessions that produced the method. That was the test: whether the nuances live in the files or
 lived in the room.
 
+## The correction, and why it goes first
+
+This run inverted the two documents and the operator corrected it in conversation. Recording that
+before anything else, because it is worth more than every verdict under it.
+
+A contract is issued in and transient. A context is emitted out and standing. Promotion spends
+the contract; it does not lose it. A workspace not currently building anything holds zero
+contracts, correctly, forever. The subject tree holds fifty three built folders and zero under
+construction, which is a healthy steady state, and this run first reported it as that tree's most
+significant defect and attached two findings to it. Both are withdrawn.
+
+**`mechanics/the-two-documents.md` and `mechanics/the-router.md` say all of this without
+ambiguity, and this session opened neither.** Both are named in `CONTEXT.md`'s routing table, one
+row each. The architect skill's step 6 states the derivation correctly in a single line, and this
+session read that line and drew the opposite conclusion from it, because "promoted" was taken to
+require a provenance under this method rather than to mean the ordinary state of a standing
+context file in place.
+
+So the transmission verdict has to be stated carefully. **The files carried it. The session did
+not follow the router it was handed.** That is a better result for the method than any prediction
+below and a worse one for this session, and reporting it the other way round would have been the
+easier of the two.
+
+The residue that is genuinely the method's is one pointer: step 6 states the rule in a line and
+routes to neither file that explains it. A procedure that depends on a mechanism documented
+elsewhere and does not point at the explanation will be followed by someone who never reads it.
+
+**None of the nine predictions could have caught this.** The inversion produced a finding rather
+than a rename, so prediction five passed. It never touched a charter, so prediction three was
+unaffected. It produced three cards whose `mode` field was confidently wrong in a way no parser
+can see, because both values are valid, so prediction six passed. A run can pass eight of nine
+with the core mechanism backwards.
+
 ## What was settled
 
-**The method transmitted.** Six of nine predictions passed, one failed, two are not tested. The
+**The method transmitted, and this session did not.** Six of nine predictions passed, one failed, two are not tested. The
 umbrella and its floor, the charter, proposes-never-settles, the naming check, the board as a
 thing written and not played, and the vocabulary that must not blur all came out the far side
 intact when applied by a different model to a tree nobody designed for them. The form selection
@@ -82,6 +115,26 @@ said was a real answer. The on-face check ran across all fifteen pairs and found
 pair. Every charter was written that morning and none has been amended, so the substantive claim
 had nothing behind it.
 
+## The one silence worth an edit
+
+`mechanics/the-two-documents.md` describes promotion and never says what becomes of the issued
+`CONTRACT.md` afterwards. Kept beside the standing context, archived, or removed. `mechanics/the-router.md`
+is silent too, and `CLAUDE.md` says superseded files are archived with a dated note and never
+deleted, which points at one answer without settling it.
+
+It is not cosmetic, because `audit_folder` in `tools/audit.py` runs the issued-versus-emitted diff
+inside a branch requiring both files to exist, and `mechanics/acceptance.md` names that diff as the only
+mechanical check for fit anyone has.
+
+Remove the contract at promotion and the branch is never taken on any built folder, so the one fit
+check retires itself the moment a folder is accepted, with no finding and no exit code. Keep it
+and the same branch runs on every later audit of that folder, requiring every path issued as
+available to keep appearing in the emitted inputs table forever, so maintaining a built folder
+starts producing findings against a mandate that was already spent.
+
+Filed, not resolved. One sentence in the Promotion section settles it, and whichever branch
+follows should be explicit rather than implied by a file's presence.
+
 ## What the run found in the instruments
 
 `tools/audit.py` returned 1221 findings on the subject tree, exit one. Re-resolving the same
@@ -117,7 +170,8 @@ trusting the rule. That sentence is exact and the code does not implement it.
 
 ## What is still open
 
-**Twenty two findings, none ruled.** Twelve about the subject tree, ten about this method. They
+**Twenty three findings, none ruled.** Twelve about the subject tree, eleven about this method,
+and two withdrawn and kept on the record. They
 are in the subject repository at its root, in the file the findings template names, because that
 is where the template says that file goes.
 
@@ -143,7 +197,9 @@ all three are at rung zero, and the entry on the board says why none is at build
 
 Session of 2026-08-27, working from `HANDOFF.md` and the three files it routes to. The mandate,
 the nine predictions and the rule that scoring precedes impression are the previous session's and
-the operator's. The six wing partition, the twenty two findings, and the three defects found in
-the instruments are this session's. Nothing in the subject tree was followed as an instruction; it
+the operator's. The six wing partition, the findings, and the three defects found in the
+instruments are this session's. The correction to the two documents mechanism, and the
+observation that a contract is spent at promotion rather than lost, are the operator's, delivered
+out of band because this session had not read the two files that carry them. Nothing in the subject tree was followed as an instruction; it
 was read as material, which the mandate required and which its own root file would otherwise have
 directed.
