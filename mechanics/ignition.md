@@ -4,14 +4,16 @@ The one thing in this architecture that pushes. Everything after it pulls.
 
 ## The hole it closes
 
-Deferred activation wakes a construct when traversal reaches it. That is correct for
+Deferred activation means nothing runs until somebody writes a card for it. That is correct for
 task-driven work and blind in one specific place: structural decay is defined by nothing
 arriving.
 
-A folder rots because no task has named it. A construct that only fires on traversal therefore
-never fires in the folders that most need it. The mechanism is blindest exactly where the
-disease is, and the failure is silent, because an unvisited node produces no output to
-inspect.
+A folder rots because no card has named it. Activation that begins with authorship therefore
+never begins at all in the folders that most need it, and the hole is wider than it was under
+the traversal definition this method used to hold, because a walker at least passed through.
+`../foundations/the-two-deferrals.md` records that the unvisited node got worse rather than
+better in the move. The mechanism is blindest exactly where the disease is, and the failure is
+silent, because a folder nobody wrote a card about produces no output to inspect.
 
 Left unaddressed, the trigger for structural repair is the operator noticing degradation.
 That is the condition this architecture was built to remove, so a purely pull-based design
@@ -26,8 +28,13 @@ current structural fingerprint against the last recorded one and notice what mov
 has gone untouched past a threshold. It does not interpret, it does not restructure, and it
 does not decide anything.
 
-When it finds something, it names the folder and stops. The folder's own context file takes
-over from there, and everything downstream is pull as normal.
+When it finds something, it writes a card naming the folder and stops. Nothing else happens
+until a person reads that card and plays it.
+
+Writing a card is the whole of what ignition may produce, and the reason is that nothing else
+would run. There is no traversal in this architecture, so a folder that has been named but never
+carded is a folder nobody visits. An earlier version of this file had the folder's own context
+file taking over from there, which is a file being asked to act.
 
 **One ignition, everything after it lazy.** That is the shape that keeps the topology intact
 while closing the hole.
@@ -88,11 +95,11 @@ So the caps are not hygiene. They are the condition under which the premise hold
 
 ## What ignition may never do
 
-It may not restructure. It may not write to any contract. It may not decide which of the five
-ICM forms fits.
+It may not restructure. It may not write to any contract. It may not create a folder or a wing.
+It may not play the card it wrote.
 
-It notices and it names. Everything else is a finding that waits for a ruling, per
-`../foundations/authority.md`. An ignition with write authority is an unattended rung-five
+It notices, it names, and it stops. Everything else is a finding that waits for a ruling, per
+`../foundations/authority.md`. An ignition with write authority is an unattended level-five
 agent editing the structure the whole host system routes through, which is the worst available
 configuration of this architecture.
 

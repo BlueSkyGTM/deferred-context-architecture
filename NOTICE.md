@@ -7,19 +7,34 @@ rather than what is assumed.
 Where a claim came from, as opposed to where a file came from, is a different question and is
 answered in `lineage.md`.
 
-## Vendored whole
+## Vendored
 
-**`amendment/icm-architect/`** is **Interpretable Context Methodology**, the `icm-architect`
-skill, by **Jake Van Clief**, MIT licensed, copyright 2026. The method is published as Van
-Clief and McDermott, arXiv:2603.16021.
+Two artifacts, both **Interpretable Context Methodology**, both MIT, and complementary rather
+than versions of one thing. The method is published as Van Clief and McDermott,
+arXiv:2603.16021.
 
-It is vendored **unmodified**, with its own `LICENSE` and `README.md` in place, as MIT
-requires. Nothing in it has been edited, and nothing has been copied out of it into the files
-around it. This repository is an amendment to that method and is unreadable without it, which
-is why a full working copy is carried rather than a citation.
+**`origins/icm-architect/`** is the `icm-architect` skill, copyright 2026 **Jake Van Clief**.
+It carries the five forms, the walk test, and the build and restructure modes.
 
-If you want ICM on its own, take it from its author rather than from here. This copy exists so
-the amendment can be developed against a stable version.
+**`origins/icm-upstream/`** is the method repository's `_core`, copyright 2026 **Model
+Workspace Protocol Contributors**, created by Jake Van Clief. Taken 2026-08-26 at commit
+`02ba5d85c7871b75c7c702a2d8da6524723d53d4`, dated 2026-07-25, from
+https://github.com/RinDig/Interpretable-Context-Methodology. It carries fifteen numbered
+patterns, checkpoints, and stage audits.
+
+Both are vendored **unmodified**, each with its own `LICENSE` in place, as MIT requires. Nothing
+in either has been edited, and nothing has been copied out of them into the files around them.
+`origins/icm-upstream/VENDORED.md` is this repository's own note, records the comparison
+between the two, and lists what was omitted from the second: the worked example workspaces, the
+repository's own entry file, and its `.gitignore`.
+
+This repository **descends from** that method rather than amending it. Its aims diverge:
+ICM's stated goal is one agent doing what a framework would otherwise do, and this method's is
+many bounded agents. `origins/divergence.md` sets out where they part.
+
+Working copies are carried rather than citations because the argument here quotes them and
+because descent is easier to check against the source. If you want ICM on its own, take it from
+its author rather than from here.
 
 ## Cited, not carried
 
@@ -43,7 +58,7 @@ point of use.
 
 ## Ours
 
-Everything outside `amendment/icm-architect/` is original work, MIT licensed, copyright 2026
+Everything outside `origins/icm-architect/` is original work, MIT licensed, copyright 2026
 BlueSkyGTM. See `LICENSE`.
 
 The specific claims that are ours rather than inherited are listed in `lineage.md` under
@@ -51,8 +66,9 @@ The specific claims that are ours rather than inherited are listed in `lineage.m
 
 ## Vendor names
 
-`rungs.md` names a model vendor, and `tools/probe_models.py` calls one. Neither is an
-endorsement, an affiliation, or a dependency. The architecture requires that some model serve
+`rungs.md` names a model vendor, and `tools/probe_models.py` calls one. `tools/audit.py` calls
+nothing and reads only the tree it is pointed at. None of it is an endorsement, an affiliation,
+or a dependency. The architecture requires that some model serve
 each rung; which one is an edit to a single file, which is the whole of what model agnosticism
 means here.
 

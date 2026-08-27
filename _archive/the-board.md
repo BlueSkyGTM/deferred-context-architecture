@@ -1,3 +1,19 @@
+> **Archived 2026-08-26. Replaced by `../mechanics/the-bbs.md`.**
+>
+> The arguments in this file survived and were carried forward: a file cannot fail, the split
+> between mandate and method, sole authorship by the core, and git as the ledger. What did not
+> survive is the framing. This file calls the board a docket, meaning a passive list of what is
+> outstanding, and files it as one mechanic among seven.
+>
+> It is neither. Posting a card is the only moment in the architecture where the core is forced
+> to decide which folder, which mode, which model, what counts as done and what should stop the
+> work. The artifact is the record of that deliberation, and it is the interface that separates
+> this method from the one it amends. A docket does not do that.
+>
+> Also wrong here: the claim that the board replaces ICM's stage ordinality. It does not.
+> Numbered folders still carry sequence where sequence is permanent. The card carries it where
+> it is not.
+
 # The board
 
 Where the work is, what comes next, and what counts as done. The one file in a DCA workspace

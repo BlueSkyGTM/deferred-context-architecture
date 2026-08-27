@@ -1,0 +1,7 @@
+# Device-local, and deliberately so. The stamp records that the gate ran on this machine, which
+# is a fact about the machine rather than about the method. `tools/audit.py --harness` reads it.
+.claude/gate-last-fired
+
+# Never committed. Local settings do not travel with a clone, so a gate installed there would be
+# live on one device and silently absent on every other. The gate lives in .claude/settings.json.
+.claude/settings.local.json

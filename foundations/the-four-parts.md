@@ -2,12 +2,30 @@
 
 What makes any output good, decomposed. There are four contributors and there is no fifth.
 
-| Part | What it is | Where it lives | Who writes it |
-|---|---|---|---|
-| Method | How this kind of work is done here | The context file behind the door | The operator, once, and it accumulates |
-| Materials | The specific facts this task needs, and the ones it must not see | `hands-down` on the construct | The operator, per branch |
-| Standard | What counts as good, and who says so | `judged-by`, and the card's acceptance condition | The operator, one level above the work |
-| Capability | Raw model horsepower | `tier` on the construct | Declared where the work lives, never chosen at runtime |
+| Part | What it is | Who writes it |
+|---|---|---|
+| Method | How this kind of work is done here | The operator, once, and it accumulates |
+| Materials | The specific facts this task needs, and the ones it must not see | The operator, per card |
+| Standard | What counts as good, and who says so | The operator, and never the party doing the work |
+| Capability | Raw model horsepower | Declared when the card is written, never chosen at runtime |
+
+Where each one lives depends on which mode the folder is in, per `../mechanics/the-router.md`.
+The parts do not change. Their addresses do.
+
+| Part | Miller | Builder |
+|---|---|---|
+| Method | the standing `CONTEXT.md` in the folder | `CONTRACT.md`, plus any steps the card adds |
+| Materials | the folder's contents, bounded by the working directory | the same |
+| Standard | the contract's audit, plus the card's `done` | the emitted contract has to pass those audits |
+| Capability | `tier` on the card | the same |
+
+Two things are worth reading off that table. Capability has one home in both modes, because a
+folder has no horsepower requirement and a task does. And materials are never a list the agent
+reads: they are the place it was put.
+
+The addresses moved on 2026-08-26 and the parts did not. Three of the four were previously
+spread across a context file, a construct and a card, tied together by relative paths. They now
+arrive through one binding.
 
 ## What is not on the list
 
@@ -21,7 +39,7 @@ understanding anything. That is precisely why libraries of agent prompts consist
 entirely of costumes: the other three parts are specific to a practice and cannot be
 distributed.
 
-## The ratio, which is the whole economic argument
+## The ratio, which is the economic argument
 
 **Capability is the smallest of the four for most work.**
 
@@ -38,6 +56,11 @@ It is also why the opposite reflex is so expensive. **Reaching for the strongest
 model is reaching for the smallest lever**, and it feels like the responsible move because it
 is the only one of the four that can be bought.
 
+The consequence is developed in `the-economy.md`, and it is the reason that file exists beside
+this one. If capability is the smallest lever and the other three are written once into files
+that accumulate, then the resource freed by not spending on capability is fungible into the
+three that dominate. This file establishes the ratio. That one says what to do with it.
+
 ## Expertise is assembled, not constructed
 
 Nobody is made an expert. A capable-enough model is handed a method, materials and a standard,
@@ -53,25 +76,36 @@ returning:
 - **There is nothing to store.** A registry of experts is a registry of costumes. What is
   worth deriving is an index of construction conditions, which is a different artifact.
 - **A menu of experts is a menu of doors.** The door fixes method, materials and standard;
-  the fourth is declared on the construct at that same door. There is no second list.
+  the fourth is declared on the card at that same door. There is no second list.
 - **"Make it an expert in X" is not a buildable instruction.** "Write down how X is done here"
   is, and it is the same work, done once, in a form that survives the session.
 
 ## Why this is the heart, and the deferrals are the method
 
-`the-two-deferrals.md` ends on the law that a DCA agent is exactly as good as what its construct
+`the-two-deferrals.md` ends on the law that a DCA agent is exactly as good as what its binding
 encodes, and that depth is in what is handed down. This file is what that sentence decomposes
 into. The four parts name what "what is handed down" actually consists of.
+
+Both deferrals turn out to be two properties of one artifact:
+
+> **A job's existence is deferred activation. A job's `inputs` list is deferred scope.**
+
+Nothing else in the workspace defers anything. Material stores, the router addresses, the
+product returns, and the job carries the whole mechanism. That is worth knowing mostly as a
+warning: everything that can go wrong structurally goes wrong on the job, so that is where the
+checks belong.
 
 Read in that order, every mechanic in this workspace is one of the four given a mechanism.
 
 | Mechanic | Serves |
 |---|---|
-| `../mechanics/the-board.md` | Which door, and so method, materials and standard together |
-| `../mechanics/constructs.md` | The delivery vehicle for all four |
+| `../mechanics/the-bbs.md` | Which door, and so method, materials and standard together |
+| `the-binding.md` | The delivery vehicle for all four |
+| `../mechanics/the-router.md` | Which mode, and so which set of addresses applies |
 | `../mechanics/tiering.md` | Capability, and the argument that it is the smallest lever |
-| `../mechanics/evaluation.md` | Standard, and why it is held one level above the work |
-| `../mechanics/ignition.md` | Whether a door is reached at all |
+| `../mechanics/acceptance.md` | Standard, and how it is checked without a review loop |
+| `../mechanics/evaluation.md` | Standard, and why it is authored by someone who is not doing the work |
+| `../mechanics/ignition.md` | Whether a card is ever written |
 | `../mechanics/reconciliation.md` | Siblings that assembled the same four differently |
 
 Deferred activation is what makes it affordable to have many doors. Deferred scope is what
@@ -112,3 +146,10 @@ Operator and session, 2026-08-25, second pass. The decomposition was drawn in co
 the operator identified it as upstream of the two deferrals rather than beside them. Not yet
 exercised: no run has tested whether the four are separable in practice as cleanly as they
 separate on paper.
+
+Revised 2026-08-26. The four parts were cross-referenced against the proposed layers and against
+the two deferrals and came through unchanged. Only their addresses moved, they now differ by
+mode, and the deferrals were found to collapse onto a single artifact. Of everything settled on
+the 25th, this file is the only one that needed no argument rewritten, which is worth recording:
+it is a claim about outputs rather than about architecture, and architecture claims are the ones
+better architecture invalidates.

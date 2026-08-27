@@ -47,6 +47,10 @@ enormous output. Keep the expensive model emitting decisions and let cheap tiers
 and every step still runs at the capability it needs while the bill collapses. The goal is
 not to avoid the strong model. It is to stop it from typing.
 
+That split is the mechanism the economy runs on. `the-economy.md` takes it one step further:
+the collapse in the bill is not the return. What the freed resource is spent on afterwards is,
+and it buys standards, gates and judgment passes rather than a discount.
+
 ## The tier this adds
 
 The braid is not two strands. It is three, and the third is the one that saves the most,
@@ -60,14 +64,14 @@ Walking a directory, diffing a fingerprint, checking that a file exists, confirm
 resolves: these were being done by the strongest available model reading directories, which
 is the most expensive possible way to run `ls`.
 
-The full ladder and how a construct declares its rung are in `../mechanics/tiering.md`.
+The full ladder and how a card names its tier are in `../mechanics/tiering.md`.
 
 ## The relationship to deferred activation
 
 Stripe centralises the orchestrator. This architecture dissolves it. The constraint
 discipline is identical and the topology is inverted, which matters for one reason: a central
 orchestrator has to pick a tier before it knows which strands the run will hit, so it picks
-the maximum. A construct at the point of use declares the tier of the one strand it governs,
+the maximum. A card at the point of use names the tier of the one strand it governs,
 and no central choice is ever made.
 
 The Stripe insight survives the inversion. Only the dispatcher does not.
