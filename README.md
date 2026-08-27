@@ -14,6 +14,43 @@ deliberately carries none of its content.
 
 ---
 
+## The thesis
+
+**This architecture manages resources, and converts what it saves into quality.**
+
+Everything it manages is one quantity wearing six labels: model attention that has to be paid
+for. Tokens meter its price, context its capacity, usage windows its throughput, standing
+agents and live swarms its concurrency, and deterministic checks are the part of it you get
+for nothing. Deferral is the single mechanism against all six. Never let a unit of work see
+more than it needs.
+
+The saving is not the point. A method whose claim was "the same work for less money" would be
+an optimisation, and optimisations are optional. This one reallocates. Everything a
+conventional run burns on context nobody needed is still spent: on standards written before
+the work by someone not doing it, on more gates, on a judgment pass over the finished artifact
+with the argument withheld, on more attempts at the hard part. The bill does not have to fall
+for the method to have worked. What has to change is what the bill bought.
+
+That is why it is affordable to be thorough here. Every one of those purchases buys method,
+materials or standard, which are three of the four things that decide whether an output is any
+good. The fourth, capability, is the one a conventional run spends the money on, and it is the
+one that matters least.
+
+Two of the six are not managed but abolished. A standing specialist is replaced by a card that
+does not exist until it is played, and a live swarm is replaced by files that cost nothing to
+hold and cost only at the moment of reading. Managing a cost and removing the need for it are
+both wins, and the second is the larger one.
+
+**And one of the six is not a money problem at all.** A usage window is throughput entitlement:
+inside it, no amount payable returns the capacity before it resets. That is why the model
+serving any position, the head included, is a slot resolved in one file rather than an
+assumption baked into the architecture. A resource money cannot relieve is the only kind that
+changes the shape of a system rather than its budget.
+
+`foundations/the-economy.md`
+
+---
+
 ## The defect it exists for
 
 An agent that finishes a task thoroughly reports that the task went well. Thoroughness is
@@ -82,8 +119,9 @@ parts belong to a particular practice and cannot be distributed.
 Capability is also the smallest of the four for most work. A strong model with no method, no
 materials and no standard produces confident garbage; a modest one with all three produces
 something shippable. Three of the four are yours to write, once, in files that accumulate.
-That is the whole economic argument, and it is why routing work to a cheaper model is not a
-quality cut.
+That is why routing work to a cheaper model is not a quality cut, and it is what makes the
+thesis above cash: the resource deferral frees is fungible into exactly the three parts that
+dominate the outcome.
 
 The consequence for anyone building on this: **expertise is assembled, not summoned. The
 specialist is the position, not the occupant.**
@@ -251,6 +289,7 @@ deferred-context-architecture/
 │   ├── completion-fallacy.md            why this exists at all
 │   ├── the-four-parts.md                what makes an output good, and what does not
 │   ├── the-two-deferrals.md             what "deferred" refers to
+│   ├── the-economy.md                   what is managed, and what the saving buys
 │   ├── the-binding.md                   what actually wakes, and why nothing is stored
 │   ├── constraints-over-capability.md   why the strong model decides and does not type
 │   ├── authority.md                     whose call is this, and what a woken agent may not do
@@ -305,7 +344,7 @@ Specifically, and in the order that matters:
 | **No adoption surface** | `templates/` and `tools/audit.py` now exist. Nothing in either has been used against real work | Write one card against one real folder and play it |
 | **The card shape is a proposal** | The five fields have never been written for real work, played, or audited. Whether a folder plus a card carries enough is a guess | Write one against a real stage and see which fields survive |
 | **No model has been tried at any rung** | Every measurement in `rungs.md` comes from asking a model to reply with the word "ok". That proves reachability and latency. It says nothing about quality | Run one folder three times on identical input and diff the emitted contracts |
-| **Tiering is reasoned, not measured** | The claim that this reduces spend is the premise of the architecture and is untested. No run has been costed at any rung | One real run, costed per rung |
+| **Tiering is reasoned, not measured** | The claim that this reduces spend is the premise of the architecture and is untested. No run has been costed at any rung, so the reinvestment thesis is reasoned rather than demonstrated | One real run, costed per rung, with the saving traced to what it bought |
 | **Nothing has been transmitted to another model** | `.claude/skills/dca-architect/` is the attempt. Whether the umbrella, the charter and proposes-never-settles survive being handed to a model that has only the files is untested, and it is the question the whole method rests on | `HANDOFF.md`, and the run it mandates |
 | **The gate has never refused real work** | It is installed, and eight defeat attempts in a sandbox behaved. No wing exists, so it has never stood between the core and work it actually wanted to do. Its enforcement stops at spend: territory, the charter's rung ceiling, and which party is writing are all checked, but the gate sees a write rather than a bill | One chartered wing, and one honest attempt to work around it |
 | **Reconciliation has no implementation** | A responsibility and a procedure and nothing behind them. Sibling divergence is the one failure mode with no tested guard | The first parallel run, which should be expected to rewrite the file |
@@ -333,6 +372,11 @@ framework would otherwise do. This method's goal is many bounded agents, and the
 opposite: ICM consolidates toward one roof, this defers toward many. Consolidate an ICM workspace
 and it gets simpler. Consolidate this one and it stops working, because there is nothing left to
 defer between.
+
+The axis underneath that split is the thesis above. **ICM optimises for a picture a person can
+read. This optimises for a bill a person can afford to spend well**, while keeping enough of that
+legibility to stay auditable. Resource management is what this method adds; interpretability is
+the constraint it is not permitted to spend.
 
 What is inherited is everything inside a folder, and it is load-bearing rather than borrowed:
 blindness is only safe because the picture stays in human-readable files. What is added is the

@@ -47,6 +47,10 @@ enormous output. Keep the expensive model emitting decisions and let cheap tiers
 and every step still runs at the capability it needs while the bill collapses. The goal is
 not to avoid the strong model. It is to stop it from typing.
 
+That split is the mechanism the economy runs on. `the-economy.md` takes it one step further:
+the collapse in the bill is not the return. What the freed resource is spent on afterwards is,
+and it buys standards, gates and judgment passes rather than a discount.
+
 ## The tier this adds
 
 The braid is not two strands. It is three, and the third is the one that saves the most,

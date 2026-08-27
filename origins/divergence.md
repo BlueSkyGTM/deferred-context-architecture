@@ -41,6 +41,26 @@ is the intended direction. Consolidate this one and **it stops working**, becaus
 undivided workspace has nothing left to defer between. Two methods whose optimum configurations
 are opposites are not one method.
 
+### The axis the aims part along
+
+Stated as what each is optimising, which is more useful than what each looks like.
+
+**ICM optimises for a picture a person can read.** One agent, one roof, state on disk, and
+simplicity as the aim.
+
+**This optimises for a bill a person can afford to spend well.** Not a smaller bill. The
+resource deferral frees is reinvested in standards, gates and judgment passes rather than
+banked, which is the thesis in `../foundations/the-economy.md`.
+
+That is the addition, and it is genuinely an addition rather than a correction: ICM does not
+undertake resource management and does not claim to. Nothing above says ICM is wrong about
+anything. It says the two are solving for different scarcities.
+
+The constraint on the addition is the inheritance itself. Interpretability is not a resource
+this method is permitted to spend, however much of it could be converted into throughput.
+Remove ICM's folder legibility to buy cheapness and what remains is opaque agent state, which
+is the thing the whole arrangement exists to avoid. The economy is bounded by the origin.
+
 ## What that makes this
 
 A descendant. The lineage is real and stays named: the orchestration model here is Van Clief's,

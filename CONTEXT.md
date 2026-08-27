@@ -7,6 +7,10 @@ two things: activation, so nothing is instantiated until a card is written for i
 what is instantiated is bounded by a folder rather than trusted with a system. The first makes it
 cheap and reviewable. The second makes its judgment trustworthy.
 
+What the cheapness is for is the thesis in `foundations/the-economy.md`: the resource deferral
+frees is reinvested in the parts that decide whether an output is good, rather than banked as a
+discount. Resource management is the mechanism; quality is what it is spent on.
+
 It descends from Interpretable Context Methodology rather than amending it. ICM stays
 underneath. Where the two overlap, ICM wins.
 
@@ -17,6 +21,7 @@ underneath. Where the two overlap, ICM wins.
 | Why this exists at all, and why a blind agent judges better than a second model | `foundations/completion-fallacy.md` |
 | What actually makes an output good, and what a card can carry | `foundations/the-four-parts.md` |
 | What "deferred" actually refers to | `foundations/the-two-deferrals.md` |
+| What is actually being managed, and what the saving is spent on | `foundations/the-economy.md` |
 | Why the strong model should decide and not type | `foundations/constraints-over-capability.md` |
 | Whose call is this, and what a woken agent may not do | `foundations/authority.md` |
 | What is outstanding, what a card must carry, and where the core is forced to think | `mechanics/the-bbs.md` |
@@ -58,14 +63,16 @@ underneath. Where the two overlap, ICM wins.
 | A copyable starting point for a card, a contract, or a router | `templates/` |
 | What was superseded, and what replaced it | `_archive/` |
 | Why a thing was settled, what is open, what is broken | `decisions/2026-08-25-founding-session.md` |
+| What a live vendor actually meters, and what the gate did with a real cheap worker | `decisions/2026-08-27-the-glm-environment.md` |
 
 ## Reading order, first time
 
 `foundations/completion-fallacy.md` for why this exists, then
 `foundations/the-four-parts.md`, which is the claim the rest of the workspace serves, then
 `foundations/the-two-deferrals.md` for how those four get delivered, then
+`foundations/the-economy.md` for what the deferral is paying for and what the saving buys, then
 `foundations/the-binding.md` for what actually wakes, then `origins/divergence.md`. Those
-five carry the argument. Then `mechanics/the-bbs.md`, where it becomes something that runs. Everything else is how it is
+six carry the argument. Then `mechanics/the-bbs.md`, where it becomes something that runs. Everything else is how it is
 built or how it fails.
 
 ## On the shape of this workspace

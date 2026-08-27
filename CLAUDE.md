@@ -8,6 +8,11 @@ Those two deferrals are the method. The claim underneath them is that four thing
 output good, and only four: method, materials, standard, capability. Three of them are the
 operator's to write, and the fourth is the smallest lever. `foundations/the-four-parts.md`.
 
+What that buys is the thesis: this architecture manages one resource, model attention that has
+to be paid for, and converts what it saves into quality rather than banking it as a discount.
+Six meters, one quantity, and the saving is fungible into exactly the three parts the operator
+owns. `foundations/the-economy.md`.
+
 **Routing begins in `CONTEXT.md`.** This file says where you are. That one says where to go.
 
 ## Where you are
@@ -31,7 +36,7 @@ and deliberately carries none of its content.
 deferred-context-architecture/
 ├── README.md                 what this is, for someone who has not read anything else
 ├── CLAUDE.md · CONTEXT.md    this file · the task router
-├── foundations/              the laws, and the silent ways this goes wrong
+├── foundations/              the laws, the economy, and the silent ways this goes wrong
 ├── mechanics/                how it runs. The BBS, the router, the two documents, acceptance
 ├── templates/                the copyable starting points
 ├── origins/                  where this came from, the pattern verdicts, ICM vendored twice

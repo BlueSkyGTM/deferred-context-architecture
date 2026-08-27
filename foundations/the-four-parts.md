@@ -39,7 +39,7 @@ understanding anything. That is precisely why libraries of agent prompts consist
 entirely of costumes: the other three parts are specific to a practice and cannot be
 distributed.
 
-## The ratio, which is the whole economic argument
+## The ratio, which is the economic argument
 
 **Capability is the smallest of the four for most work.**
 
@@ -55,6 +55,11 @@ supply, and supplying them well is worth more than the gap between two model tie
 It is also why the opposite reflex is so expensive. **Reaching for the strongest available
 model is reaching for the smallest lever**, and it feels like the responsible move because it
 is the only one of the four that can be bought.
+
+The consequence is developed in `the-economy.md`, and it is the reason that file exists beside
+this one. If capability is the smallest lever and the other three are written once into files
+that accumulate, then the resource freed by not spending on capability is fungible into the
+three that dominate. This file establishes the ratio. That one says what to do with it.
 
 ## Expertise is assembled, not constructed
 
