@@ -87,10 +87,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # The core's own territory. Writing here is the core doing its own job rather than avoiding
-# delegation, so none of it is gated.
+# delegation, so none of it is gated. `handoff/` is on the list because a handoff is a mandate
+# the operator issues, which makes it the same class of artifact as a ruling in `decisions/`,
+# not a folder where work happens.
 CORE_DIRS = {
     ".claude", ".git", ".github",
-    "_archive", "decisions", "foundations", "mechanics",
+    "_archive", "decisions", "foundations", "handoff", "mechanics",
     "origins", "skills", "templates", "tools",
 }
 

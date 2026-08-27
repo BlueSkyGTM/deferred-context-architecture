@@ -40,7 +40,7 @@ deferred-context-architecture/
 ├── tools/                    four executable files. One probes a vendor, two read a tree
 │   └── hooks/                and one refuses the write, which is the gate
 ├── .claude/                  the gate's registration, and the two skills. Architect, delegate
-├── HANDOFF.md                the first run, and what was predicted of it beforehand
+├── HANDOFF.md · handoff/     the first run, what was predicted of it, and its references
 ├── _archive/                 superseded, kept with a note saying what replaced it
 ├── lineage.md                what was brought in, from whom, what is ours
 └── NOTICE.md · LICENSE       attribution and terms

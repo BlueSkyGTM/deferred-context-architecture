@@ -85,6 +85,36 @@ Nine predictions, each falsifiable by looking. One to three test whether the umb
 charter survived transmission. Four to eight test the smaller rules. Nine tests the gate against
 work somebody actually wanted to do, which is the only test of a gate that means anything.
 
+## The handoff carries its limits, and that was a correction
+
+An earlier version of `../HANDOFF.md` stated one rule and over-applied it: the payload says what
+things are and never what they are worth. That rule is about conclusions on the **subject**, and
+it was being used to withhold what is known about the **instruments**, which is a different thing
+entirely.
+
+The operator's correction: do not keep the next session in the dark and hope for the best. A
+tester who does not know a check is blind will record its silence as a pass. That is not
+neutrality, it is a worse measurement, and the bias it produces runs toward false confidence
+rather than away from it.
+
+So `../handoff/` carries three references. **Known limits**: what has never run, what the gate
+cannot see, what each tool is blind to, and which parts of the method have nothing behind them.
+**Scoring**: three verdicts rather than two, and the rule that every failure has one of two
+causes needing opposite repairs. **Continuing**: the conventions, the verification loop, and what
+is deliberately not planned.
+
+Two facts from `../rungs.md` turned out to change how the run must be conducted and were missing
+from the mandate entirely. **Judgment is not a rung**, so a run where the model that produced the
+work also decides whether it was good has voided its own result. And **the fetch rung has no
+model behind it**, so a card written at that tier has nothing to run it and a report claiming
+otherwise is a defect in the report.
+
+The failure-diagnosis rule is the piece most likely to matter later. A prediction that fails does
+so for one of two reasons: the skill was silent, or the skill said it and was ignored. The first
+needs prose. **The second must not get prose**, because rewriting a sentence more emphatically is
+the move that feels like progress and changes nothing: the layer that failed is the one that can
+decline, so the rule has to move down into a check with an exit code or a refusal in the gate.
+
 ## What is still open
 
 **Everything the run will decide.** Deliberately not planned. There is a restructure waiting and

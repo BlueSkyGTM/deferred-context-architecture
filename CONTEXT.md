@@ -49,6 +49,9 @@ underneath. Where the two overlap, ICM wins.
 | What a tree structurally is, so a later state can be compared to it | `tools/fingerprint.py` |
 | What was noticed and has not been ruled on | `templates/FINDINGS.md` |
 | The first run: what is being tested, and what was predicted before it | `HANDOFF.md` |
+| What is untested, and what each instrument cannot see | `handoff/known-limits.md` |
+| How to score a run without deciding it first | `handoff/scoring.md` |
+| Conventions, the verification loop, and how to leave this usable | `handoff/continuing.md` |
 | A copyable starting point for a card, a contract, or a router | `templates/` |
 | What was superseded, and what replaced it | `_archive/` |
 | Why a thing was settled, what is open, what is broken | `decisions/2026-08-25-founding-session.md` |

@@ -284,6 +284,7 @@ deferred-context-architecture/
 │   ├── fingerprint.py                   what a tree structurally is, for comparing later
 │   └── hooks/card_gate.py               and one refuses the write, which is the gate
 ├── HANDOFF.md              the first run, and what was predicted of it beforehand
+├── handoff/                its references: known limits, how to score, how to continue
 └── .claude/                the gate's registration, and two skills: architect and delegate
 ```
 

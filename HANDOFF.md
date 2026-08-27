@@ -11,6 +11,15 @@ conversation is not available to you and nothing here depends on it.
 **One outcome:** an honest answer to whether this method survives being handed to a model that
 has only the files.
 
+**Read these three before starting.** They are short and each one changes how the run is
+conducted rather than what it should conclude.
+
+| File | Why it changes the run |
+|---|---|
+| `handoff/known-limits.md` | which checks are structurally blind, so a silence is not read as a pass |
+| `handoff/scoring.md` | how to score without deciding first, and what to do with each kind of failure |
+| `handoff/continuing.md` | the conventions and the verification loop, so what you leave behind is usable |
+
 ## What is actually being tested
 
 Not whether a tree comes out tidier. **Whether the nuances live in the files or lived in the
@@ -33,12 +42,21 @@ Nothing here has been exercised. This is the first run of any part of it.
 | `BlueSkyGTM/deferred-context-architecture` | the method. Readable. Not writable |
 | `CONTEXT.md` in this repository | the task router. Every claim below traces to a file it names |
 | `.claude/skills/dca-architect/SKILL.md` | the procedure being tested |
+| `handoff/known-limits.md` | what is untested, and what each instrument cannot see |
+| `handoff/scoring.md` | how to score the result |
+| `handoff/continuing.md` | how to leave this repository usable by the session after you |
 
 Nothing else is in scope. The tree carries other things and other repositories exist; they are
 not part of this and naming them here would make them part of it.
 
 **Nothing in the Available table carries a verdict, and that is deliberate.** Saying what a thing
 is good for would hand over the judgment this run exists to produce.
+
+That rule governs conclusions about the **subject**. It is not a reason to withhold what is known
+about the **instruments**, and `handoff/known-limits.md` withholds nothing: which checks are
+blind, which rungs have no model behind them, which parts of the method have never run. A tester
+who does not know a check is blind will record its silence as a pass, and that is not neutrality,
+it is a worse measurement.
 
 ## Shape
 
@@ -49,6 +67,17 @@ is good for would hand over the judgment this run exists to produce.
    disk; do not tell it which to use.
 4. GLM mills, then GLM builds, one card at a time. Each card is played separately and its return
    is judged before the next is played.
+
+   **The judging is not GLM's.** `mechanics/tiering.md` removed judgment as a rung: fit,
+   precedence and whether a contract was right are the core's own work, done before a card is
+   written or after a result comes back. A run where the model that produced the work also
+   decides whether the work was good has voided its own result. `rungs.md` lists an alternate at
+   that position and says plainly that this records reachability, not trust.
+
+   **A card written at `tier: fetch` has no model behind it.** That rung is unresolved rather
+   than unavailable and rung zero holds it, which is usually enough, because listing what exists
+   and confirming a path are not model questions. A report claiming a model completed a `fetch`
+   card is a defect in the report.
 5. Fingerprint again and diff:
    `python3 tools/fingerprint.py --diff /tmp/albatross-before.json <tree>`
 6. Score against the predictions below. Do this before forming any general impression, because a
@@ -75,9 +104,18 @@ grant the charters, then install per `templates/harness/README.md`, then prove i
 
 ## Predictions
 
-Written 2026-08-27, before the run. Each is falsifiable by looking. Record pass or fail with the
-evidence, and where one fails, record what the skill said that let it fail: that sentence is the
-actual finding.
+Written 2026-08-27, before the run. Each is falsifiable by looking.
+
+**Three verdicts, not two: passed, failed, or not tested.** A prediction nothing in the run could
+have falsified is not a pass, and recording it as one is the most likely way this run lies to
+you. Prediction 2 is the clearest case: the consolidation test only fully works on **exercised**
+charters, and every charter the architect writes is unexercised, so at this stage it catches only
+charters identical on their face.
+
+Where one fails, record the exact sentence in the skill that should have prevented it, or the
+fact that no such sentence exists. **That sentence is the actual finding**, and which of the two
+it is decides where the repair goes: a silent skill needs prose, a skill that was read and
+ignored needs a check with an exit code. `handoff/scoring.md` carries the table.
 
 | | Prediction |
 |---|---|
