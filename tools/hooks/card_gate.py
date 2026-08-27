@@ -39,6 +39,22 @@ A card sending a wing to a rung its charter withholds. `templates/BBS.md` has al
 may not do this and nothing enforced it, which is where territory was before this file existed.
 Spend ceilings are still unenforced, because the gate sees a write rather than a bill.
 
+**A write by a woken agent into the core's territory.** The board, the router, the rulings and
+the method are handed down and never reached up into. Geography is supposed to make that
+unreachable, and where an agent shares a working directory with its caller it is not, so the
+same signal that identifies the agent is what refuses it here.
+
+**A write by the core into a folder its own card opened.** Playing a card is not permission to do
+the work, it is permission for the agent the card wakes. The payload carries `agent_id` only when
+a hook fires inside a woken agent, so the two parties are distinguishable and the core is refused
+in the one place it most wants not to be: after it has done the deliberation, with a valid card
+in hand, one edit away from finishing the job itself.
+
+That check has a live edge. It reads a woken agent as something the harness woke, so a binding
+assembled some other way, in a separate process the harness never sees, is refused here rather
+than allowed. The refusal says so. Erring that way is deliberate: a gate that guessed in the
+other direction would let anything through by claiming to be an agent.
+
 A card carrying an unfilled placeholder authorises nothing. That is upstream's placeholder sweep
 with teeth: ICM completes setup only when no `{{` patterns remain, and here an unfilled card is
 simply not playable. It is also what keeps the example card in `templates/BBS.md` from granting
@@ -188,7 +204,9 @@ def stamp(payload, root, verdict, detail):
         path = root / STAMP
         path.parent.mkdir(parents=True, exist_ok=True)
         now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        path.write_text("{} {} {}\n".format(now, verdict, detail[:80]), encoding="utf-8")
+        writer = payload.get("agent_type") or ("agent" if payload.get("agent_id") else "core")
+        path.write_text("{} {} {} {}\n".format(now, writer, verdict, detail[:80]),
+                        encoding="utf-8")
     except OSError:
         pass
 
@@ -222,9 +240,15 @@ def decide(payload, root):
         return "allow", "outside this tree"
 
     rel = target.relative_to(root)
-    if len(rel.parts) == 1:
-        return "allow", "root file"
-    if rel.parts[0] in CORE_DIRS:
+    core_side = len(rel.parts) == 1 or rel.parts[0] in CORE_DIRS
+    if core_side:
+        if payload.get("agent_id"):
+            return "deny", (
+                "`{}` is the core's own territory and a woken agent may not write it. Structural "
+                "change is filed as a finding and waits for a ruling: write what is missing to the "
+                "path your card named and return, per the folder's escalate condition.".format(
+                    rel.as_posix())
+            )
         return "allow", "core territory"
 
     opened = [
@@ -265,7 +289,17 @@ def decide(payload, root):
                 charter.relative_to(root).as_posix(), ", ".join(sorted(allowed)))
         )
 
-    return "allow", "card played, inside territory, rung permitted"
+    if not payload.get("agent_id"):
+        return "deny", (
+            "A card is played for `{}`, and this write is not coming from the agent it woke. "
+            "Playing a card commits the work to a binding, not to the core: dispatch it with that "
+            "folder as the working directory and let it write. If a binding really is running "
+            "here and the harness cannot see it as one, that is worth recording before working "
+            "around it.".format(rel.as_posix())
+        )
+
+    return "allow", "card played, inside territory, rung permitted, written by {}".format(
+        payload.get("agent_type") or "a woken agent")
 
 
 def main():

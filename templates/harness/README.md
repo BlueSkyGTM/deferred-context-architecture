@@ -38,9 +38,11 @@ and says nothing.
 python3 tools/audit.py --harness
 ```
 
-Never fired is the expected state immediately after installing. Hooks load from directories that
-already held a settings file when the session started, so a settings file created inside a live
-session is usually not read until the hooks menu is opened once or the session restarts.
+Never fired is the expected state immediately after installing, because a settings file created
+inside a running session may not be loaded by it. The fix does not need a restart: **rewrite
+`.claude/settings.json` in place, byte for byte.** That registers as a direct edit, the settings
+watcher picks it up, and the next tool-driven write fires the gate. Any session started after
+the file exists loads it normally.
 
 Once it reports a timestamp, defeat it deliberately: edit a file inside a working folder with no
 played card and confirm the refusal. An untested gate is a belief.

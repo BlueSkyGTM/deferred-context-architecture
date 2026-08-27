@@ -65,9 +65,12 @@ device-local settings file is not being used to install it, and the timestamp th
 every run.
 
 The last one is the one that matters. A gate can be committed, correct, and never once consulted,
-because hooks load from directories that already had a settings file when a session started.
-Never fired is reported as not live, which is the state a fresh clone is in until somebody opens
-the hooks menu or restarts.
+because a settings file created inside a running session may not be loaded by it. Never fired is
+reported as not live, which is the state a fresh clone is in until something loads it.
+
+The remedy is smaller than it looks and is in the finding: rewriting the settings file in place,
+with identical bytes, registers as a direct edit and the watcher picks it up mid-session. That
+was measured here rather than assumed, on the session that installed the gate.
 
 ## What it deliberately does not do
 
@@ -285,7 +288,8 @@ def audit_harness(root):
     stamp = root / STAMP
     if not stamp.exists():
         findings.append("the gate has never fired on this device, so it is not live yet. "
-                        "Open the hooks menu once or restart, then edit any file to confirm")
+                        "Rewrite {} in place, byte for byte, and the settings watcher picks it "
+                        "up mid-session. Then edit any file and run this again".format(SETTINGS))
     else:
         facts.append("last fired {}".format(
             stamp.read_text(encoding="utf-8", errors="replace").strip()))
