@@ -38,7 +38,7 @@ produced findings nobody would act on.
 A few files are device-local by design and are absent from a clean tree on purpose. They are
 listed in `DEVICE_LOCAL`, and whether they exist is `--harness`'s question rather than this one's.
 
-Repository slugs are `owner/name`, which is shaped like a relative path and is not one. They are
+Repository slugs and branch names are shaped like relative paths and are not paths. They are
 listed in `EXTERNAL_NAMES` rather than detected, because a rule general enough to catch them all
 would also skip a genuinely broken pointer to a directory.
 
@@ -110,13 +110,15 @@ PATH_SUFFIXES = {".md", ".py", ".txt", ".json", ".yaml", ".yml", ".html", ".sh"}
 # because whether they exist is a fact about the machine rather than about the method.
 DEVICE_LOCAL = {".claude/gate-last-fired", ".claude/settings.local.json"}
 
-# Names of things that are not on this filesystem at all. A repository slug is `owner/name`,
-# which is shaped exactly like a relative path and is not one. Listed rather than detected: a
-# rule that skipped every two-segment token without a suffix would also skip a genuinely broken
-# pointer to a directory, and losing a real finding costs more than adding a line here.
+# Names of things that are not on this filesystem at all. A repository slug is `owner/name` and a
+# git branch is `prefix/name`, both shaped exactly like a relative path and neither one being a
+# path. Listed rather than detected: a rule that skipped every slash-separated token without a
+# suffix would also skip a genuinely broken pointer to a directory, and losing a real finding
+# costs more than adding a line here.
 EXTERNAL_NAMES = {"BlueSkyGTM/deferred-context-architecture",
                   "BlueSkyGTM/albatross-engineering-os",
-                  "TheMattBerman/first-1000-kit"}
+                  "TheMattBerman/first-1000-kit",
+                  "claude/board-function-understanding-czri9y"}
 
 MD_LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 BACKTICKED = re.compile(r"`([^`\n]+)`")
