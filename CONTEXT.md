@@ -39,11 +39,16 @@ underneath. Where the two overlap, ICM wins.
 | Something has gone wrong and reports fine | `foundations/failure-modes.md` |
 | Who said what, and what is ours | `lineage.md` |
 | What is vendored, from whom, under what terms | `NOTICE.md` |
+| Laying this over a tree, or building one from nothing | `.claude/skills/dca-architect/SKILL.md` |
+| Asking once ever, and asking once per session | `.claude/skills/dca-architect/references/intakes.md` |
 | Why the core cannot do the work itself, and what it does when refused | `.claude/skills/dca-delegate/SKILL.md` |
 | The rule that is a default rather than a request, and how it fails open | `tools/hooks/card_gate.py` |
 | Installing that gate into a host system, and proving it is live | `templates/harness/README.md` |
 | Which model serves a rung, and how that was measured | `tools/probe_models.py` |
 | The mechanical half of acceptance, as something that runs | `tools/audit.py` |
+| What a tree structurally is, so a later state can be compared to it | `tools/fingerprint.py` |
+| What was noticed and has not been ruled on | `templates/FINDINGS.md` |
+| The first run: what is being tested, and what was predicted before it | `HANDOFF.md` |
 | A copyable starting point for a card, a contract, or a router | `templates/` |
 | What was superseded, and what replaced it | `_archive/` |
 | Why a thing was settled, what is open, what is broken | `decisions/2026-08-25-founding-session.md` |
@@ -75,7 +80,11 @@ rules is now enforced by the harness on any device where the gate is live, and
 
 ## Status
 
-Specified, not exercised. No card has been written, no binding assembled, no ignition scheduled,
+Specified, not exercised, and now with one thing scheduled against it. `HANDOFF.md` is the
+mandate for the first run: `dca-architect` laid over a real tree by a different model, scored
+against nine predictions written before it fires. Nothing in it has happened yet.
+
+No card has been written, no binding assembled, no ignition scheduled,
 and `mechanics/reconciliation.md` has no implementation behind it at all. Depth is earned by a
 second and third run rather than designed in advance, so treat every mechanics file as a first
 version.

@@ -267,7 +267,7 @@ deferred-context-architecture/
 │   ├── evaluation.md                    who says no, and who wrote the standard
 │   └── reconciliation.md                two branches disagreed
 │
-├── templates/              copyable starting points for a card, contract, charter, router, board
+├── templates/              copyable starting points: card, contract, charter, router, findings
 │   └── harness/                         installing the gate into a host system
 │
 ├── origins/
@@ -280,9 +280,11 @@ deferred-context-architecture/
 ├── _archive/               superseded files, each with a note naming its replacement
 ├── rungs.md                which model serves which rung today. The only file naming one
 ├── lineage.md              what was brought in, from whom, and what is ours
-├── tools/                  three executable files. One probes a vendor, one audits a tree
+├── tools/                  four executable files. One probes a vendor, two read a tree
+│   ├── fingerprint.py                   what a tree structurally is, for comparing later
 │   └── hooks/card_gate.py               and one refuses the write, which is the gate
-└── .claude/                the gate's registration, and the skill that runs once it refuses
+├── HANDOFF.md              the first run, and what was predicted of it beforehand
+└── .claude/                the gate's registration, and two skills: architect and delegate
 ```
 
 ---
@@ -303,6 +305,7 @@ Specifically, and in the order that matters:
 | **The card shape is a proposal** | The five fields have never been written for real work, played, or audited. Whether a folder plus a card carries enough is a guess | Write one against a real stage and see which fields survive |
 | **No model has been tried at any rung** | Every measurement in `rungs.md` comes from asking a model to reply with the word "ok". That proves reachability and latency. It says nothing about quality | Run one folder three times on identical input and diff the emitted contracts |
 | **Tiering is reasoned, not measured** | The claim that this reduces spend is the premise of the architecture and is untested. No run has been costed at any rung | One real run, costed per rung |
+| **Nothing has been transmitted to another model** | `.claude/skills/dca-architect/` is the attempt. Whether the umbrella, the charter and proposes-never-settles survive being handed to a model that has only the files is untested, and it is the question the whole method rests on | `HANDOFF.md`, and the run it mandates |
 | **The gate has never refused real work** | It is installed, and eight defeat attempts in a sandbox behaved. No wing exists, so it has never stood between the core and work it actually wanted to do. Its enforcement stops at spend: territory, the charter's rung ceiling, and which party is writing are all checked, but the gate sees a write rather than a bill | One chartered wing, and one honest attempt to work around it |
 | **Reconciliation has no implementation** | A responsibility and a procedure and nothing behind them. Sibling divergence is the one failure mode with no tested guard | The first parallel run, which should be expected to rewrite the file |
 | **Ignition is unscheduled** | No walk runs. No fingerprint format is implemented, no drift threshold set, no spend cap configured | Schedule one, cap it, and calibrate the threshold against a real tree |

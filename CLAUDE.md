@@ -12,9 +12,10 @@ operator's to write, and the fourth is the smallest lever. `foundations/the-four
 
 ## Where you are
 
-A method bundle with one enforced rule in it. Three files execute. `tools/probe_models.py`
-measures a vendor and `tools/audit.py` checks a tree, and neither runs any part of the
-architecture. `tools/hooks/card_gate.py` does: it is a harness hook that refuses a write into a
+A method bundle with one enforced rule in it. Four files execute. `tools/probe_models.py`
+measures a vendor, `tools/audit.py` checks a tree against what its files claim, and
+`tools/fingerprint.py` records what a tree structurally is so a later state can be compared to
+it. None of those three runs any part of the architecture. `tools/hooks/card_gate.py` does: it is a harness hook that refuses a write into a
 working folder unless a card is played for it, which is the one place a rule here is a default
 rather than a request. Everything else is prose.
 
@@ -36,9 +37,10 @@ deferred-context-architecture/
 ├── origins/                  where this came from, the pattern verdicts, ICM vendored twice
 ├── decisions/                what was settled, what is open, what is broken
 ├── rungs.md                  which model serves which rung today. The only file naming one
-├── tools/                    three executable files. One probes a vendor, one audits a tree
+├── tools/                    four executable files. One probes a vendor, two read a tree
 │   └── hooks/                and one refuses the write, which is the gate
-├── .claude/                  the gate's registration, and the skill that runs once it refuses
+├── .claude/                  the gate's registration, and the two skills. Architect, delegate
+├── HANDOFF.md                the first run, and what was predicted of it beforehand
 ├── _archive/                 superseded, kept with a note saying what replaced it
 ├── lineage.md                what was brought in, from whom, what is ours
 └── NOTICE.md · LICENSE       attribution and terms

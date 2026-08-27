@@ -34,6 +34,21 @@ one, grants in the other.
 **One board serves every wing.** Cards carry a wing column. Splitting the board per wing would
 split its authorship, and the single-author rule is what makes an unmoved card mean something.
 
+## A folder is named for the work, never for the product
+
+A mill is not named after the flour. A folder called `receptionist` or `invoices` or `blog-posts`
+is named after what comes out of it, and that name is wrong in a way that spreads.
+
+It spreads because a folder named for its output cannot say what belongs in it. Everything that
+touches the product has a claim, so the folder accumulates whatever is adjacent, and the boundary
+that was supposed to make deferral safe stops describing anything. The same folder named for the
+work it does answers the question in its own title, and what does not belong is obvious to a
+reader who has never seen the tree.
+
+The check is one question: **does this name describe an activity or an artifact?** An artifact
+name is a finding, and renaming is structural, so it is filed and waits for a ruling rather than
+being performed.
+
 ## Why it is separate from the board
 
 A router holds a **fact**. A board holds a **decision**. They have different lifetimes and
