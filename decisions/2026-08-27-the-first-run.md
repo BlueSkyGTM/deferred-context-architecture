@@ -38,6 +38,20 @@ The residue that is genuinely the method's is one pointer: step 6 states the rul
 routes to neither file that explains it. A procedure that depends on a mechanism documented
 elsewhere and does not point at the explanation will be followed by someone who never reads it.
 
+**The operator ruled on that and it is done.** Step 6 of `.claude/skills/dca-architect/SKILL.md`
+now carries the two documents mechanism in full: the two directions, the mode table with the third
+row marked as the only finding, the fact that a contract is spent at promotion rather than lost,
+the statement that zero contracts is the expected reading when adopting and never a defect, the
+note that `CONTEXT.md` predates this method as ICM's per-folder context and that an adopted ICM
+workspace is already full of them, and the relay rule for chained contracts. Two lines were added
+to the handover checklist. The second half of the proposal, a line in `handoff/continuing.md`
+naming the mechanics files a run must read rather than may read, was not taken and stays open.
+
+**The repair came after the scoring and not during it**, which is the order this method requires.
+All nine verdicts were reached against the skill as it stood at `fdf2e81` here and `d856128` in
+the subject repository. A later run meets a different instrument, and comparing its result to this
+one's would be comparing two measurements taken with different rulers.
+
 **None of the nine predictions could have caught this.** The inversion produced a finding rather
 than a rename, so prediction five passed. It never touched a charter, so prediction three was
 unaffected. It produced three cards whose `mode` field was confidently wrong in a way no parser

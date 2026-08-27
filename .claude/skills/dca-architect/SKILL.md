@@ -123,10 +123,45 @@ the opposite symptom.
 
 ### 6. Mark every folder built or under construction
 
-Derivable, so derive it rather than asking. A folder holding a promoted `CONTEXT.md` is **built**
-and takes a miller. A folder holding an issued `CONTRACT.md` and no promoted context is **under
-construction** and takes a builder. A folder holding neither is a finding: it is doing work
-nobody has written down.
+Derivable, so derive it rather than asking. `mechanics/the-two-documents.md` is the mechanism and
+`mechanics/the-router.md` is the mode table. **Read both before deriving anything.** The rest of
+this step is their shorthand, and shorthand is what gets inverted.
+
+The two documents run in opposite directions and are never the same file:
+
+```
+CONTRACT.md   issued IN    the operator writes it, BEFORE the work    a mandate
+CONTEXT.md    emitted OUT  the agent writes it, as its LAST act       what is here now
+```
+
+| The folder holds | Mode | Send it |
+|---|---|---|
+| a promoted `CONTEXT.md` | **built** | a miller |
+| a `CONTRACT.md` and no promoted context | **under construction** | a builder |
+| neither | **a finding.** It is doing work nobody has written down | nothing yet |
+
+**A contract is transient by design. It is spent at promotion, not lost.** Promotion is the
+operator accepting the emitted contract, at which point that file becomes the folder's standing
+method and the folder flips to built. So a workspace that is not currently building anything holds
+**zero** contracts, correctly, forever.
+
+**Zero contracts is therefore never a finding, and in adopt mode it is the expected reading.**
+This is the inversion to watch for, because it is the one that reads like a discovery:
+
+- `CONTEXT.md` **predates this method.** It is ICM's per-folder scoped context file, inherited
+  unchanged. Any ICM workspace you adopt is already full of them.
+- Those files are standing methods doing their job. They are **not** debris from a failed run, not
+  contracts under the wrong name, and not evidence that anything misfired. In a tree that has
+  never had a build under this method, there was never a contract to spend.
+- A healthy adopted tree therefore comes out as **many built rows and zero under construction.**
+  That is unremarkable and needs no finding attached to it.
+
+Only the third row is a finding. Do not attach one to the other two.
+
+**Contracts chain.** A `CONTRACT.md` may route onward to the next folder in a chained build, which
+is the supported way to sequence building work. A handoff reaching outside its own folder is legal
+only when declared as a relay, which `python3 tools/audit.py --folder <path> --relay` is what
+honours.
 
 ### 7. Write the router
 
@@ -210,7 +245,9 @@ A bare number belongs to a rung or a level and never to both.
 - [ ] No two charters substantially identical, or a merge proposed where they are
 - [ ] Every charter field checkable, no personality prose
 - [ ] Every folder named for work rather than output, or a finding filed
-- [ ] Every folder marked built or under construction, derived from what is on disk
+- [ ] Every folder marked built or under construction, derived from what is on disk, and
+      `mechanics/the-two-documents.md` actually read rather than derived from this summary
+- [ ] Zero contracts in an adopted tree recorded as the normal state, never as a finding
 - [ ] No placeholder left anywhere: a card carrying `<` cannot be played, and the gate refuses it
 - [ ] Every card's `door` inside its wing's territory and `tier` within its charter's capability
 - [ ] Every card has a non-blank `escalate`
